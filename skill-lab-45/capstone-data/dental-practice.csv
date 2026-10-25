@@ -1,0 +1,5 @@
+﻿SIMULATION_ONLY,channel,planned_budget_bdt,fictional_cpc_bdt,fictional_click_to_conversion_pct,modeled_clicks,modeled_conversions,data_type
+YES,Google Search,30000,30,5,1000.0,50.0,SYNTHETIC_NOT_REAL
+YES,Meta Leads,21000,30,5,700.0,35.0,SYNTHETIC_NOT_REAL
+YES,Meta Retargeting,6000,30,5,200.0,10.0,SYNTHETIC_NOT_REAL
+YES,Local Video,3000,30,5,100.0,5.0,SYNTHETIC_NOT_REAL

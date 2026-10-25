@@ -1,0 +1,15 @@
+PhotoPixc Skill Lab 45 — CHEATSHEET 02: GTM, GA4 & Consent (Day 4-14)
+
+GA4: Event-based measurement + reporting।
+GTM: Tag + Trigger + Variable → Tag firing।
+Core e-commerce flow: view_item → add_to_cart → begin_checkout → purchase.
+
+Critical purchase parameters: transaction_id, value, currency, items (প্রযোজ্য হলে)।
+QA sequence: site action → GTM Preview → fired tag → GA4 DebugView → parameter values → store record.
+Positive test: Order complete হলে একবার purchase ইভেন্ট।
+Negative test: Failed payment বা abandoned checkout-এ purchase নয়।
+Check duplicate: Hardcoded Google tag ও GTM একই event পাঠাচ্ছে কি না।
+Consent: Accept/Reject অবস্থায় কোন tracking অনুমোদিত, তা প্রযোজ্য নিয়ম ও বাস্তব কনফিগারেশনের সঙ্গে যাচাই।
+Status fields: EXPECTED | OBSERVED | PASS/FAIL/UNKNOWN | EVIDENCE | NEXT ACTION.
+
+সতর্কতা: Preview-তে fired মানেই analytics report verified নয়; সব পরীক্ষায় test environment ও অনুমতি ব্যবহার করো।

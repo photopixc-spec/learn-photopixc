@@ -1,0 +1,12 @@
+PhotoPixc Learning V8.0 — আপলোড গাইড
+
+আগের ডাউনলোড সমস্যার কারণে দুটি ZIP Library-তেও সংরক্ষণ করা হবে।
+
+১) V7.9 আগে থেকেই Hosting-এ থাকলে V8_Update_Only.zip ব্যবহার করুন।
+২) learn.photopixc.com-এর Document Root-এ ZIP Upload / Extract করুন। /google-ads/ ফোল্ডারে Extract করবেন না।
+৩) প্রথমে সম্পূর্ণ সাইট ও Skill Lab JSON Progress-এর Backup রাখুন।
+৪) Overwrite করুন; existing folders Delete করবেন না।
+৫) Cmd+Shift+R দিয়ে Refresh করুন। Google Ads Offline Copy আগে Install করা থাকলে নতুন ক্যাশ সংস্করণ সক্রিয় করার জন্য অনলাইনে খুলুন এবং Offline Copy পুনরায় যাচাই করুন।
+৬) Google/Meta/Quran থেকে Skill Lab-এ লিংক, Portal-এ Back, Quiz, Words, Sidebar, Progress Export/Import পরীক্ষা করুন।
+৭) এই সংস্করণে মেনু ও Offline Cache Fix ছাড়া Lesson Data পরিবর্তন করা হয়নি।
+৮) Final QA সীমা জানতে V8_AUDIT_REPORT_BN.md পড়ুন।

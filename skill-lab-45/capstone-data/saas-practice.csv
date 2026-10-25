@@ -1,0 +1,5 @@
+﻿SIMULATION_ONLY,channel,planned_budget_bdt,fictional_cpc_bdt,fictional_click_to_conversion_pct,modeled_clicks,modeled_conversions,data_type
+YES,Google Search,105000,120,4,875.0,35.0,SYNTHETIC_NOT_REAL
+YES,Meta Awareness,30000,120,4,250.0,10.0,SYNTHETIC_NOT_REAL
+YES,Remarketing,30000,120,4,250.0,10.0,SYNTHETIC_NOT_REAL
+YES,YouTube Explainer,15000,120,4,125.0,5.0,SYNTHETIC_NOT_REAL

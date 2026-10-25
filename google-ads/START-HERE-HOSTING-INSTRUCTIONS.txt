@@ -1,0 +1,5 @@
+Google Ads পাঠশালা — সম্পূর্ণ update
+
+শুরু করার আগে UPDATE-INSTRUCTIONS-BN.txt পড়ুন।
+এই package-এ Module 17, ১৭টি Cheat Sheet এবং Quiz Batch 1–2 একসঙ্গে আছে।
+আগের ZIP আলাদাভাবে install করার প্রয়োজন নেই।

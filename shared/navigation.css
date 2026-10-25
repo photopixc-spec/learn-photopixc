@@ -1,0 +1,24 @@
+/* Shared Google-style header. Loaded after every school stylesheet. */
+.topbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;padding:18px 32px;background:#fff;border-bottom:1px solid #dce3d9;position:sticky;top:0;z-index:3;font-family:'Noto Sans Bengali','Hind Siliguri','Nirmala UI',system-ui,sans-serif;line-height:normal;color:#182e2a}
+.topbar .brand{display:flex;flex-shrink:0;gap:12px;align-items:center;text-decoration:none;color:#182e2a;font-size:22px;font-weight:800;line-height:1.2}
+.topbar .brand small{display:block;font-size:9px;letter-spacing:1.7px;margin-top:7px;color:#63756e;font-weight:650}
+.topbar .brand-mark{background:#176b53;color:#fff;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:28px}
+.topbar #school-nav{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;font-size:13px;line-height:normal;margin:0 0 0 auto;padding:0;justify-content:flex-end}
+.topbar #school-nav a{white-space:nowrap;text-decoration:none;color:#63756e;font-weight:650;padding:4px 0;border:0;line-height:normal}
+.topbar #school-nav a.active{color:#176b53;font-weight:650;text-decoration:none}
+.topbar #menu-toggle{display:none;margin-left:auto;border:1px solid #dce3d9;border-radius:9px;padding:10px 17px;background:#fff;color:#182e2a;font:600 12px/1.5 'Noto Sans Bengali','Hind Siliguri','Nirmala UI',system-ui,sans-serif;min-height:0;cursor:pointer}
+.topbar #menu-toggle:hover{background:#edf1e9}
+.topbar a:focus-visible,.topbar #menu-toggle:focus-visible{outline:3px solid #bd8c24;outline-offset:3px}
+@media(max-width:1200px){
+ .topbar{position:relative;padding:14px 20px}
+ .topbar #menu-toggle{display:block}
+ .topbar .brand{font-size:20px}
+ .topbar .brand-mark{width:36px;height:36px}
+ .topbar #school-nav{display:none!important}
+ .nav-open .topbar #school-nav{display:flex!important;flex-direction:column;align-items:stretch;order:3;width:100%;max-height:48vh;overflow:auto;gap:0;padding:0;margin:0;justify-content:flex-start}
+ .nav-open .topbar #school-nav a{padding:12px;border-bottom:1px solid #dce3d9}
+ #sidebar{display:none;position:static;max-height:none}
+ .nav-open #sidebar,#sidebar.open{display:block}
+ .shell{display:block}main{margin:auto}
+}
+@media print{.topbar{display:none!important}}

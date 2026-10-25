@@ -1,0 +1,13 @@
+PhotoPixc Skill Lab 45 — CHEATSHEET 03: Google Ads Search Audit (Day 15-25)
+
+Search keyword ≠ actual search term। Search term report-এ Query intent যাচাই করো।
+Query tag: Relevant | Irrelevant | Uncertain | Insufficient data।
+Negative list-এর আগে impact, match type, campaign scope, brand/seasonal effect দেখো।
+Primary vs Secondary conversion এবং tracking data quality যাচাই করো।
+PMax settings: conversion goal, asset, feed, URL expansion, exclusions, geo — available controls vary by account.
+Audit columns: Finding | Date range | Evidence | Spend/impact | Confidence | Priority | Recommendation.
+High-spend & low conversion -> investigate; অবিলম্বে pause করার একমাত্র নিয়ম নয়।
+Correlations from Change history are not proof of causation.
+Google Ads-এ read-only access নিয়ে audit করা যায়; বাস্তব পরিবর্তনের আগে অনুমতি লাগবে।
+
+সব demo campaign data কল্পিত; প্রকৃত business report হিসেবে ব্যবহার করা যাবে না।

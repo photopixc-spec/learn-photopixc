@@ -1,0 +1,11 @@
+PhotoPixc Skill Lab 45 — CHEATSHEET 06: Offers & Portfolio (Day 38-45)
+
+Offer page: Who it serves | Problem | Clear deliverables | Process | Timeline | Boundaries | CTA.
+Onboarding: Client contact | Scope | Date range | Account permissions | KPIs | Review deadline.
+Audit deliverable: Findings + Evidence + Risk + Priority + Recommendations + Unknowns.
+Case Study: Context | Method | Observed findings | Actions (if authorized) | Verified outcome (if available).
+Pricing: Deliverables + time + overhead + revision scope + risk; no fabricated market guarantees.
+Portfolio: distinguish Simulation, Example, Authorized audit, Verified results.
+Never publish client passwords or confidential campaign / customer data.
+Service boundary: Read-only audit does not include editing live campaigns.
+Outreach: short, specific, relevant, permission-based; no spam or invented results.

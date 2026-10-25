@@ -1,0 +1,36 @@
+Quranic Arabic + Batch 31 — পরীক্ষা প্রতিবেদন (১৮ অক্টোবর ২০২৬)
+==============================================================
+
+যে ফাইলগুলোর বিষয়বস্তু পাল্টায়নি:
+- google-ads/ এবং meta-ads/ এর সমস্ত JS, CSS, lesson, curriculum, question-bank,
+  quizzes, learning engine, storage logic ও font assets (SHA256 মিলে গেছে)।
+- root portal.js, sw.js, existing redirect logic, Google ও Meta service worker।
+
+পুরোনো সোর্সের মধ্যে কেবল পরিবর্তিত:
+- index.html (তৃতীয় card, তিনটি স্কুলের headline, responsive 3-column layout)
+- google-ads/index.html (একটি Quranic Arabic school nav link)
+- meta-ads/index.html (একটি Quranic Arabic school nav link)
+- sitemap.xml (নতুন school URL)
+- VERSION.txt (সমন্বিত সংস্করণের নাম)
+
+QA যা সফলভাবে পরীক্ষা হয়েছে:
+✓ 1440px desktop ও 390px mobile simulated DOM rendering: ৩টি portal card,
+  সঠিক Google/Meta/Arabic destination, horizontal overflow নেই।
+✓ Arabic home/word lesson rendering; Search 'بسم' করলে ১টি matching card আসে।
+✓ শব্দের অক্ষর বিশ্লেষণে: 'মূল অক্ষর | শব্দের যুক্তরূপ | বাংলা নাম | অবস্থান'।
+✓ بِسْمِ = ৩ অক্ষরের টেবিল; click করে Learned চিহ্নিত; Progress ১/১১১।
+✓ ১০ প্রশ্নের কুইজে ৪টি answer choice দেখায়; উত্তর দিলে feedback আসে।
+✓ JavaScript syntax check: নতুন app ও word data + Meta app।
+✓ ৪টি URL-সহ sitemap XML parse সফল।
+✓ মূল Batch31-এর অন্য অপ্রয়োজনীয় ফাইল মুছে/নাম পাল্টানো হয়নি।
+
+পরীক্ষার সীমাবদ্ধতা:
+- ব্রাউজারের network/file navigation এই পরিবেশে policy দ্বারা blocked।
+  তাই HTML+CSS+JS সরাসরি simulated DOM-এ চালিয়ে interactions পরীক্ষা হয়েছে;
+  সম্পূর্ণ server-hosted end-to-end routing, online fonts, service workers,
+  live hosting, real device voice, print এবং Google/Meta সব lesson browser QA করা হয়নি।
+- Browser পরীক্ষায় বাস্তব পাঠ/তাজবীদ বিশেষজ্ঞের ভাষা যাচাই অন্তর্ভুক্ত নয়।
+- ১১১টি শব্দ হলো ৮টি সূরা থেকে নির্বাচিত শিক্ষামূলক ডেটা; পুরো কুরআনের
+  unique word inventory বা সম্পূর্ণ ১৪,৮৭০ শব্দ নয়।
+- Arabic speech button device text-to-speech; পেশাদার তিলাওয়াত নয়।
+- নতুন website Live-এ Upload করা হয়নি; আপনার hosting-এ প্রকাশ করতে হবে।

@@ -1,0 +1,8 @@
+PhotoPixc Learning Academy — V8.0 Quality Audit Release | 2026-10-20
+
+Four schools: Google Ads, Meta Ads, Quranic Arabic and Skill Lab 45.
+Based on V7.9, includes navigation links to fourth school, root keyboard skip navigation, Google Ads offline cache completeness fix, updated metadata.
+No learner localStorage storage keys changed, and all existing course data preserved.
+All four schools remain independent, free browser apps; offline mode is optional and not guaranteed across all schools.
+Please read V8_AUDIT_REPORT_BN.md for passed checks, unresolved limitations, and religious-language review requirements.
+Live hosting verification and final expert pedagogical review remain open.

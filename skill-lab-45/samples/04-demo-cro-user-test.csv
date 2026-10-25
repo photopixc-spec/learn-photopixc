@@ -1,0 +1,6 @@
+﻿participant_id,device,task,stopped_at,observed_issue,severity,hypothesis
+P01,Android,Find delivery fee,Cart,Shipping price not visible,High,Show estimate on product page
+P02,iPhone,Find return policy,Product,Return link too small,Medium,Place returns near CTA
+P03,Android,Start checkout,Login,Forced registration,High,Test guest checkout
+P04,Android,Find delivery fee,Checkout,Surprise fee at last step,High,Display fee earlier
+P05,iPhone,Finish checkout,Address,Too many required fields,Medium,Simplify form

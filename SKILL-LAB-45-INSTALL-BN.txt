@@ -1,0 +1,30 @@
+PHOTOPIXC LEARNING PORTAL — SKILL LAB 45 INTEGRATION
+Version: V7 / 2026-10-19
+
+যা যুক্ত হয়েছে
+- মূল Portal Homepage-এ চতুর্থ কার্ড: Skill Lab 45 — Complete Academy।
+- সঠিক Link: https://learn.photopixc.com/skill-lab-45/
+- আপনার Skill Lab 45 v3-এর মূল index.html (কোর্সের কন্টেন্ট অপরিবর্তিত)।
+- Homepage-এর চারটি কার্ড Desktop-এ ২×২ এবং Mobile-এ ১ কলামে।
+- sitemap.xml-এ Skill Lab 45 যুক্ত।
+- কুরআনিক আরবি শব্দের পুরোনো ১১১ Count-কে V6-এর ২৬৮-এ সংশোধন।
+- আগের Google Ads, Meta Ads ও Quranic Arabic-এ কোনো JS/CSS/কোর্স ফাইল বদলানো হয়নি।
+
+আপলোডের আগে
+১. File Manager-এ learn.photopixc.com-এর Document Root সনাক্ত করুন।
+   সেখানে google-ads, meta-ads, quranic-arabic এবং root index.html থাকবে।
+২. সাইটের Backup ZIP রাখুন।
+৩. ইতিমধ্যে V6 ইনস্টল করা থাকলে UPDATE-ONLY ZIP ব্যবহার করুন।
+   এটিকে Document Root-এ Upload + Extract করুন। root-এর index.html ও sitemap.xml Overwrite অনুমোদন করুন।
+   skill-lab-45 ফোল্ডারটি নতুন তৈরি হবে।
+৪. V6 ইনস্টল করা না থাকলে FULL-SITE ZIP ব্যবহার করুন।
+   Document Root-এ Extract করুন। বিদ্যমান ফোল্ডার Delete করবেন না।
+৫. Browser-এ Cmd+Shift+R (Mac) দিয়ে Refresh করুন।
+   https://learn.photopixc.com/ এবং /skill-lab-45/ পরীক্ষা করুন।
+৬. কোনো Hosting File Manager-এ Extract করলে অতিরিক্ত nested folder হয়ে গেলে প্রয়োজনীয় ফাইলগুলো Document Root-এ সরান।
+
+মনে রাখবেন
+- ওয়েবসাইটে স্বয়ংক্রিয় Upload করা হয়নি।
+- Skill Lab progress ব্রাউজারের localStorage-এ Save হয়; ভিন্ন ডিভাইসে স্বয়ংক্রিয় Sync হয় না।
+- ব্যবহারকারীর original Skill Lab v3-এর ৪৫ দিনের course logic বা quiz বদলাইনি।
+- Live Hosting পরীক্ষা করতে হবে।

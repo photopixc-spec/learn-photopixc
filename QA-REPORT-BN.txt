@@ -1,0 +1,19 @@
+PhotoPixc Quranic Arabic V6 — Last 10 Surahs
+
+V5 থেকে পরিবর্তন:
+- পুরোনো পূর্ণ সূরা ছিল ৮টি; এর মধ্যে ৬টি শেষ ১০টির অন্তর্ভুক্ত।
+- নতুন করে সম্পূর্ণ সূরা যুক্ত: ১০৫ আল-ফীল (৫), ১০৬ কুরাইশ (৪), ১০৭ আল-মাউন (৭), ১১১ আল-মাসাদ (৫)।
+- এখন শেষ ১০টি সূরা ১০৫ থেকে ১১৪: সব মিলিয়ে ৪৮টি আয়াত।
+- নামাজ শিক্ষা বিভাগে সম্পূর্ণ সূরার সংখ্যা এখন ১২টি (আগের ৮ + নতুন ৪)।
+- নতুন STEP 05 / #qa-last-ten পেজ, আরবি-সহ বাংলা উচ্চারণ/অর্থ, Memorization Toggle, শেখার Progress (Browser LocalStorage), Prev/Next, Print, উৎসের লিংক।
+- পুরোনো ২৬৮টি V5 শব্দ ও V4 quiz/word builder অপরিবর্তিত।
+
+QA:
+- ১০টি সূরা/৪৮টি আয়াতের ডেটা ও বাংলা অর্থের সংখ্যাগত মিল যাচাই।
+- JavaScript Syntax check: 23 ফাইল পাস।
+- Chromium-এ ইন-মেমরি rendering ও button smoke test: ১০টি সূরা, শেখার Progress, বাংলা উচ্চারণ লুকানো, mobile width, Home/Salah/Words navigation পাস।
+- Localhost-এ বাস্তব HTTP Browser Navigation এই পরিবেশে blocked by administrator; তাই Live Hosting QA করা হয়নি।
+- Google & Meta ফাইল V5-এর সঙ্গে অভিন্ন, Word Data অপরিবর্তিত: True
+- মূল Arabic আয়াত প্রকাশের আগে একজন ক্বারি/আরবি শিক্ষক দিয়ে তিলাওয়াত ও বাংলা উচ্চারণ পুনরায় যাচাই করানো উচিত।
+
+সূত্র: https://quran.com/105, /106, /107, /111; আগের সূরাগুলো Quran.com-এ পড়া যায়।

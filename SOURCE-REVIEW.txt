@@ -1,0 +1,207 @@
+Meta Modules 1–9 — source review, 10 October 2026
+
+Each lesson includes its official Meta reference links. Examples and businesses
+are original synthetic teaching scenarios, never actual campaign statistics.
+
+Reviewed primary sources:
+https://www.facebookblueprint.com/student/activity/415305-get-started-with-ads-manager
+https://www.facebookblueprint.com/student/path/253165-selecting-objectives-course
+https://www.facebookblueprint.com/student/path/248614-ads-manager-basics
+https://www.facebookblueprint.com/student/path/219702-set-up-business-portfolio-meta-business-suite
+https://www.facebook.com/help/235353253505947
+https://www.facebook.com/help/289207354498410/
+https://ai.meta.com/blog/advertising-fairness-variance-reduction-system-vrs/
+https://www.facebook.com/business/ads/facebook-instagram-reels-ads
+
+Corrections / scope:
+- Auction model uses (bid x estimated action rate) + ad quality in Meta's
+  published conceptual explanation, not a product of all three factors.
+  Real delivery includes additional context/pacing; no exact score is invented.
+- Meta's retrieved Reels guidance still mentions manual placement options.
+  A universal August-2026 removal claim is not presented as verified fact.
+- Blanket 2026 claims about surcharges, review latency, AI disclosure dates,
+  attribution removal dates and universal defaults have not been inserted into
+  this foundation batch. Recheck official sources when those modules are built.
+- Policy checker is a limited local text-pattern learning aid, not an official
+  review/compliance/approval system. Links lead to Meta's live standards.
+- Creative checker validates the learner-selected practice aspect ratio only;
+  no universal current upload limits or safe-zone pixel dimensions are claimed.
+
+Module 2–3 sources reviewed:
+https://www.facebookblueprint.com/student/activity/248027
+https://www.facebookblueprint.com/student/path/219714-conversions-api-direct-integration-course
+https://www.facebookblueprint.com/student/activity/609643-optimize-meta-conversions-api
+https://www.facebookblueprint.com/student/activity/643256-meta-conversions-api-gateway-code-free-setup
+https://bep.facebookblueprint.com/student/path/211560-tracking-events-course
+https://www.facebookblueprint.com/student/path/253052
+https://about.fb.com/ltam/wp-content/uploads/sites/14/2023/11/LeadGenerationGuide.pdf
+https://certifications.facebookblueprint.com/student/activity/598472-get-the-most-out-of-whatsapp-business
+https://github.com/facebook/facebook-for-woocommerce/blob/master/facebook-commerce-pixel-event.php
+
+Tracking scope:
+- CAPI is not a guarantee of complete tracking and does not bypass consent.
+- Deduplication teaches matching event_name and event_id for the same action;
+  browser eventID maps to server event_id. No fixed deduplication window claimed.
+- AEM help page https://www.facebook.com/business/help/721422165168355
+  required login; developer documentation returned HTTP 429 during this review.
+  Lesson 10 explicitly flags current UI verification as pending. It does not
+  present the historical eight-event setup as a universal current requirement.
+- App and messaging examples depend on account eligibility and available setup.
+- No source performance percentage has been converted into an outcome promise.
+
+Module 4–5 review — 10 October 2026:
+Reviewed public official course overviews (full lesson launches require login):
+https://www.facebookblueprint.com/student/path/219694-define-audiences
+https://www.facebookblueprint.com/student/path/253166-advantage-plus-audiences
+https://www.facebookblueprint.com/student/path/253110-reels-stories-ads-course
+https://community.facebookblueprint.com/student/path/253167-placements-formats-course
+https://trainernetwork.facebookblueprint.com/student/path/219763-ab-test-conversion-brand-lift-course
+Retrieved official policy text / guidance:
+https://www.facebook.com/legal/terms/customaudience/update
+https://www.facebook.com/business/ads/facebook-instagram-reels-ads
+
+Access limitations:
+- Advantage+ audience help (273363992030035), Collection page and Ads Guide
+  redirected to login/blocking responses. These exact account screens were not
+  inspected. No current universal control list, menu location, card count, file
+  size, duration limit or safe-zone pixel rule is asserted.
+- Examples use synthetic businesses and original reasoning exercises. Ratios,
+  OR/AND set arithmetic, CPQL calculations and QA scenarios are teaching
+  examples, not platform forecasts or measured campaign results.
+- Audience controls and suggestions are taught as concepts. Learners must check
+  each input's actual role in their current campaign; included custom/lookalike
+  inputs are not presented as guaranteed exact-only targeting.
+- Custom audience practice uses synthetic data only; hashing is not permission.
+- Format concepts are distinct from current menu availability. Collection and
+  Instant Experience exercises teach the end-to-end journey without universal
+  eligibility or product-count claims.
+- Observational CPA/placement differences are not treated as causal evidence.
+- No secondary-source claims about 2026 feature removals or defaults were used.
+
+Module 6–7 source review — 10 October 2026:
+Public official Meta Blueprint overviews reviewed:
+https://www.facebookblueprint.com/student/path/253054-creative-brief-development
+https://www.facebookblueprint.com/student/path/253130-increase-campaign-performance-with-diversified-creative
+https://trainernetwork.facebookblueprint.com/student/path/253050-ad-creative-testing-course
+https://www.facebookblueprint.com/student/path/246731-ads-delivery-optimization
+https://www.facebookblueprint.com/student/path/211542-ads-manager-budgeting-course
+https://trainingworkshops.facebookblueprint.com/student/path/211562
+https://www.facebookblueprint.com/student/path/219704-auction-reservation-buying-types
+https://www.facebookblueprint.com/student/activity/707409
+
+Limitations and teaching scope:
+- Full course lessons can require login; public overviews are not represented
+  as a complete account-level UI audit. Cost/bid control help 491846184627504
+  and the pricing page redirected to login/blocking. Exact current menu names,
+  availability, pacing caps and significant-edit thresholds remain live-account
+  verification items. No universal overspend percentage, event/day threshold
+  or 20-percent scaling guarantee has been inserted.
+- Budget examples are original synthetic arithmetic, not market CPA estimates.
+  ROAS and contribution are distinguished; 1/m break-even ROAS assumes a
+  single-order contribution model and the explicitly stated cost scope.
+- Bid cap controls auction bids, not realised CPA; goals are not guarantees.
+- Hook-rate definitions are explicit exercise definitions, not universal KPIs.
+  No fixed frequency number is presented as proof of creative fatigue.
+- Before/after marginal cost is a diagnostic, not causal incremental lift.
+- Creative examples do not fabricate real customer testimonials or outcomes.
+
+Module 8–9 source review — 10 October 2026:
+Official public Blueprint overviews retrieved through search:
+https://growthforum.facebookblueprint.com/student/path/253135
+https://contenthub.facebookblueprint.com/student/path/253126-advantage-plus-sales-course
+https://www.facebookblueprint.com/student/activity/655421-optimize-your-ad-creative-with-advantage
+https://messaging.facebookblueprint.com/student/activity/210893-improve-your-advertising-with-advantage-catalog-ads
+https://www.facebookblueprint.com/student/activity/580139-improve-your-advertising-with-advantage-catalog-ads
+https://www.facebookblueprint.com/student/path/253145-meta-full-funnel-marketing-strategies
+https://www.facebookblueprint.com/student/path/253111-marketing-funnel-ads
+https://www.facebookblueprint.com/student/path/253065-conversion-lift-marketing-measurement
+Historical lifecycle concepts only:
+https://www.facebookblueprint.com/student/page/245067-retain-customers-to-grow-your-business
+
+Scope and limits:
+- Official product-media overview explicitly describes the previous name as
+  Advantage+ catalog ads. This naming relationship is taught without asserting
+  universal account rollout, identical UI or removal of every older feature.
+- Some direct overview opens failed although indexed official overview content
+  was retrievable. Full courses and live authenticated account UI were not
+  audited. Exact feature eligibility, controls and event field contracts must
+  be checked in current account/integration documentation.
+- Item/variant examples teach conceptual identifier consistency; no unverified
+  technical field schema or universal retention-window limit is prescribed.
+- Historical retention source is used for lifecycle concepts, not its old
+  objective/button names, placement-count guidance or historical study lifts.
+- All businesses, IDs and numbers are synthetic teaching examples. Set counts
+  are logical examples, not forecasts of platform matched audience estimates.
+- Funnel and repeat rates specify cohorts. Sequences are planning concepts,
+  not guaranteed delivery order. Attribution is separated from incrementality.
+- The 6% versus 4% example demonstrates 2 percentage points and 50% relative
+  difference only; it is not a powered study, causal finding or result promise.
+
+
+BATCH 10–11 — 2026-10-11
+Current reviewed public overviews:
+https://bep.facebookblueprint.com/student/path/253141-conversions-api-crm-lead-quality
+https://www.facebookblueprint.com/student/path/219703-ads-manager-basics
+https://www.facebookblueprint.com/student/activity/220862-ads-reporting
+https://www.facebookblueprint.com/student/path/253067-smb-ads-click-whatsapp-course
+https://www.facebookblueprint.com/student/path/219763-ab-test-conversion-brand-lift-course
+https://about.fb.com/ltam/news/2026/03/simplificando-la-medicion-de-anuncios-para-un-mundo-social-first/
+CRM retrieval vs outcome feedback are distinguished. Attribution changes are scoped to
+the official announcement; exact current account eligibility is not verified.
+Conditional logic Help link is provided for current UI verification; public course content
+does not claim every account has the same options. API changelog fetch returned 429; no
+exact deprecated-window date claim is made. Browser/print QA remains incomplete.
+
+
+BATCH 12–13 — 2026-10-11
+Verified public primary overviews/announcements:
+https://www.facebookblueprint.com/student/path/253167-ad-creative-course
+https://www.facebookblueprint.com/student/path/253076-meta-advertising-standards-course
+https://www.facebookblueprint.com/student/path/253147-meta-advertising-standards-brand-safety
+https://www.facebookblueprint.com/student/path/211552-meta-data-privacy-policies
+https://certifications.facebookblueprint.com/student/activity/673605-create-ads
+https://about.fb.com/news/2025/02/gen-ai-transparency-metas-ads-products/
+https://about.fb.com/news/2024/11/facebook-and-instagram-to-offer-subscription-for-no-ads-in-europe/
+https://zh-cn.facebook.com/ads/library/api/
+Historical indexed teaching excerpts:
+https://storage.googleapis.com/understanding_meta_advertising_standards/Understanding_Meta_Advertising_Standards.pdf
+Retrieval limited: Transparency Center and Business Help current category/rule pages.
+No universal MARS/<60s, March-2026 all-AI disclosure, blanket before/after ban,
+fixed frequency/scaling, numeric targeting or country eligibility assertion added.
+See per-source notes and BATCH-12-13-REPORT-BN.txt for exact limits.
+
+MODULES 14–15 | reviewed 2026-10-11
+andromeda: https://engineering.fb.com/2024/12/02/production-engineering/meta-andromeda-advantage-automation-next-gen-personalized-ads-retrieval-engine/
+Official engineering article reviewed; study gains are not an advertiser guarantee.
+gem: https://engineering.fb.com/2025/11/10/ml-applications/metas-generative-ads-model-gem-the-central-brain-accelerating-ads-recommendation-ai-innovation/
+Official engineering article reviewed; study gains are not an advertiser guarantee.
+partnershiphub: https://www.facebookblueprint.com/student/path/253173-partnership-ads-course
+Public overview reviewed: creator content, paid usage permissions, Hub ও measurement। Full course/login ও নিজের account UI যাচাই হয়নি; December 2025 universal launch date দাবি নয়।
+opportunity: https://agencies.facebookblueprint.com/student/path/253172-opportunity-score-course
+Public overview reviewed; full course sign-in gated। Exact score formula/refresh timing/account availability verified নয়।
+catalogstart: https://bep.facebookblueprint.com/student/path/219728
+Public course overview reviewed; item-type-specific required feed schema current docs/account-এ যাচাই করুন।
+catalogsetup: https://certifications.facebookblueprint.com/student/activity/239997-get-started-with-catalogs-improve-your-shoppable-experiences
+Official public training description indexed; full training/account setup পরীক্ষা হয়নি।
+destinationhistory: https://www.facebookblueprint.com/student/activity/543094-upgrade-your-advertising-with-advantage-shopping-campaigns
+Historical description; current sales naming, eligible destinations ও 2026 availability নিজের UI/docs-এ যাচাই।
+shopshistory: https://about.fb.com/news/2021/06/new-ways-to-shop-for-products-you-love-across-our-apps/
+Historical test announcement, current worldwide Shop/checkout eligibility-এর প্রমাণ নয়। Bangladesh account eligibility verified নয়।
+valueworkshop: https://www.facebookblueprint.com/student/activity/690976
+Official public workshop description reviewed; full training এবং account-specific value/bid eligibility যাচাই হয়নি।
+No universal Dec2025 Hub launch, Bangladesh Shops/checkout availability, fixed scaling percentage or guaranteed AI/value profit claim. Demo workflows and arithmetic are original teaching examples, not Meta-mandated universal settings.
+
+MODULE 16 | reviewed 2026-10-11 Asia/Dhaka
+portfolioprofessional: https://www.facebookblueprint.com/student/path/219702-set-up-business-portfolio-meta-business-suite
+Public overview reviewed: accounts, permissions, security ও 2FA। Full gated lessons/current partner-task UI verified নয়।
+measurementprofessional: https://www.facebookblueprint.com/student/path/211564-ads-campaign-measure-test-course
+Official public overview reviewed; full lessons gated। Audit/cadence/pricing templates এই পাঠশালার original demo workflows, Meta-mandated rules বা market rates নয়।
+blueprintfree: https://asp.facebookblueprint.com/student/path/565368/activity/547786
+Official free-learning listing indexed; certification exam fees/booking আলাদা current verification দরকার।
+certificationhub: https://certifications.facebookblueprint.com/student/catalog?locale=en
+Current public certification overview; exact available role/exam/region requirements booking path-এ যাচাই করুন।
+associatepath: https://agencies.facebookblueprint.com/student/collection/238354-meta-certified-digital-marketing-associate-exam-online-courses
+Official public preparation collection reviewed; course completion official exam pass নয়।
+certificationfaq: https://www.facebookblueprint.com/student/activity/206192-certification-faq
+FAQ specific exam/modality context; applicable booking cost/requirements দেখুন। এই FAQ-এর duration/language/pass mark সব exams-এর জন্য universal করা হয়নি।
+Professional workflows/pricing/cadence are original demo teaching templates. No guaranteed fee, client result, account recovery, free universal certification exam or universal exam requirements.

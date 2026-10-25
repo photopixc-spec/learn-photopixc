@@ -1,0 +1,77 @@
+সর্বশেষ আপডেট — ১১ অক্টোবর ২০২৬
+Hosted v1.8 live browser QA হয়েছে; BROWSER-QA-BN.txt authoritative addendum পড়ুন।
+এই ZIP v1.8.1-এ দুটি stale completion text সংশোধিত, এখনও server-এ deploy নয়।
+নিচের original report pre-browser status হিসেবে সংরক্ষিত।
+
+পাঠশালা portal — পূর্ণ curriculum verification report
+Release v1.8 | ১১ অক্টোবর ২০২৬ (Asia/Dhaka)
+
+Delivery status
+• Root /: lightweight Bangla portal, Google ও Meta school cards/links।
+• /google-ads/: existing school — ১৭ modules / ১০২ lessons / ১,৪১৬ questions।
+• /meta-ads/: সব ১৬ modules / ৯৬ lessons / ১,৯২০ questions / ১৬ printable summaries।
+• Last batch: Module ১৬ lessons ৯১–৯৬, ১২০ questions, professional practice sheet।
+• সম্পূর্ণ ZIP-এ portal/shared assets/দুই school এবং বাংলা instructions/reports আছে।
+• এটি ZIP update; live server/domain-এ publish বা actual campaign চালানো হয়নি।
+
+PASS — code/data এবং minimal DOM test doubles
+১. ১৬ modules এবং ৯৬ sequential lessons, প্রতি module ছয় lesson। সব required content fields,
+   source keys, steps, rubric এবং quiz/retry definitions valid।
+২. প্রতি lesson bank-এ ২০ unique questions; মোট ১,৯২০। তিন distinct options, valid answer,
+   explanation ও hints valid। সব ১৬ JavaScript files syntax checked।
+৩. আগের ৯০ Meta lessons/banks unchanged deep comparison-এ। Google school-এর ২৩ files
+   আগের release-এর সঙ্গে byte-for-byte identical; Google storage key বদলায়নি।
+৪. Keys: ads-bangla-course-v1 এবং meta-bangla-course-v1। Seeded পুরোনো Google read/note/
+   practice/bookmark এবং Meta read/note/self-review checks loaded ও preserved।
+৫. Meta lessons ৯১/৯৪/৯৬: actual app logic-এ read check, practice note autosave, six-answer
+   perfect quiz; serialize করে fresh runtime-এ reload simulation-এ read/note/best score অক্ষত।
+   Google samples ১/১২/১০২-এর read/note saving/loading tested।
+৬. Wrong-answer feedback ও mistake record, unseen-first retake questions এবং shuffled
+   option permutations valid। Cross-school backup import rejection tested।
+৭. Google #g-lesson-N এবং Meta #m-lesson-N; wrong-school prefixes route হিসেবে resolve
+   হয় না। Meta glossary/syllabus/sidebar generated lesson links namespaced।
+৮. Legacy root #lesson-12 ও #g-lesson-102 target /google-ads/#g-lesson-N। Meta root hash
+   ও invalid lesson boundary Google-এ redirect করে না।
+৯. দুই school markup-এ হোম /, Google /google-ads/, Meta /meta-ads/ links আছে।
+   Hamburger handler nav-open/aria-expanded state toggle logic tested।
+১০. সব ৯৬ Meta read lessons, ১৬ cheat routes ও published school section routes smoke-render
+    pass। Source sections present। Portal count ৯৬ ও full-curriculum home text checked।
+১১. Local script/style references resolve; ZIP integrity test PASS, root-level extraction structure।
+১২. Logic suite-এ uncaught runtime exceptions হয়নি; এটি real browser console-error test নয়।
+
+INCOMPLETE — real browser QA
+এখানে supported browser-control capability নেই; browser QA করা যায়নি। Node VM-এ minimal
+DOM/storage doubles browser layout, event dispatch, actual reload, fonts/network বা console
+সম্পূর্ণ reproduce করে না। তাই নিচের verification pass বলা হচ্ছে না:
+• Mobile viewport-এ hamburger links দৃশ্যমান/clickable, no text overlap/horizontal overflow।
+• Real browser reload-এর পরে localStorage progress এবং browser-specific behaviour।
+• /, /google-ads/, /meta-ads/ real page-load/navigation console errors = zero।
+• A4 portrait print preview-তে প্রতিটি cheat sheet এক পরিষ্কার page।
+• Actual browser download/import/canvas certificate এবং live hosting behaviour।
+
+Browser checklist — publish/review-এর সময়
+১. আগে Google ও Meta Resources থেকে progress JSON export; website backup নিন।
+২. একই scheme/host/port-এ ZIP contents document root-এ রাখুন। অন্য origin-এ localStorage
+   নিজে যাবে না; appropriate school JSON import প্রয়োজন।
+৩. /-এ দুই card click; school loading ও হোম/back/school switches দেখুন।
+৪. /#lesson-12 দিয়ে Google #g-lesson-12 redirect পরীক্ষা করুন।
+৫. ৩৯০px viewport-এ দুই hamburger খুলুন: হোম/Google/Meta visible/clickable; overflow নেই।
+৬. Meta ৯১/৯৪/৯৬-এ read, six-answer quiz, note/self-review লিখুন; reload করে preserved
+   state দেখুন। Google-এর existing progress-ও reload করে মিলান।
+৭. Console খুলে load, navigation, quiz, backup/import-এর সময় errors দেখুন।
+৮. #m-cheat-16 এবং আগের sheets sample A4 portrait/100%/headers-footers off print-preview।
+৯. Offline/browser storage unavailable হলে Resources-এর backup instructions অনুসরণ করুন।
+
+Source review এবং current-account সীমা
+Official primary engineering articles, Meta announcements ও Blueprint public training
+overviews ব্যবহার হয়েছে। Full sign-in-gated training বা real Ads Manager/Commerce Manager
+account access/eligibility verified নয়; reference notes ও SOURCE-REVIEW.txt পড়ুন।
+Interface/policy/targeting/commerce/exam requirements scope ও geography অনুযায়ী changing;
+নিজের current official docs/account-এ verify করুন। Historical announcements current global
+availability নয়। User-requested unverified universal 2026 deadlines/control-removal/timing/
+country-fee claims facts হিসেবে যোগ হয়নি। Demo figures Meta benchmark নয়।
+Pricing/report cadence/scaling frameworks teaching templates, guarantees বা mandatory rules নয়।
+Blueprint free learning official certification exam pass/free booking-এর সমান নয়।
+এই app-এর module completion record self-study record; official Meta certification নয়।
+
+Curriculum content batches সম্পন্ন; browser/print/live-account QA outstanding।

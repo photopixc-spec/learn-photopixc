@@ -1,0 +1,11 @@
+﻿test_id,event_name,expected,observed,expected_parameter,observed_parameter,status,suggested_next_step
+QA-01,page_view,yes,yes,page_location,present,PASS,Confirm correct host
+QA-02,view_item,yes,yes,item_id,missing,PARTIAL,Check item data layer mapping
+QA-03,add_to_cart,yes,yes,quantity,present,PASS,Check value definition
+QA-04,begin_checkout,yes,no,currency,missing,FAIL,Inspect trigger and consent
+QA-05,purchase,yes,yes,transaction_id,present,PARTIAL,Confirm value/currency also present
+QA-06,purchase,yes,yes,currency,missing,FAIL,Map correct BDT currency
+QA-07,purchase,yes,yes,value,present,PASS,Reconcile with test order
+QA-08,purchase_failed,no,no,none,none,PASS,No purchase should fire on failed payment
+QA-09,generate_lead,yes,unknown,form_id,unknown,UNKNOWN,Test actual thank-you flow
+QA-10,page_view,yes,twice,page_location,present,FAIL,Check duplicate GTM and hardcoded tag

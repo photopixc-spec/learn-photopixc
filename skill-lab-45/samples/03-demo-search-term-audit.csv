@@ -1,0 +1,21 @@
+﻿term_id,query,campaign,device,clicks,cost_bdt,conversions,revenue_bdt,intent_hint
+ST-01,premium running shoes,Demo Search - Shoes,Mobile,15,285,1,1220,CHECK MANUALLY
+ST-02,best running shoes price,Demo Search - Shoes,Desktop,20,480,2,2680,CHECK MANUALLY
+ST-03,free shoe repair near me,Demo Search - Shoes,Mobile,25,725,0,0,CHECK MANUALLY
+ST-04,shoe size chart,Demo Search - Shoes,Desktop,30,420,0,0,CHECK MANUALLY
+ST-05,running shoes size 42,Demo Search - Shoes,Mobile,35,665,1,1220,CHECK MANUALLY
+ST-06,how to wash shoes,Demo Search - Shoes,Desktop,40,960,2,2680,CHECK MANUALLY
+ST-07,buy sports shoes online,Demo Search - Shoes,Mobile,45,1305,3,4380,CHECK MANUALLY
+ST-08,shoe wholesale supplier,Demo Search - Shoes,Desktop,50,700,0,0,CHECK MANUALLY
+ST-09,original running shoes,Demo Search - Shoes,Mobile,10,190,1,1220,CHECK MANUALLY
+ST-10,sports shoe laces,Demo Search - Shoes,Desktop,15,360,0,0,CHECK MANUALLY
+ST-11,running shoe discount,Demo Search - Shoes,Mobile,20,580,3,4380,CHECK MANUALLY
+ST-12,premium sneakers bd,Demo Search - Shoes,Desktop,25,350,0,0,CHECK MANUALLY
+ST-13,DIY sneaker cleaning,Demo Search - Shoes,Mobile,30,570,0,0,CHECK MANUALLY
+ST-14,buy mens trainers,Demo Search - Shoes,Desktop,35,840,2,2680,CHECK MANUALLY
+ST-15,running shoes for women,Demo Search - Shoes,Mobile,40,1160,3,4380,CHECK MANUALLY
+ST-16,free used shoes,Demo Search - Shoes,Desktop,45,630,0,0,CHECK MANUALLY
+ST-17,sports sneaker review,Demo Search - Shoes,Mobile,50,950,1,1220,CHECK MANUALLY
+ST-18,comfortable jogging shoes,Demo Search - Shoes,Desktop,10,240,2,2680,CHECK MANUALLY
+ST-19,children school shoes,Demo Search - Shoes,Mobile,15,435,3,4380,CHECK MANUALLY
+ST-20,replacement shoe sole,Demo Search - Shoes,Desktop,20,280,0,0,CHECK MANUALLY

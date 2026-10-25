@@ -1,0 +1,54 @@
+/* V4 free learning features — inherits PhotoPixc green / cream design system */
+.v4-home-additions{margin:18px 0 22px}
+.v4-level-card{background:linear-gradient(120deg,#eaf4e9,#fffefa);padding:24px}
+.v4-level-card h2{margin:7px 0}.v4-level-card p{font-size:13px}
+.v4-level-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin-top:17px}
+.v4-level-option{display:flex;min-height:113px;flex-direction:column;align-items:flex-start;text-align:left;gap:8px;padding:14px;border:1px solid #cadccf;background:#fff;border-radius:12px;color:var(--deep)}
+.v4-level-option strong{font-size:14px}.v4-level-option small{font-size:11px;line-height:1.7;color:var(--muted)}
+.v4-level-option.selected{border:2px solid var(--green);background:#e9f5e9}.v4-ok{color:var(--green);margin-bottom:0}
+.v4-feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin:17px 0}
+.v4-feature{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:19px 21px}
+.v4-feature h3{font-size:17px;margin:2px 0}.v4-feature p{font-size:12px;color:var(--muted);flex:1}
+.v4-feature .button{margin-top:8px}
+.v4-feature-icon{min-height:52px;min-width:52px;display:grid;place-items:center;background:#e8f1e5;color:var(--green);font:bold 31px/1.8 'Noto Naskh Arabic','Amiri',Bangla,serif;border-radius:10px;padding:1px 8px}
+.v4-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:13px 0 20px}
+.v4-stats span{display:grid;gap:3px;padding:12px 10px;border-radius:10px;border:1px solid var(--border);font-size:10px;color:var(--muted);background:white;text-align:center}
+.v4-stats b{font:bold 24px/1.3 Bangla,system-ui,sans-serif;color:var(--green)}
+.v4-practice{max-width:920px;margin-top:18px;padding:26px}
+.v4-practice p{font-size:13px}
+.v4-word-hint{display:grid;gap:2px;border:1px solid #d2e2d1;border-radius:13px;background:#eff6eb;padding:12px 19px;text-align:center;align-items:center}
+.v4-word-hint small{font-size:11px;color:var(--muted)}.v4-word-hint b{font-size:22px;color:var(--deep)}.v4-word-hint span{font-size:13px;color:var(--muted)}
+.v4-assembled{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:9px;min-height:128px;margin:19px 0;border:2px dashed #bad4b9;background:#fcfefb;border-radius:14px;padding:19px}
+.v4-placeholder{font:12px/1.9 Bangla,sans-serif;direction:ltr;color:var(--muted)}
+.v4-placed,.v4-tile{display:grid;place-items:center;width:66px;height:78px;font-size:41px;line-height:1.7;border:1px solid #afccac;border-radius:13px;background:#f0f6ed;color:var(--deep);padding:0 5px}
+.v4-placed{background:#e0ede0;border-color:var(--green)}
+.v4-tile:hover:not(:disabled),.v4-placed:hover:not(:disabled){border-color:var(--green);background:#e5f2e4}
+.v4-tiles{display:flex;justify-content:center;align-items:center;gap:9px;flex-wrap:wrap;padding:14px 0}
+.v4-overline{font-size:12px;color:var(--muted);font-weight:650;text-align:center}.v4-divider{height:1px;background:var(--border);margin:20px 0}
+.v4-feedback{padding:16px;border:1px solid #d6e1d4;background:#f5f7f1;border-radius:12px;margin:18px 0;display:grid;gap:5px;font-size:13px}
+.v4-feedback.yes{border-color:#86bd99;background:#e5f4e7}.v4-feedback.no{border-color:#d9b38a;background:#fdf3e7}
+.v4-feedback strong{font-size:15px}.v4-answer{font-size:50px;color:var(--deep);padding:0 4px}
+.v4-harakat-hero,.v4-kids-glyph{height:205px;max-width:560px;margin:0 auto 13px;border-radius:17px;background:#eff6eb;display:grid;place-items:center;font-size:112px;line-height:1.5;color:var(--deep);border:1px solid #d6e5d4}
+.v4-kids-glyph{font-size:122px;background:#f2f8e9}
+.v4-centered{text-align:center;margin:13px 0 17px;font-size:22px}
+.v4-answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;max-width:700px;margin:16px auto}
+.v4-answer-choice{display:flex;align-items:center;justify-content:center;text-align:center;padding:14px 11px;min-height:60px;border-radius:12px;background:#fff;border:1px solid #cfdecf;color:var(--deep);font-size:14px;font-weight:650}
+.v4-answer-choice:hover:not(:disabled){border-color:var(--green);background:#f1f9ef}
+.v4-answer-choice.right,.v4-answer-choice.right:disabled{opacity:1;background:#d9f0df;border-color:#268052}
+.v4-answer-choice.wrong,.v4-answer-choice.wrong:disabled{opacity:1;background:#fff1e9;border-color:#cd8970}
+.v4-daily-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.v4-daily-word{display:flex;flex-direction:column;gap:3px;padding:19px}
+.v4-daily-word strong{font-size:16px}.v4-daily-word>span{color:var(--muted);font-size:13px}
+.v4-daily-word small{color:var(--muted)}.v4-daily-word .actions{gap:7px;margin-top:13px}
+.v4-daily-word .button,.v4-daily-word .btn{font-size:12px;padding:8px 11px}
+.v4-daily-ar{font-size:49px;line-height:1.9;text-align:center;color:var(--green);background:#f0f7ec;border-radius:12px;margin-bottom:7px}
+button.v4-done:disabled{opacity:1;background:#e4f0e4;color:var(--green);border-color:#accdb0}
+.v4-review,.v4-review-empty{padding:26px;margin:16px 0 22px}.v4-review small{font-size:12px;color:var(--muted)}.v4-review-word{text-align:center;font-size:68px;color:var(--deep);background:#f0f7ed;border-radius:12px;padding:5px 20px;margin:13px 0;line-height:1.9}
+.v4-reveal{font-size:17px;background:#fdf8ee;padding:11px 15px;border-radius:10px}.v4-reveal p{font-size:14px;color:var(--muted)}
+@media(max-width:990px){.v4-level-grid{grid-template-columns:1fr}.v4-level-option{min-height:0}}
+@media(max-width:720px){.v4-feature-grid,.v4-daily-grid{grid-template-columns:1fr}.v4-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.v4-practice{padding:16px}.v4-placed,.v4-tile{width:51px;height:65px;font-size:30px}.v4-assembled{min-height:97px;padding:12px;gap:6px}.v4-tiles{gap:6px}.v4-answers{grid-template-columns:1fr}.v4-harakat-hero,.v4-kids-glyph{height:175px;font-size:92px}.v4-kids-glyph{font-size:105px}.v4-centered{font-size:19px}.v4-review-word{font-size:54px}}
+@media(max-width:380px){.v4-tile,.v4-placed{width:42px;height:56px;font-size:26px}}
+@media print{.v4-feature .button,.v4-level-option,.v4-practice button,.v4-daily-word .actions{display:none!important}}
+
+/* Hide transliteration only (not the Arabic Quranic text or meanings) during memorization. */
+.prayer-surah-panel.hide-translit .prayer-bn{display:none}

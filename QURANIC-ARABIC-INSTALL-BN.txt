@@ -1,0 +1,37 @@
+PhotoPixc পাঠশালা — Batch 31 + কুরআনিক আরবি (সমন্বিত Full-Site ZIP)
+==============================================================
+
+এই ZIP-এ কী আছে
+১. আগের Google Ads পাঠশালা: ১৭টি module / ১০২টি lesson / quiz / cheat sheets।
+২. আগের Meta Ads পাঠশালা: ১৬টি module / ৯৬টি lesson / quiz / practice।
+৩. নতুন কুরআনিক আরবি পাঠশালা: ২৮ হরফ, ১১১ নির্বাচিত আলাদা লিখিত শব্দরূপ,
+   মূল অক্ষর | শব্দের যুক্তরূপ | বাংলা নাম | অবস্থান, শব্দার্থ, Search, Quiz,
+   Bookmark, Progress Export/Import। পুরো কুরআন এখনো যোগ করা হয়নি।
+৪. মূল Portal-এর তৃতীয় card ও দুই পুরোনো school-এর navbar-এ আরবি school link।
+
+Hosting-এ প্রকাশ করার নিয়ম (ExonHost বা cPanel File Manager)
+১. learn.photopixc.com-এর document root-এর বর্তমান সব ফাইল এবং folder Backup করুন।
+২. এই ZIP আপনার Mac-এ Extract করুন। Extract করলে root-এ index.html, portal.js,
+   google-ads, meta-ads, quranic-arabic এবং shared folder দেখা যাবে।
+৩. এগুলো সব একসঙ্গে learn.photopixc.com domain-এর document root-এ Upload করুন।
+   ZIP-এর ফাইলের সঙ্গে URL path-এর মিল থাকা জরুরি।
+৪. Upload-এর আগে বর্তমান live site-এ uncommitted পরিবর্তন আছে কি না দেখুন।
+   এই ZIP হলো আপনার দেওয়া Batch31-এর পূর্ণ কপি + আরবি Add-on; live server-এর
+   আগের/পরের অজানা সম্পাদনা এখানে সংরক্ষিত নয়।
+৫. browser-এ খুঁজুন:
+   https://learn.photopixc.com/
+   https://learn.photopixc.com/google-ads/
+   https://learn.photopixc.com/meta-ads/
+   https://learn.photopixc.com/quranic-arabic/
+৬. পুরোনো school-এর Progress একই browser ও origin-এ থাকার কথা; তবুও
+   আপডেটের আগে নিজ নিজ স্কুলের Resources থেকে Backup Export রাখুন।
+৭. browser cache থাকলে hard reload করুন (Mac: Cmd+Shift+R)।
+
+কুরআন সংক্রান্ত নোট
+- ১১১টি নির্বাচিত লিখিত শব্দরূপ কেবল প্রাথমিক শেখার উপকরণ, সম্পূর্ণ unique Quran words নয়।
+- বাংলা উচ্চারণ আনুমানিক; তাজবীদ/মাখরাজ শিক্ষকের বিকল্প নয়।
+- Speech শুনতে ডিভাইসে Arabic voice থাকা লাগতে পারে; এটি যাচাইকৃত তিলাওয়াত নয়।
+- Quranic Arabic Corpus (https://corpus.quran.com/); Tanzil (https://tanzil.net/)।
+- বই/তাফসিরে শব্দার্থের পারিপার্শ্বিক অর্থ পরিবর্তিত হতে পারে।
+
+বিস্তারিত QA: QA-QURANIC-ADDON-BN.txt

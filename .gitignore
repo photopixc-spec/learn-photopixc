@@ -1,0 +1,9 @@
+# macOS and system files
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+
+# Server files not needed for static hosting
+php.ini

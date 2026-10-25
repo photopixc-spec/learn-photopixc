@@ -1,0 +1,5 @@
+﻿order_id,touchpoint_sequence,store_revenue_bdt,google_attributed_bdt,meta_attributed_bdt,email_attributed_bdt,total_ad_spend_bdt
+A01,Meta ad > Google search > Email > Purchase,2500,2500,2500,2500,650
+A02,Google search > Purchase,1800,1800,0,0,450
+A03,Meta ad > Direct > Purchase,2200,0,2200,0,520
+A04,Email > Google search > Purchase,1300,1300,0,1300,360

@@ -1,0 +1,5 @@
+﻿channel,allocation_bdt,assumed_cpm_bdt,assumed_ctr_pct,assumed_lead_rate_pct,scenario_close_rate_pct,scenario_avg_sale_bdt,scenario_contribution_margin_pct,data_type
+Google Search,22000,420,4.5,11.0,7,7500,48,synthetic_training_assumptions
+Meta Prospecting,15000,160,1.4,7.0,7,7500,48,synthetic_training_assumptions
+Meta Retargeting,5000,230,2.2,12.0,7,7500,48,synthetic_training_assumptions
+YouTube Ads,3000,140,0.85,3.5,7,7500,48,synthetic_training_assumptions

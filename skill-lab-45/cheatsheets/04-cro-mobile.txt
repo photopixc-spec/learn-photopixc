@@ -1,0 +1,11 @@
+PhotoPixc Skill Lab 45 — CHEATSHEET 04: Mobile CRO (Day 26-30)
+
+Customer journey: Ad → Landing → Product → Cart → Checkout → Confirmation.
+Observe: navigation difficulty, speed, price clarity, delivery/returns, form fields, trust.
+Evidence gathering: Person/Device (non-identifiable) | Task | Stopping point | Friction | Severity.
+Hypothesis format: If we [change], then [behavior] may improve because [observed evidence].
+Suggested KPIs: add_to_cart rate, begin_checkout rate, purchase conversion rate; define denominators.
+Guardrails: refund rates, errors, complaints, accessibility.
+Prioritization: expected impact, confidence, effort; no guaranteed uplift.
+Before publishing: verify actual price, shipping fees and return policy.
+Five usability interviews show problems, not definitive experiment results.

@@ -1,0 +1,15 @@
+PhotoPixc Quranic Arabic V6 — শেষ ১০টি সূরা
+
+যেহেতু V5 আগে থেকেই হোস্টিংয়ে আছে, UPDATE_ONLY ZIP যথেষ্ট।
+১. learn.photopixc.com-এর সম্পূর্ণ ব্যাকআপ নিন।
+২. Subdomain-এর Document Root-এ ZIP Upload করুন।
+৩. Document Root-এ Extract করুন (quranic-arabic ফোল্ডারের ভেতরে নয়)।
+৪. Overwrite চাইলে শুধু একই নামের ফাইলগুলো Replace করুন। কোনো ফোল্ডার Delete করবেন না।
+৫. https://learn.photopixc.com/quranic-arabic/#qa-last-ten খুলুন।
+৬. Mac হলে Cmd + Shift + R চাপুন।
+
+ফাইল: quranic-arabic/data/salah.js, quranic-arabic/index.html, quranic-arabic/app.js, quranic-arabic/style.css।
+
+নতুন সংস্করণে শেষ ১০ সূরা থেকে আগে থাকা ছয়টিসহ মোট ১০টি সম্পূর্ণ সূরা ও ৪৮টি আয়াত রয়েছে। আগের ২৬৮ শব্দ, V4 শিক্ষার ফিচার, Google Ads ও Meta Ads অপরিবর্তিত।
+
+বাংলা উচ্চারণ আরবি তাজবিদের বিকল্প নয়; প্রকাশের আগে বিশেষজ্ঞ দিয়ে পড়ে দেখানো সুপারিশ।

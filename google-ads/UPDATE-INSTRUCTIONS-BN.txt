@@ -1,0 +1,65 @@
+Google Ads পাঠশালা — Cheat Sheet + Quiz Batch 2
+প্রস্তুত: ১০ অক্টোবর ২০২৬
+
+এই ZIP একটি সম্পূর্ণ static site। আগের Module 17 update-ও এতে আছে।
+কোনো database, WordPress, npm build বা Node.js server লাগবে না।
+
+যা তৈরি হয়েছে
+• এই batch-এ Module ৩–৪-এর lesson ১৩–২৪-এ নতুন ৯৬টি প্রশ্ন যোগ হয়েছে।
+• মোট ১৭টি module, ১০২টি lesson। Lesson ১–৯৬-এর ID ও content অপরিবর্তিত।
+• ১৭টি Cheat Sheet: প্রতি module-এ মূল কথা, সূত্র/সংজ্ঞা, ৩টি ভুল ও মনে রাখুন।
+• Home module card এবং Syllabus থেকে Cheat Sheet link।
+• Module ১–৪, lesson ১–২৪: প্রতি lesson-এ ২০টি প্রশ্ন।
+• বাকি ৭৮টি lesson-এ ১২টি করে প্রশ্ন। মোট bank question ১,৪১৬টি।
+• পুরোনো ১,২২৪টি প্রশ্নের text, options ও ক্রম অক্ষত; প্রথম দুই batch মিলিয়ে ১৯২টি শেষে যোগ হয়েছে।
+• Quiz round আগের মতো ৬টি প্রশ্ন। ২০টি প্রশ্ন মানে bank size, round size নয়।
+• Task 3-এর পরের batch Module ৫–৬; আপনার “continue” নির্দেশের অপেক্ষায়।
+
+আপনার ঠিকানা: https://learn.photopixc.com
+
+Hosting-এ update দিন
+১. সাইটের Resources থেকে Backup Export করে progress JSON computer-এ রাখুন।
+   এই personal JSON public hosting-এ upload করবেন না। Site data clear নয়।
+২. Learning Studio → Settings-এ offline copy চালু থাকলে remove করুন।
+৩. Hosting File Manager-এ learn.photopixc.com-এর Document Root খুলুন।
+   cPanel → Domains থেকে সঠিক folder নিশ্চিত করুন; অন্য site-এর folder নয়।
+৪. বর্তমান site files-এর backup ZIP download করে computer-এ রাখুন।
+৫. এই নতুন ZIP সঠিক Document Root-এ upload এবং Extract করুন।
+   ZIP root-এ index.html আছে; অতিরিক্ত nested folder তৈরি করবেন না।
+   একই নামের site files replace করুন। fonts folder-ও upload হতে হবে।
+   নিজের .htaccess, email বা unrelated file মুছবেন না।
+৬. Extract-এর পরে index.html এবং fonts folder একই root-এ আছে দেখুন।
+   সাধারণ permissions: file 644, folder 755।
+৭. Hosting/CDN cache থাকলে purge করুন। Browser-এর সব site tab বন্ধ করে
+   আবার খুলুন, তারপর Ctrl+Shift+R (Mac: Cmd+Shift+R) দিন।
+৮. ১৭ module / ১০২ lesson এবং Cheat Sheet menu দেখা যাচ্ছে কি না দেখুন।
+   পুরোনো সংখ্যা থাকলে আগে cache ও extraction folder যাচাই করুন।
+৯. নিচের acceptance checks করুন। ঠিক হলে server থেকে upload ZIP মুছুন।
+   Computer-এর backup ও নতুন ZIP রেখে দিন। Offline copy চাইলে আবার enable করুন।
+
+Cheat Sheet ব্যবহার
+Menu → Cheat Sheet → module নির্বাচন → “এই sheet Print / PDF”।
+সব একসঙ্গে চাইলে index page-এ “সব ১৭টি sheet Print / PDF”।
+Print: A4, Portrait, Scale 100%, Headers and footers বন্ধ।
+Print preview-তে এক module এক page নিশ্চিত করুন। Browser print settings
+আলাদা হলে margin/default scale মিলিয়ে নিন। বাংলা font package-এ দেওয়া আছে।
+
+Upload-এর পরে পরীক্ষা
+• https://learn.photopixc.com/#cheats এবং #cheat-1 থেকে #cheat-17 খুলুন।
+• #lesson-97 থেকে #lesson-102: পড়া, Quiz ও হাতে কাজ tab খুলুন।
+• Lesson ১–২৪ quiz দিন। নতুন user-এর প্রথম ৩ round-এ ১৮টি আলাদা প্রশ্ন;
+  চতুর্থ round-এ শেষ ২টি নতুন এবং ৪টি review প্রশ্ন। আগের seen history থাকলে
+  নতুন প্রশ্নের সংখ্যা সেই history অনুযায়ী হবে।
+• Practice note লিখে refresh করে দেখুন। Progress একই browser/domain-এ থাকে।
+• ফোনে menu, module card, sheet, quiz option ও print button ব্যবহার করুন।
+• Browser DevTools → Console-এ site error এবং Network-এ 404 আছে কি না দেখুন।
+• HTTPS ও offline update যাচাই করুন।
+
+যাচাইয়ের সীমা
+Automated DOM harness-এ ১৭ module, ১০২ lesson, নতুন quiz grading/retake,
+progress reload, পুরোনো backup compatibility এবং ১৭ Cheat Sheet route/print
+control পরীক্ষা হয়েছে। JavaScript syntax ও asset checks হয়েছে।
+Print CSS দিয়ে PDF render করে ১৭টি sheet-এর ১৭-page output যাচাই করা হয়েছে।
+এটি real-browser/mobile visual বা hosting service-worker acceptance test নয়।
+এই updated build-এর real-browser console ও mobile layout test এখনও বাকি।
+এই ZIP নিজে থেকে live hosting-এ upload হয়নি।

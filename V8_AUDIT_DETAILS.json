@@ -1,0 +1,123 @@
+{
+  "release": "V8.0",
+  "based_on": "V7.9",
+  "date": "2026-10-20",
+  "changes": [
+    "index.html",
+    "index.html",
+    "google-ads/index.html",
+    "meta-ads/index.html",
+    "quranic-arabic/index.html",
+    "google-ads/sw.js",
+    "skill-lab-45/index.html",
+    "sitemap.xml",
+    "VERSION.txt"
+  ],
+  "checks": {
+    "HTML local refs and duplicate ids": true,
+    "CSS URLs resolve": true,
+    "JS all parse": true,
+    "Google offline HTML scripts cached": true,
+    "Google and Meta quiz indices": true,
+    "Arabic word IDs and mandatory fields": true,
+    "Arabic alphabet has 28 primary letters": true,
+    "Skill Lab day sequence": true,
+    "Skill Lab storage key maintained": true,
+    "School cross-links": true
+  },
+  "html": {
+    "index.html": {
+      "ids": 4,
+      "scripts": 1,
+      "references": 7,
+      "issues": []
+    },
+    "google-ads/index.html": {
+      "ids": 7,
+      "scripts": 11,
+      "references": 36,
+      "issues": []
+    },
+    "meta-ads/index.html": {
+      "ids": 6,
+      "scripts": 4,
+      "references": 28,
+      "issues": []
+    },
+    "quranic-arabic/index.html": {
+      "ids": 10,
+      "scripts": 5,
+      "references": 28,
+      "issues": []
+    },
+    "skill-lab-45/index.html": {
+      "ids": 158,
+      "scripts": 12,
+      "references": 28,
+      "issues": []
+    }
+  },
+  "css_missing": [],
+  "js_errors": [],
+  "google_offline_missing": [],
+  "quiz_banks": {
+    "google-ads": {
+      "sections": 102,
+      "questions": 2040,
+      "bad": 0
+    },
+    "meta-ads": {
+      "sections": 96,
+      "questions": 1920,
+      "bad": 0
+    }
+  },
+  "quranic": {
+    "alphabet": 28,
+    "wordCount": 268,
+    "uniqueIds": 268,
+    "emptyWords": 0,
+    "salahSurahs": 12,
+    "lastTen": [
+      112,
+      108,
+      110,
+      109,
+      113,
+      114,
+      105,
+      106,
+      107,
+      111
+    ],
+    "surahKeys": [
+      "id",
+      "title",
+      "tag",
+      "meaning",
+      "verses"
+    ]
+  },
+  "skill": {
+    "days": 45,
+    "sequential": true,
+    "storageKeyUnchanged": true,
+    "v79_tools": true
+  },
+  "remaining": [
+    "Live production HTTP and cache behavior",
+    "Full expert review of 3960 Google/Meta quiz answers and all lesson explanations",
+    "Qualified Arabic teacher review of pronunciations, diacritics, meanings, recitation",
+    "Real user device compatibility / screen reader tests",
+    "Access to hosting analytics and permissions"
+  ],
+  "browser_smoke": {
+    "pages": 5,
+    "viewport_variants": 2,
+    "cases": 10,
+    "runtime_error_cases": 0,
+    "horizontal_overflow_cases": 0,
+    "method": "in-memory Chromium with deferred scripts appended in original loading order",
+    "limitations": "not live HTTP/hosting, service-worker validation or semantic expert review"
+  }
+}

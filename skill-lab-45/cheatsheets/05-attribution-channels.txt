@@ -1,0 +1,11 @@
+PhotoPixc Skill Lab 45 — CHEATSHEET 05: Attribution & Channels (Day 31-37)
+
+GA4: Web/app event analytics; platform rules and reporting settings matter.
+Meta Pixel: browser events; CAPI: server-side events; deduplication needs consistent event_name/event_id.
+Email: consent → trigger → message → link → measure → unsubscribe controls.
+SEO: useful page matching search intent, crawl/index accessibility, clear headings and credible content.
+Touchpoints: Meta view → Google search → Email click → 1 purchase.
+Store order ID tells you actual unique sales; platform attributed sales may overlap.
+MER (blended revenue efficiency) = Total store revenue / Total paid media spend, for same period and agreed definitions.
+Do not sum Google + Meta attributed revenue to claim real total sales.
+Include reporting window, date range, attribution caveats, missing signals.

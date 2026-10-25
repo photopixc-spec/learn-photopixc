@@ -1,0 +1,6 @@
+﻿event_type,browser_events,server_events,matching_event_id_pairs
+PageView,29,28,26
+ViewContent,25,24,23
+AddToCart,20,20,19
+InitiateCheckout,18,16,15
+Purchase,28,21,15
