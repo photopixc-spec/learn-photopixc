@@ -544,6 +544,7 @@
   <link rel="stylesheet" href="v76.css">
   <link rel="stylesheet" href="v77.css">
   <link rel="stylesheet" href="v78.css">
+  <link rel="stylesheet" href="debug-lab.css">
 </head>
   <body>
     <a class="v79-skip" href="#main-academy">মূল পাঠে যান</a>
@@ -609,6 +610,9 @@
 <button class="tab" data-view="projects" type="button" aria-label="ক্লায়েন্ট সিমুলেশন প্রজেক্ট">
 <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="15" rx="2"/><path d="M8 6V4h8v2M3 12h18"/></svg> ক্লায়েন্ট ল্যাব
 </button>
+<button class="tab" data-view="debug" type="button" aria-label="বাস্তব ট্রাবলশুটিং পাজল">
+<svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg> ডিবাগ ল্যাব
+</button>
 <button class="tab" data-view="portfolio" type="button">
           <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M8 6V4h8v2M3 11h18"/></svg>
           পোর্টফোলিও
@@ -629,6 +633,12 @@
         <div class="v72-feature-grid" aria-label="নতুন শেখার ব্যবস্থা">
           <div class="v72-feature"><span class="v72-pill">GUIDED LEARNING</span><h2>🧭 আমার গাইডেড শেখা</h2><p>৪৫টি দিনের প্রতিটিতে শেখা, অনুশীলন, সঠিক উত্তর ও কাজের প্রমাণ—সব এক জায়গায়।</p><button type="button" class="btn primary" id="startGuided">আজকের গাইড খুলুন →</button></div>
           <div class="v72-feature"><span class="v72-pill">FREE • OFFLINE</span><h2>🧪 Interactive Practice</h2><p>বাস্তব বিজ্ঞাপন, GA4, GTM ও লাভ-লোকসানের ১২টি পরিস্থিতিতে সিদ্ধান্ত নিয়ে দেখো।</p><button type="button" class="btn" id="startPractice">প্র্যাকটিস করুন →</button></div>
+        </div>
+        <div class="v82-debug-card" style="border:1.5px solid var(--accent);background:linear-gradient(110deg,#e8f5ec,#fffdfa);border-radius:18px;padding:22px 24px;margin:18px 0;">
+          <span class="v75-badge" style="background:var(--accent);color:#fff">বাস্তব সমস্যা সমাধান · NEW</span>
+          <h2 style="font-size:22px;margin:8px 0 6px">🛠️ বাস্তব ট্রাবলশুটিং পাজল (Debug Challenges)</h2>
+          <p style="color:var(--muted);margin:0 0 14px">GA4 ডুপ্লিকেট সেল, Meta CAPI ড্রপ, গুগল সার্চে টাকা নষ্ট ও কনসেন্ট ব্লকিং—বাস্তব অ্যাকাউন্টের ৫টি জটিল সমস্যা সমাধান করে নিজের প্রফেশনাল দক্ষতা যাচাই করো।</p>
+          <button type="button" class="btn primary" id="openDebugLab">ডিবাগ চ্যালেঞ্জ শুরু করুন →</button>
         </div>
         <div class="v73-home-grid" aria-label="V7.3 নতুন টুল">
  <div class="v73-feature"><span class="v72-pill">SKILL CHECK</span><h2>🎯 Skill Assessment</h2><p>৬টি Skill-এ ৩০ প্রশ্ন, ভুল বিশ্লেষণ ও Smart Revision।</p><button class="btn primary" id="v73HomeSkills" type="button">দক্ষতা যাচাই →</button></div>
@@ -899,6 +909,11 @@
         <div class="section-header"><div><h1>পোর্টফোলিও ও প্রমাণ</h1><p class="muted small">৬টি আউটপুটে নিজের কাজ লিখে রাখো। Simulation হলে কাল্পনিক বলে চিহ্নিত করো; অনুমতি ছাড়া ক্লায়েন্টের আসল তথ্য দেবে না।</p></div><span class="tiny-tag" id="portfolioCount">০/৬</span></div>
         <div class="card"><div class="field"><label for="learnerName">শিক্ষার্থীর নাম (রিপোর্ট ও সার্টিফিকেটে থাকবে)</label><input id="learnerName" placeholder="তোমার নাম লিখো" maxlength="100" /></div><div class="portfolio-actions"><button type="button" class="btn primary" id="exportPortfolio">পোর্টফোলিও প্রিন্ট / PDF</button><button type="button" class="btn" id="printCertificate">কমপ্লিশন সার্টিফিকেট</button></div><p class="muted small" id="certificateStatus" style="margin:10px 0 0"></p></div>
         <div id="portfolioList"></div>
+      </section>
+
+      <!-- ============ REAL-WORLD TROUBLESHOOTING & DEBUG LAB ============ -->
+      <section class="view" id="view-debug" aria-label="বাস্তব ট্রাবলশুটিং পাজল ও ডিবাগ চ্যালেঞ্জ">
+        <div id="debugLabContainer"></div>
       </section>
 
     </main>
@@ -2047,5 +2062,6 @@
   <script src="v78-data.js"></script>
   <script src="v78.js"></script>
   <script src="v79.js"></script>
+  <script src="debug-lab.js"></script>
 </body>
 </html>

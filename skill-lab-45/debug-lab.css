@@ -1,0 +1,256 @@
+/* PhotoPixc Skill Lab 45 — Real-World Troubleshooting & Debug Lab CSS */
+.debug-wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 10px 0 30px;
+}
+.debug-header {
+  margin-bottom: 22px;
+}
+.debug-header h1 {
+  font-size: clamp(26px, 3.5vw, 36px);
+  color: var(--ink);
+  margin: 6px 0 8px;
+}
+.debug-progress-box {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 16px 0 22px;
+  flex-wrap: wrap;
+}
+.debug-bar-wrap {
+  flex: 1;
+  min-width: 200px;
+  height: 10px;
+  background: var(--surface2);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.debug-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+.debug-tab-list {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+.debug-tab-btn {
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+.debug-tab-btn:hover {
+  border-color: var(--accent);
+}
+.debug-tab-btn.active {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+.debug-tab-btn.done::after {
+  content: " ✓";
+  color: var(--good);
+  font-weight: 800;
+}
+.debug-tab-btn.active.done::after {
+  color: #fff;
+}
+.debug-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 26px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+.debug-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+.debug-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 6px 0 12px;
+}
+.client-complaint {
+  background: var(--amber-soft);
+  border-left: 4px solid var(--amber);
+  border-radius: 0 12px 12px 0;
+  padding: 14px 18px;
+  margin: 14px 0 18px;
+  font-size: 14px;
+}
+.client-complaint strong {
+  display: block;
+  font-size: 12px;
+  color: var(--amber);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.simulated-console {
+  background: #141a16;
+  color: #d1e2d6;
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin: 18px 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
+  border: 1px solid #28362b;
+}
+.console-title {
+  color: #799481;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.console-badge-red {
+  background: #4a1f1b;
+  color: #f29b93;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+}
+.console-badge-green {
+  background: #193826;
+  color: #6edb98;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+}
+.console-code {
+  color: #8be9fd;
+}
+.console-warn {
+  color: #f1fa8c;
+}
+.console-error {
+  color: #ff5555;
+}
+.debug-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+}
+.debug-option-btn {
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.5;
+}
+.debug-option-btn:hover {
+  background: var(--surface2);
+  border-color: var(--accent);
+}
+.debug-option-btn.selected {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.debug-option-btn.correct-picked {
+  border-color: var(--good);
+  background: var(--good-soft);
+  color: var(--ink);
+}
+.debug-option-btn.wrong-picked {
+  border-color: var(--danger);
+  background: var(--danger-soft);
+  color: var(--ink);
+}
+.option-marker {
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--surface2);
+  padding: 2px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+.debug-feedback {
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin: 20px 0;
+  display: none;
+}
+.debug-feedback.show {
+  display: block;
+}
+.debug-feedback.correct {
+  background: var(--good-soft);
+  border: 1px solid var(--good);
+}
+.debug-feedback.wrong {
+  background: var(--danger-soft);
+  border: 1px solid var(--danger);
+}
+.feedback-headline {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.correct .feedback-headline {
+  color: var(--good);
+}
+.wrong .feedback-headline {
+  color: var(--danger);
+}
+.pro-takeaway {
+  background: var(--surface);
+  border: 1px dashed var(--accent);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--ink);
+}
+.pro-takeaway strong {
+  color: var(--accent);
+  display: block;
+  margin-bottom: 3px;
+}
+.debug-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
