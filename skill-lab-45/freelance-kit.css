@@ -1,0 +1,278 @@
+/* PhotoPixc Skill Lab 45 — Freelance SOPs & Client Communication Kit CSS */
+
+.fl-wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 10px 0 30px;
+}
+
+.fl-header {
+  margin-bottom: 20px;
+}
+
+.fl-header h1 {
+  font-size: clamp(24px, 3.2vw, 34px);
+  color: var(--ink);
+  margin: 6px 0 8px;
+}
+
+/* Customizer Bar */
+.fl-customizer {
+  background: var(--surface2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-bottom: 22px;
+}
+
+.fl-customizer-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fl-customizer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+.fl-customizer-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.fl-customizer-field label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.fl-customizer-field input {
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+}
+
+.fl-customizer-field input:focus {
+  outline: 2px solid var(--accent);
+}
+
+/* Main Navigation Tabs */
+.fl-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin: 18px 0 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.fl-tab-btn {
+  padding: 11px 18px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.fl-tab-btn:hover {
+  border-color: var(--accent);
+}
+
+.fl-tab-btn.active {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+
+/* Template Cards */
+.fl-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.fl-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.fl-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.fl-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.fl-badge-upwork {
+  background: rgba(20, 168, 0, 0.12);
+  color: #14a800;
+}
+
+.fl-badge-email {
+  background: rgba(37, 99, 235, 0.12);
+  color: #2563eb;
+}
+
+.fl-badge-sop {
+  background: rgba(147, 51, 234, 0.12);
+  color: #9333ea;
+}
+
+.fl-badge-delivery {
+  background: rgba(234, 88, 12, 0.12);
+  color: #ea580c;
+}
+
+.fl-card-desc {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+
+/* Code / Script Box */
+.fl-code-box {
+  background: var(--surface2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink);
+  white-space: pre-wrap;
+  word-break: break-word;
+  position: relative;
+  user-select: text;
+}
+
+.fl-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  justify-content: flex-end;
+}
+
+.fl-btn-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.fl-btn-copy:hover {
+  opacity: 0.9;
+}
+
+.fl-btn-copy.copied {
+  background: var(--good);
+  color: #ffffff;
+}
+
+/* SOP Step list */
+.fl-sop-step {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 14px;
+  background: var(--surface2);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.fl-sop-num {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--accent);
+  min-width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border-radius: 50%;
+  border: 1px solid var(--line);
+}
+
+.fl-sop-content {
+  flex: 1;
+}
+
+.fl-sop-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.fl-sop-text {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  header, nav, .tabbar, .fl-tabs, .fl-actions, .fl-customizer, footer {
+    display: none !important;
+  }
+  .fl-card {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+  .fl-code-box {
+    background: #f8f9fa !important;
+    border: 1px solid #ddd !important;
+    color: #000 !important;
+  }
+}

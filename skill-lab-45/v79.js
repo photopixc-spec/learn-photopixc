@@ -10,9 +10,9 @@
   var toolGroups=[
     {name:'পড়াশোনার উপকরণ',items:['workbook','library','calc','check','quiz']},
     {name:'হাতে-কলমে কাজ',items:['debug','case-studies','simulator','optimization']},
-    {name:'দক্ষতা ও পোর্টফোলিও',items:['deliverables','skills','projects','portfolio','capstone']}
+    {name:'দক্ষতা ও পোর্টফোলিও',items:['freelance','deliverables','skills','projects','portfolio','capstone']}
   ];
-  var labels={home:'হোম',days:'৪৫ দিন',guide:'গাইড',practice:'প্র্যাকটিস',debug:'ডিবাগ ল্যাব',deliverables:'ক্লায়েন্ট রিপোর্ট',workbook:'ওয়ার্কবুক',library:'লাইব্রেরি',calc:'ক্যালকুলেটর',check:'চেকলিস্ট',quiz:'কুইজ','case-studies':'কেস স্টাডি',simulator:'বাজেট সিমুলেটর',optimization:'অপ্টিমাইজেশন ল্যাব',skills:'দক্ষতা পরীক্ষা',projects:'ক্লায়েন্ট ল্যাব',portfolio:'পোর্টফোলিও',capstone:'ফাইনাল প্রজেক্ট'};
+  var labels={home:'হোম',days:'৪৫ দিন',guide:'গাইড',practice:'প্র্যাকটিস',debug:'ডিবাগ ল্যাব',freelance:'ফ্রিল্যান্স কিট',deliverables:'ক্লায়েন্ট রিপোর্ট',workbook:'ওয়ার্কবুক',library:'লাইব্রেরি',calc:'ক্যালকুলেটর',check:'চেকলিস্ট',quiz:'কুইজ','case-studies':'কেস স্টাডি',simulator:'বাজেট সিমুলেটর',optimization:'অপ্টিমাইজেশন ল্যাব',skills:'দক্ষতা পরীক্ষা',projects:'ক্লায়েন্ট ল্যাব',portfolio:'পোর্টফোলিও',capstone:'ফাইনাল প্রজেক্ট'};
   var btnByView={};tabs.forEach(function(t){btnByView[t.dataset.view]=t;});
   if(!mainViews.every(function(n){return !!btnByView[n];}))return;
 

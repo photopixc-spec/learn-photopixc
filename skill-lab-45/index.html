@@ -546,6 +546,7 @@
   <link rel="stylesheet" href="v78.css">
   <link rel="stylesheet" href="debug-lab.css">
   <link rel="stylesheet" href="deliverables.css">
+  <link rel="stylesheet" href="freelance-kit.css">
 </head>
   <body>
     <a class="v79-skip" href="#main-academy">মূল পাঠে যান</a>
@@ -617,6 +618,9 @@
 <button class="tab" data-view="deliverables" type="button" aria-label="বাস্তব ক্লায়েন্ট ডেলিভারেবল ও প্রজেক্ট পেপার">
 <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> ক্লায়েন্ট রিপোর্ট
 </button>
+<button class="tab" data-view="freelance" type="button" aria-label="ফ্রিল্যান্স SOPs ও ক্লায়েন্ট কমিউনিকেশন কিট">
+<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> ফ্রিল্যান্স কিট
+</button>
 <button class="tab" data-view="portfolio" type="button">
           <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M8 6V4h8v2M3 11h18"/></svg>
           পোর্টফোলিও
@@ -649,6 +653,12 @@
           <h2 style="font-size:22px;margin:8px 0 6px">💼 ৩টি আসল ক্লায়েন্ট ডেলিভারেবল পেপার</h2>
           <p style="color:var(--muted);margin:0 0 14px">কোর্স শেষে বাস্তব ক্লায়েন্টকে জমা দেওয়ার মতো ৩টি আন্তর্জাতিক মানের ডকুমেন্ট: GTM/GA4 ট্র্যাকিং স্পেক-শীট, ফানেল অ্যাড স্ট্র্যাটেজি এবং অ্যাকাউন্ট অডিট রিপোর্ট তৈরি ও ১-ক্লিকে PDF প্রিন্ট করুন।</p>
           <button type="button" class="btn primary" id="openDeliverables" style="background:#2563eb;border-color:#2563eb;">ডেলিভারেবল তৈরি করুন →</button>
+        </div>
+        <div class="v82-fl-card" style="border:1.5px solid #9333ea;background:linear-gradient(110deg,#faf5ff,#fffdfa);border-radius:18px;padding:22px 24px;margin:18px 0;">
+          <span class="v75-badge" style="background:#9333ea;color:#fff">FREELANCE SOPs · NEW</span>
+          <h2 style="font-size:22px;margin:8px 0 6px">🤝 ফ্রিল্যান্স কিট ও ক্লায়েন্ট কমিউনিকেশন</h2>
+          <p style="color:var(--muted);margin:0 0 14px">আন্তর্জাতিক ক্লায়েন্টদের জন্য হাই-কনভার্টিং Upwork/Fiverr কভার লেটার, Meta ও Google অ্যাক্সেস অনবোর্ডিং SOP এবং প্রজেক্ট ডেলিভারি ও ৫-স্টার রিভিউ স্ক্রিপ্ট—১ ক্লিকে কপি করুন।</p>
+          <button type="button" class="btn primary" id="openFreelanceKit" style="background:#9333ea;border-color:#9333ea;">ফ্রিল্যান্স কিট খুলুন →</button>
         </div>
         <div class="v73-home-grid" aria-label="V7.3 নতুন টুল">
  <div class="v73-feature"><span class="v72-pill">SKILL CHECK</span><h2>🎯 Skill Assessment</h2><p>৬টি Skill-এ ৩০ প্রশ্ন, ভুল বিশ্লেষণ ও Smart Revision।</p><button class="btn primary" id="v73HomeSkills" type="button">দক্ষতা যাচাই →</button></div>
@@ -929,6 +939,11 @@
       <!-- ============ 3 REAL CLIENT DELIVERABLES GENERATOR ============ -->
       <section class="view" id="view-deliverables" aria-label="৩টি বাস্তব ক্লায়েন্ট ডেলিভারেবল পেপার">
         <div id="deliverablesContainer"></div>
+      </section>
+
+      <!-- ============ FREELANCE SOPS & CLIENT KIT ============ -->
+      <section class="view" id="view-freelance" aria-label="ফ্রিল্যান্স SOPs ও ক্লায়েন্ট কমিউনিকেশন কিট">
+        <div id="freelanceContainer"></div>
       </section>
 
     </main>
@@ -2079,5 +2094,6 @@
   <script src="v79.js"></script>
   <script src="debug-lab.js"></script>
   <script src="deliverables.js"></script>
+  <script src="freelance-kit.js"></script>
 </body>
 </html>
