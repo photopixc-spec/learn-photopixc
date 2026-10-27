@@ -63,7 +63,7 @@
   ${arabic(w.ar,'mini-word-ar')}<span class="copy"><strong>${esc(w.bn)}</strong><small>${esc(w.meaning)}</small><small>${bnNum(w.length)} অক্ষর · সূরা ${esc(w.refs[0])}${w.batch==='v5'?' · V5 নতুন':''}</small></span><span class="tick" aria-hidden="true">${state.learned.includes(w.id)?'✓':state.bookmarked.includes(w.id)?'★':'→'}</span></button>`).join('');
  function home(){const got=state.learned.filter(id=>WORDS.some(w=>w.id===id)).length;const counts=Object.fromEntries([2,3,4,5,6,7,8].map(n=>[n,WORDS.filter(w=>w.length===n).length]));return `<section class="hero"><div><span class="eyebrow">LEARN · READ · RECOGNIZE</span><h1>অক্ষর থেকে শব্দ,<br>শব্দ থেকে কুরআনের ভাষা।</h1><p>বাংলা ভাষায় আরবি ২৮টি হরফ, শব্দের শুরু-মাঝ-শেষের যুক্তরূপ, বাংলা উচ্চারণ ও অর্থ একসঙ্গে শিখুন। ছোট ধাপে এগোন, নিজেকে যাচাই করুন।</p><div class="actions">${linkButton('alphabet','হরফ শেখা শুরু করুন',true)}${linkButton('words','শব্দ শিখুন')}</div></div><div class="hero-art"><div class="hero-ar arabic" lang="ar">بِسْمِ اللّٰهِ<small>বিসমিল্লাহি · আল্লাহর নামে</small></div></div></section>
  <section class="grid4" aria-label="পাঠশালার পরিসংখ্যান"><div class="card stat"><b>${bnNum(ALPHABET.length)}</b><small>মূল আরবি হরফ</small></div><div class="card stat"><b>${bnNum(WORDS.length)}</b><small>নির্বাচিত ইউনিক লিখিত শব্দ</small></div><div class="card stat"><b>${bnNum(got)}</b><small>তোমার শেখা শব্দ</small></div><div class="card stat"><b>${bnNum(state.bestScore)}</b><small>সেরা কুইজ স্কোর (১০-এর মধ্যে)</small></div></section>
- <div class="section-head"><h2>তোমার শেখার পথ</h2><span class="pill">V6 · শেষ ১০ সূরাসহ</span></div><section class="grid3"><article class="card module"><span class="label">STEP 01</span><h3>আরবি হরফ চেনা</h3><p>২৮টি অক্ষরের মূল রূপ, বাংলা নাম ও সংযোগের নিয়ম শিখুন।</p>${linkButton('alphabet','২৮ হরফ দেখুন')}</article><article class="card module"><span class="label">STEP 02</span><h3>শব্দ ও যুক্তরূপ</h3><p>একই শব্দে মূল অক্ষর → যুক্তরূপ → বাংলা নাম → হরকত → অবস্থান, তোমার চাওয়া ক্রমে।</p>${linkButton('words','শব্দতালিকা দেখুন')}</article><article class="card module"><span class="label">STEP 03</span><h3>কুইজ ও Revision</h3><p>আরবি শব্দ দেখে বাংলা অর্থ মিলাও। শেখার অগ্রগতি এই Browser-এ থাকবে।</p>${linkButton('quiz','কুইজ শুরু করুন')}</article><article class="card module prayer-module"><span class="label">STEP 04 · NEW</span><h3>পাঁচ ওয়াক্ত নামাজ শিক্ষা</h3><p>ফজর–এশার রাকাত, নামাজের ধাপ, সূরা ফাতিহা ও ছোট সূরা, আত্তাহিয়্যাত, দরুদ ও দোয়া—সব এক জায়গায়।</p>${linkButton("salah","নামাজ শিক্ষা শুরু করুন",true)}</article><article class="card module last10-module"><span class="label">STEP 05 · NEW</span><h3>কুরআনের শেষ ১০টি সূরা</h3><p>আল-ফীল থেকে আন-নাস: সব ৪৮টি আয়াত আরবি, বাংলা উচ্চারণ ও সংক্ষিপ্ত অর্থসহ। নিজের পড়া যাচাই ও মুখস্থের অগ্রগতি রাখুন।</p>${linkButton("last-ten","শেষ ১০ সূরা শিখুন",true)}</article></section>
+ <div class="section-head"><h2>তোমার শেখার পথ</h2><span class="pill">V6 · শেষ ১০ সূরাসহ</span></div><section class="grid3"><article class="card module"><span class="label">STEP 01</span><h3>আরবি হরফ চেনা</h3><p>২৮টি অক্ষরের মূল রূপ, বাংলা নাম ও সংযোগের নিয়ম শিখুন।</p>${linkButton('alphabet','২৮ হরফ দেখুন')}</article><article class="card module"><span class="label">STEP 02</span><h3>শব্দ ও যুক্তরূপ</h3><p>একই শব্দে মূল অক্ষর → যুক্তরূপ → বাংলা নাম → হরকত → অবস্থান, তোমার চাওয়া ক্রমে।</p>${linkButton('words','শব্দতালিকা দেখুন')}</article><article class="card module" style="border-color:#b5cfb8;background:linear-gradient(110deg,#f3f8f1,#fffefa)"><span class="label">INTERACTIVE · NEW</span><h3>যাচাই করা (ফ্ল্যাশ-কার্ড)</h3><p>হরফ, যুক্তরূপ ও শব্দার্থ নিজে নিজে টেস্ট করুন। কার্ড ফ্লিপ করে উত্তর যাচাইয়ের ডুওলিঙ্গো স্টাইল প্র্যাকটিস।</p>${linkButton('flashcards','যাচাই শুরু করুন →',true)}</article><article class="card module"><span class="label">STEP 03</span><h3>কুইজ ও Revision</h3><p>আরবি শব্দ দেখে বাংলা অর্থ মিলাও। শেখার অগ্রগতি এই Browser-এ থাকবে।</p>${linkButton('quiz','কুইজ শুরু করুন')}</article><article class="card module prayer-module"><span class="label">STEP 04 · NEW</span><h3>পাঁচ ওয়াক্ত নামাজ শিক্ষা</h3><p>ফজর–এশার রাকাত, নামাজের ধাপ, সূরা ফাতিহা ও ছোট সূরা, আত্তাহিয়্যাত, দরুদ ও দোয়া—সব এক জায়গায়।</p>${linkButton("salah","নামাজ শিক্ষা শুরু করুন",true)}</article><article class="card module last10-module"><span class="label">STEP 05 · NEW</span><h3>কুরআনের শেষ ১০টি সূরা</h3><p>আল-ফীল থেকে আন-নাস: সব ৪৮টি আয়াত আরবি, বাংলা উচ্চারণ ও সংক্ষিপ্ত অর্থসহ। নিজের পড়া যাচাই ও মুখস্থের অগ্রগতি রাখুন।</p>${linkButton("last-ten","শেষ ১০ সূরা শিখুন",true)}</article></section>
  ${V4?.dashboard()||''}<section class="card v5-new-banner"><div><span class="eyebrow">VOCABULARY EXPANSION · V5</span><h2>আরও ${bnNum(WORDS.filter(w=>w.batch==='v5').length)}টি নতুন শব্দ</h2><p>সূরা আত-তীন, আল-কদর, আয-যিলযাল, আত-তাকাসুর, আল-হুমাযাহ, আল-ফীল, কুরাইশ ও আল-মাউন থেকে নির্বাচিত। শব্দের হরকত, যুক্তরূপ, বাংলা উচ্চারণ ও অর্থ দেখো।</p></div><button type="button" class="btn primary" data-v5-jump>শুধু নতুন শব্দ দেখুন →</button></section><div class="section-head"><h2>অক্ষরসংখ্যা ধরে শব্দ শিখুন</h2><span class="muted tiny">এই সংস্করণের নির্বাচিত শব্দ</span></div><div class="grid4">${[2,3,4,5,6,7,8].map(n=>`<button class="card btn" style="display:block;text-align:left;width:100%;padding:17px" data-length="${n}"><span class="pill gray">${bnNum(n)} অক্ষর</span><h3 style="margin-top:7px">${bnNum(counts[n])}টি শব্দ</h3><span class="tiny">তালিকা খুলুন →</span></button>`).join('')}</div>
  <div class="section-head"><h2>আজকের শেখা</h2></div><div class="grid2">${cards(WORDS.slice(0,2))}</div><p class="notice">এই সংস্করণে ১৬টি ছোট সূরা থেকে নির্বাচিত শব্দ আছে। এটি পুরো কুরআনের সমস্ত ইউনিক শব্দের তালিকা নয়; এখানে দেখানো অক্ষরসংখ্যা হরকত বাদ দিয়ে লেখা অক্ষরের সংখ্যা।</p>`}
 
@@ -105,11 +105,123 @@
  const parts=tokenParts(w.ar);let joined=parts.map((p,i)=>({base:p.base,linked:joiningForm(parts,i),marks:p.marks,label:i===0?'শুরু':i===parts.length-1?'শেষ':'মাঝে',n:i}));
  return `<div class="word-heading"><a class="backlink" href="#qa-words">← সব শব্দ</a><div class="word-markers"><span class="pill gray">${bnNum(w.length)}টি অক্ষর</span>${w.batch==='v5'?'<span class="pill">V5 নতুন শব্দ</span>':''}${state.learned.includes(w.id)?'<span class="pill">✓ শেখা হয়েছে</span>':''}</div></div>
  <div class="eyebrow">WORD STUDY CARD · ${esc(w.id.toUpperCase())}</div><h1>একটি শব্দ, প্রতিটি অক্ষর</h1>
- <section class="word-display"><div class="arabic" lang="ar" dir="rtl">${esc(w.ar)}</div><span class="bangla">${esc(w.bn)}</span><div class="meaning">${esc(w.meaning)}</div><div class="source">নমুনা রেফারেন্স: ${w.refs.map(r=>`<a href="https://corpus.quran.com/wordbyword.jsp?chapter=${r.split(':')[0]}&verse=${r.split(':')[1]}" target="_blank" rel="noopener noreferrer" title="Quranic Arabic Corpus-এ সূরা ${r} দেখুন">${esc(r)}</a>`).join(' · ')}</div></section>
- <section class="card"><div class="row-space"><h2>অক্ষর বিশ্লেষণ</h2><span class="pill gray">মূল → যুক্তরূপ → বাংলা → হরকত → অবস্থান</span></div>
- <div class="table-scroll"><table class="letters-table"><thead><tr><th scope="col">মূল অক্ষর</th><th scope="col">শব্দের যুক্তরূপ</th><th scope="col">বাংলা নাম</th><th scope="col">হরকত</th><th scope="col">অবস্থান</th></tr></thead><tbody>${joined.map(p=>`<tr><td>${arabic(p.base)}</td><td>${arabic(p.linked,'form')}</td><td><button type="button" class="letter-click" data-show-letter="${esc(p.base)}" title="এই অক্ষরের বিস্তারিত দেখুন">${esc(getName(p.base))} ↗</button></td><td class="harakat-cell">${harakatCells(p.marks,p.base)}</td><td>${esc(p.label)}</td></tr>`).join('')}</tbody></table></div>
- <p class="tiny">আরবি ডান থেকে বামে পড়া হয়; তাই অক্ষরগুলোর সারির ক্রমও শব্দে ডান দিক থেকে বাঁ দিকে। টেবিলের 'ـ' সংযোগের নির্দেশক, আলাদা উচ্চারিত অক্ষর নয়। হরকত কলামে কেবল শব্দে সত্যিই লেখা চিহ্ন দেখানো হয়েছে।</p>${harakatGuide()}<div class="actions no-print"><button type="button" class="btn primary" data-learn="${w.id}">${state.learned.includes(w.id)?'✓ শেখা হয়েছে — বাতিল করুন':'✓ এই শব্দটি শিখেছি'}</button><button type="button" class="btn" data-bookmark="${w.id}">${state.bookmarked.includes(w.id)?'★ বুকমার্ক সরান':'☆ পরে শেখার জন্য রাখুন'}</button><button type="button" class="btn" data-speak="${w.id}">♪ ধীরে শুনুন</button><button type="button" class="btn" data-speak-normal="${w.id}">♪ স্বাভাবিক গতি</button></div></section>
+ <div class="word-study-split">
+  <section class="word-card-left">
+   <div class="word-display-box">
+    <div class="arabic word-ar-big" lang="ar" dir="rtl">${esc(w.ar)}</div>
+    <h2 class="word-bn-title">${esc(w.bn)}</h2>
+    <div class="word-bn-meaning">${esc(w.meaning)}</div>
+    <div class="word-sample-ref">নমুনা রেফারেন্স: ${w.refs.map(r=>`<a href="https://corpus.quran.com/wordbyword.jsp?chapter=${r.split(':')[0]}&verse=${r.split(':')[1]}" target="_blank" rel="noopener noreferrer" title="Quranic Arabic Corpus-এ সূরা ${r} দেখুন">${esc(r)}</a>`).join(' · ')}</div>
+   </div>
+   <div class="actions word-card-actions no-print">
+    <button type="button" class="btn primary" data-learn="${w.id}">${state.learned.includes(w.id)?'✓ শেখা হয়েছে — বাতিল করুন':'✓ এই শব্দটি শিখেছি'}</button>
+    <button type="button" class="btn" data-bookmark="${w.id}">${state.bookmarked.includes(w.id)?'★ বুকমার্ক সরান':'☆ পরে শেখার জন্য রাখুন'}</button>
+    <button type="button" class="btn" data-speak="${w.id}">♪ ধীরে শুনুন</button>
+    <button type="button" class="btn" data-speak-normal="${w.id}">♪ স্বাভাবিক গতি</button>
+   </div>
+  </section>
+  <section class="word-analysis-right card">
+   <div class="analysis-title-group">
+    <h2>অক্ষর বিশ্লেষণ</h2>
+    <span class="pill gray">মূল → যুক্তরূপ → বাংলা → হরকত → অবস্থান</span>
+   </div>
+   <div class="letters-col-scroll">
+    <div class="letters-col-grid" dir="rtl">
+     ${joined.map(p=>`
+      <div class="letter-col-item">
+       <div class="col-cell cell-pos"><span class="pos-tag">${esc(p.label)}</span></div>
+       <div class="col-cell cell-form">${arabic(p.linked,'form')}</div>
+       <div class="col-cell cell-base">${arabic(p.base)}</div>
+       <div class="col-cell cell-name"><button type="button" class="letter-click" data-show-letter="${esc(p.base)}" title="এই অক্ষরের বিস্তারিত দেখুন">${esc(getName(p.base))} ↗</button></div>
+       <div class="col-cell cell-harakat">${harakatCells(p.marks,p.base)}</div>
+      </div>
+     `).join('')}
+    </div>
+   </div>
+   <p class="tiny" style="margin-top:14px">আরবি ডান থেকে বামে পড়া হয়; তাই অক্ষরগুলোর সারির ক্রমও শব্দে ডান দিক থেকে বাঁ দিকে সাজানো।</p>
+   ${harakatGuide()}
+  </section>
+ </div>
  <div id="letter-inline"></div><p class="notice">উচ্চারণ শোনার বোতামটি ডিভাইসের Arabic text-to-speech voice ব্যবহার করে। সব ব্রাউজারে ভয়েস নাও থাকতে পারে; এটিকে তাজবীদ-অনুযায়ী যাচাইকৃত তিলাওয়াত মনে করবেন না। বাংলা উচ্চারণও আনুমানিক সহায়তা।</p>`}
+ let flashcardMode='letters',flashcardItem=null,flashcardFlipped=false;
+ let flashcardStats={reviewed:0,mastered:0};
+ function pickFlashcard(mode){
+  if(mode) flashcardMode=mode;
+  flashcardFlipped=false;
+  if(flashcardMode==='letters'){
+   const l=ALPHABET[Math.floor(Math.random()*ALPHABET.length)];
+   const forms=shapePositions(l.ch);
+   const labels=['একক রূপ','শুরুর রূপ','মাঝের রূপ','শেষের রূপ'];
+   const valid=forms.map((s,i)=>({shape:s,label:labels[i]})).filter(x=>x.shape!=='—');
+   const picked=valid[Math.floor(Math.random()*valid.length)];
+   flashcardItem={kind:'letter',letter:l,shape:picked.shape,label:picked.label};
+  } else {
+   const w=WORDS[Math.floor(Math.random()*WORDS.length)];
+   flashcardItem={kind:'word',word:w};
+  }
+ }
+ function flashcardView(){
+  if(!flashcardItem) pickFlashcard();
+  return `<div class="flashcard-page-wrap">
+   <span class="eyebrow">INTERACTIVE PRACTICE · SELF ASSESSMENT</span>
+   <h1>যাচাই করা — ফ্ল্যাশ-কার্ড</h1>
+   <p class="muted">নিজের শেখা হরফ, যুক্তরূপ ও শব্দার্থ নিজে নিজে টেস্ট করুন। কার্ডে স্পর্শ বা ক্লিক করলে কার্ড উল্টে যাবে এবং সঠিক উত্তর দেখা যাবে।</p>
+   <div class="flashcard-mode-tabs">
+    <button type="button" class="flash-mode-btn ${flashcardMode==='letters'?'active':''}" data-flash-mode="letters">🔤 হরফ ও যুক্তরূপ যাচাই</button>
+    <button type="button" class="flash-mode-btn ${flashcardMode==='words'?'active':''}" data-flash-mode="words">📖 কুরআনিক শব্দ যাচাই</button>
+   </div>
+   <div class="row-space" style="max-width:560px;margin:16px auto 12px">
+    <span class="pill gray">আজকের যাচাই: ${bnNum(flashcardStats.reviewed)}টি</span>
+    <span class="pill" style="color:var(--green)">✓ আয়ত্ত হয়েছে: ${bnNum(flashcardStats.mastered)}টি</span>
+   </div>
+   <div class="flashcard-stage">
+    <div class="flashcard-box ${flashcardFlipped?'is-flipped':''}" data-flash-card-flip role="button" tabindex="0" aria-label="ফ্ল্যাশ কার্ড ফ্লিপ করতে ক্লিক করুন">
+     <div class="flashcard-face flashcard-front">
+      <span class="card-side-pill">সামনের পিঠ · প্রশ্ন</span>
+      <div class="flashcard-center">
+       ${flashcardMode==='letters'?`
+        <div class="arabic flash-big-glyph" dir="rtl" lang="ar">${esc(flashcardItem.shape)}</div>
+        <div class="flash-question-text">এই হরফ বা রূপটি চিনতে পারছেন?</div>
+       `:`
+        <div class="arabic flash-big-glyph" dir="rtl" lang="ar">${esc(flashcardItem.word.ar)}</div>
+        <div class="flash-question-text">${bnNum(flashcardItem.word.length)} অক্ষরের শব্দ · মনে মনে উচ্চারণ ও অর্থ ভাবুন</div>
+        <button type="button" class="btn flash-sound-btn no-flip" data-speak="${flashcardItem.word.id}">♪ উচ্চারণ শুনুন</button>
+       `}
+      </div>
+      <span class="flash-hint-bottom">কার্ডে ক্লিক বা স্পর্শ করে উত্তর দেখুন ↻</span>
+     </div>
+     <div class="flashcard-face flashcard-back">
+      <span class="card-side-pill back-pill">✓ উল্টো পিঠ · সঠিক উত্তর</span>
+      <div class="flashcard-center">
+       ${flashcardMode==='letters'?`
+        <div class="arabic flash-mid-glyph" dir="rtl" lang="ar">${esc(flashcardItem.shape)}</div>
+        <h2 class="flash-title">${esc(flashcardItem.letter.name)} (${esc(flashcardItem.letter.ch)})</h2>
+        <div class="flash-meta-badges">
+         <span class="pill">${esc(flashcardItem.label)}</span>
+         <span class="pill gray">উচ্চারণ: ${esc(flashcardItem.letter.roman)}</span>
+        </div>
+       `:`
+        <div class="arabic flash-mid-glyph" dir="rtl" lang="ar">${esc(flashcardItem.word.ar)}</div>
+        <h2 class="flash-title">${esc(flashcardItem.word.bn)}</h2>
+        <div class="flash-meaning">${esc(flashcardItem.word.meaning)}</div>
+        <div class="flash-meta-badges" style="margin-top:8px">
+         <span class="pill gray">সূরা রেফারেন্স: ${esc(flashcardItem.word.refs[0])}</span>
+         <span class="pill">${bnNum(flashcardItem.word.length)}টি অক্ষর</span>
+        </div>
+       `}
+      </div>
+      <span class="flash-hint-bottom">পুনরায় ফ্লিপ করতে ক্লিক করুন ↺</span>
+     </div>
+    </div>
+   </div>
+   <div class="flashcard-actions">
+    <button type="button" class="btn btn-review-card" data-flash-action="review">🔄 আরেকবার দেখাও (মনে নেই)</button>
+    <button type="button" class="btn primary btn-master-card" data-flash-action="mastered">👍 সহজ / পেরেছি!</button>
+    <button type="button" class="btn btn-next-card" data-flash-action="next">পরের কার্ড →</button>
+   </div>
+   <p class="tiny" style="text-align:center;margin-top:22px;color:var(--muted)">টিপস: কিবোর্ডের Space চাপলে কার্ড ফ্লিপ হবে। প্রতিদিন ৫-১০টি কার্ড দেখে নিজেকে যাচাই করুন।</p>
+  </div>`;
+ }
  function quizStart(){const pick=WORDS.filter(w=>w.length>=2&&w.length<=7);const shuffled=pick.sort(()=>Math.random()-.5);quiz={questions:shuffled.slice(0,10).map(w=>({word:w,choices:[w.meaning,...WORDS.filter(x=>x.meaning!==w.meaning).sort(()=>Math.random()-.5).slice(0,3).map(x=>x.meaning)].sort(()=>Math.random()-.5)})),index:0,answer:null,correct:0,finished:false};go('quiz')}
  function quizView(){if(!quiz)return `<span class="eyebrow">MODULE 03 · PRACTICE</span><h1>শব্দার্থ মিলিয়ে দেখো</h1><p class="muted">১০টি প্রশ্ন। একটি আরবি শব্দ দেখে সঠিক বাংলা অর্থ নির্বাচন করো। শেষ হলে তোমার ফলাফল দেখাবে।</p><section class="card" style="max-width:700px"><div class="arabic arabic-large" style="text-align:center" lang="ar">قُلْ</div><h2 style="text-align:center">قُلْ শব্দটির অর্থ কী?</h2><p style="text-align:center">উত্তর দেওয়ার আগে অনুমান করো। ভুল হলেও শিখে নেবে।</p><div class="actions" style="justify-content:center"><button class="btn primary" data-start-quiz>১০ প্রশ্নের কুইজ শুরু করুন</button></div></section>`;
  if(quiz.finished)return `<span class="eyebrow">QUIZ COMPLETE</span><h1>তোমার কুইজের ফল</h1><div class="card" style="max-width:660px;text-align:center"><div style="font:700 64px/1.4 system-ui,sans-serif;color:var(--green)">${bnNum(quiz.correct)} / ${bnNum(quiz.questions.length)}</div><h2>${quiz.correct>=8?'দারুণ! অনুশীলন চালিয়ে যাও।':'আরেকবার পড়ে চেষ্টা করো।'}</h2><p class="muted">সেরা স্কোর: ${bnNum(state.bestScore)} / ১০। এই কুইজের ফল এই Browser-এ সংরক্ষিত।</p><div class="actions" style="justify-content:center"><button class="btn primary" data-start-quiz>আবার কুইজ দাও</button>${linkButton('words','শব্দগুলো পড়ো')}</div></div>`;
@@ -117,10 +229,41 @@
  function progress(){const byLen=[2,3,4,5,6,7,8].map(n=>({n,total:WORDS.filter(w=>w.length===n).length,done:WORDS.filter(w=>w.length===n&&state.learned.includes(w.id)).length}));return `<span class="eyebrow">YOUR LEARNING PROGRESS</span><h1>আমার অগ্রগতি</h1><p class="muted">নিজের শেখা শব্দ চিহ্নিত করলে এখানে হিসাব দেখা যাবে। সব তথ্য শুধু এই Browser-এ থাকে; অন্য ডিভাইসে স্বয়ংক্রিয় Sync হয় না।</p><div class="grid3"><div class="card stat"><b>${bnNum(state.learned.length)}</b><small>শেখা শব্দ</small></div><div class="card stat"><b>${bnNum(state.bookmarked.length)}</b><small>বুকমার্ক</small></div><div class="card stat"><b>${bnNum(state.quizzes)}</b><small>সম্পন্ন কুইজ</small></div></div><section class="card" style="margin-top:20px"><h2>অক্ষরসংখ্যা অনুযায়ী অগ্রগতি</h2><div class="level-lines">${byLen.map(x=>`<div><label>${bnNum(x.n)} অক্ষরের শব্দ <span>${bnNum(x.done)} / ${bnNum(x.total)}</span></label><div class="series-bar"><span style="width:${x.total?100*x.done/x.total:0}%"></span></div></div>`).join('')}</div></section><section class="card" style="margin-top:20px"><h2>Progress Backup</h2><p class="muted">নতুন Browser-এ শেখার হিসাব নেওয়ার জন্য Export করে ফাইলটি রাখুন। Import করলে বর্তমান Progress বদলে যাবে।</p><div class="actions"><button class="btn" id="export-progress">⇩ Progress Download</button><label class="button" for="import-progress">⇧ Progress Import</label><input type="file" id="import-progress" accept="application/json,.json" style="position:absolute;width:1px;height:1px;opacity:0" aria-label="Progress JSON ফাইল নির্বাচন"></div></section>`}
  function about(){return `<span class="eyebrow">TRANSPARENCY & RESOURCES</span><h1>পাঠশালার তথ্য ও সীমাবদ্ধতা</h1><div class="grid2"><section class="card"><h2>কী আছে</h2><ul class="simple-list"><li>${bnNum(ALPHABET.length)}টি মূল আরবি হরফ ও যুক্তরূপ</li><li>${bnNum(WORDS.length)}টি নির্বাচিত, পুনরাবৃত্তিহীন লিখিত শব্দরূপ</li><li>বাংলা উচ্চারণ, সংক্ষিপ্ত অর্থ ও সূরা-আয়াত রেফারেন্স</li><li>Search, অক্ষরসংখ্যা Filter, কুইজ ও Progress Backup</li><li>বিনামূল্যে Word Builder, Harakat Practice, Daily 5 Words, Kids Mode, Level Selection ও Smart Revision</li></ul></section><section class="card"><h2>কী এখনো নেই</h2><ul class="simple-list"><li>সমগ্র কুরআনের পূর্ণ শব্দতালিকা</li><li>যাচাইকৃত পেশাদার ক্বারীর শব্দভিত্তিক Audio (ডিভাইসের স্বয়ংক্রিয় আরবি Voice থাকলে শুধু সহায়ক Audio)</li><li>বিশদ তাফসীর, সরফ-নাহু ও তাজবীদ মূল্যায়ন</li><li>অ্যাকাউন্টভিত্তিক একাধিক ডিভাইসে Sync</li></ul></section></div><section class="card" style="margin-top:18px"><h2>শব্দ গণনার নিয়ম</h2><p>একটি লিখিত শব্দে যুক্ত সব অক্ষর একই শব্দের অংশ। যবর-যের-পেশ, তাশদীদ, সুকুন, মাদ্দের ছোট চিহ্ন ও অন্যান্য combining marks গণনা হয় না; হামজাযুক্ত আলিফ (أ/إ) আলাদা একটি লিখিত অক্ষর। হরকত ছাড়া অভিন্ন বানানের পুনরাবৃত্তি সাধারণত একবার ধরা হয়েছে; তবে ওয়ামিন (وَمِنْ) ও ওয়ামান (وَمَنْ)-এর মতো একই মূল বানানে ভিন্ন অর্থ ও হরকত থাকলে শিক্ষার স্বার্থে আলাদা রাখা হয়েছে। বানানে হামজার ভিন্ন অবস্থান আলাদা শব্দরূপ থাকতে পারে। এটি শিকড় (root) বা অভিধানগত lemma গণনা নয়।</p><p>এখানে আগের ৮টি সূরার পাশাপাশি সূরা ৯৫ (আত-তীন), ৯৭ (আল-কদর), ৯৯ (আয-যিলযাল), ১০২ (আত-তাকাসুর), ১০৪ (আল-হুমাযাহ), ১০৫ (আল-ফীল), ১০৬ (কুরাইশ) ও ১০৭ (আল-মাউন) থেকে শব্দ যোগ করা হয়েছে।</p><p><a href="https://quran.com/95" target="_blank" rel="noopener noreferrer">Quran.com: সূরা আত-তীন ↗</a> · <a href="https://corpus.quran.com/" target="_blank" rel="noopener noreferrer">Quranic Arabic Corpus ↗</a> · <a href="https://tanzil.net" target="_blank" rel="noopener noreferrer">Tanzil Quran Text ↗</a></p><p class="tiny">আরবি শিক্ষাক্রমের উদাহরণ হিসেবে শব্দের হরকতসহ বানান রাখা হয়েছে। এটি পূর্ণ কুরআন পাঠ পুনঃপ্রকাশ নয়। সূত্রে একই শব্দের ভিন্ন হরকত থাকলে এই তালিকায় একটি উদাহরণরূপ দেখানো হতে পারে। V5-এর বাংলা উচ্চারণ ও শব্দার্থ শিক্ষামূলক সহায়ক ব্যাখ্যা; প্রকাশের আগে বিশেষজ্ঞের চূড়ান্ত প্রুফরিড করা বাঞ্ছনীয়।</p></section><section class="notice"><strong>উচ্চারণ-সংক্রান্ত সতর্কতা:</strong> বাংলা লিপি দিয়ে ع، ح، خ، ص، ض، ط، ظ، ق-এর ধ্বনি নির্ভুলভাবে বোঝানো যায় না। বাংলা উচ্চারণ শেখার সহায়ক মাত্র। কুরআন তিলাওয়াতের জন্য মাখরাজ ও তাজবীদ শিক্ষকের কাছে যাচাই করুন।</section>`}
  function render(){const rt=route(),sect=rt.startsWith('word-')?'words':rt.startsWith('letter-')?'alphabet':rt;document.querySelectorAll('#side-links a').forEach(a=>a.classList.toggle('active',a.dataset.route===sect));let out;
- if(rt==='home')out=home();else if(rt==='alphabet')out=alphabet();else if(rt==='words')out=words();else if(rt.startsWith('word-'))out=word(rt.slice(5));else if(rt==='salah')out=prayerView();else if(rt==='last-ten')out=lastTenView();else if(rt==='quiz')out=quizView();else if(rt==='progress')out=progress();else if(rt==='about')out=about();else if(V4?.routes[rt])out=V4.renderRoute(rt);else if(rt.startsWith('letter-')){letterSelected=rt.slice(7);out=alphabet()}else out=home();$('view').innerHTML=out;summary();document.title=({home:'কুরআনিক আরবি পাঠশালা',alphabet:'আরবি ২৮ হরফ',words:'কুরআনিক শব্দতালিকা',salah:'পাঁচ ওয়াক্ত নামাজ শিক্ষা','last-ten':'কুরআনের শেষ ১০ সূরা',quiz:'কুইজ ও অনুশীলন',progress:'আমার অগ্রগতি',about:'তথ্য ও উৎস'}[sect]||V4?.routes[sect]||'শব্দ শেখা')+' | PhotoPixc Learning';}
+ if(rt==='home')out=home();else if(rt==='alphabet')out=alphabet();else if(rt==='words')out=words();else if(rt.startsWith('word-'))out=word(rt.slice(5));else if(rt==='flashcards'){if(!flashcardItem)pickFlashcard();out=flashcardView();}else if(rt==='salah')out=prayerView();else if(rt==='last-ten')out=lastTenView();else if(rt==='quiz')out=quizView();else if(rt==='progress')out=progress();else if(rt==='about')out=about();else if(V4?.routes[rt])out=V4.renderRoute(rt);else if(rt.startsWith('letter-')){letterSelected=rt.slice(7);out=alphabet()}else out=home();$('view').innerHTML=out;summary();document.title=({home:'কুরআনিক আরবি পাঠশালা',alphabet:'আরবি ২৮ হরফ',words:'কুরআনিক শব্দতালিকা',flashcards:'যাচাই করা (ফ্ল্যাশ-কার্ড)',salah:'পাঁচ ওয়াক্ত নামাজ শিক্ষা','last-ten':'কুরআনের শেষ ১০ সূরা',quiz:'কুইজ ও অনুশীলন',progress:'আমার অগ্রগতি',about:'তথ্য ও উৎস'}[sect]||V4?.routes[sect]||'শব্দ শেখা')+' | PhotoPixc Learning';}
  const toggle=(key,id)=>{const set=new Set(state[key]);set.has(id)?set.delete(id):set.add(id);state[key]=[...set];save();render();toast(key==='learned'?'শেখার অগ্রগতি বদলানো হয়েছে':'বুকমার্ক আপডেট করা হয়েছে')};
  function speak(w,rate=.75){if(!window.speechSynthesis){toast('এই Browser-এ অডিও সুবিধা নেই।');return}try{const available=speechSynthesis.getVoices().filter(v=>v.lang&&v.lang.toLowerCase().startsWith('ar'));if(!available.length){toast('Arabic voice নেই। ডিভাইসে Arabic voice যোগ করতে হবে।');return}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(w.ar);u.lang='ar-SA';u.voice=available.find(v=>v.lang==='ar-SA')||available[0];u.rate=rate;speechSynthesis.speak(u)}catch{toast('এই মুহূর্তে অডিও চালানো যায়নি।')}}
- $('view').addEventListener('click',e=>{const hit=e.target.closest('button');if(!hit)return;
+ $('view').addEventListener('click',e=>{
+  const flipCard=e.target.closest('[data-flash-card-flip]');
+  if(flipCard && !e.target.closest('button') && !e.target.closest('.no-flip')){
+   flashcardFlipped=!flashcardFlipped;
+   render();
+   return;
+  }
+  const modeBtn=e.target.closest('[data-flash-mode]');
+  if(modeBtn){
+   pickFlashcard(modeBtn.dataset.flashMode);
+   render();
+   return;
+  }
+  const flashAct=e.target.closest('[data-flash-action]');
+  if(flashAct){
+   const act=flashAct.dataset.flashAction;
+   flashcardStats.reviewed++;
+   if(act==='mastered'){
+    flashcardStats.mastered++;
+    if(flashcardItem?.kind==='word' && !state.learned.includes(flashcardItem.word.id)){
+     state.learned.push(flashcardItem.word.id);
+     save();
+    }
+    toast('মাশাআল্লাহ! আয়ত্ত হয়েছে চিহ্নিত করা হলো');
+   } else if(act==='review'){
+    toast('পরের বার আবার দেখানো হবে');
+   }
+   pickFlashcard();
+   render();
+   return;
+  }
+  const hit=e.target.closest('button');if(!hit)return;
  if(V4?.handleClick(hit))return;
  if(hit.hasAttribute('data-v5-jump')){sourceFilter='v5';search='';lengthFilter='all';bookFilter='all';page=0;go('words');return}
  if(hit.dataset.lastSurah){lastTenSelected=Number(hit.dataset.lastSurah);render();return}
@@ -150,6 +293,13 @@
  $('view').addEventListener('change',async e=>{if(e.target.id==='word-length'){lengthFilter=e.target.value;page=0;render()}if(e.target.id==='word-book'){bookFilter=e.target.value;page=0;render()}if(e.target.id==='word-source'){sourceFilter=e.target.value;page=0;render()}if(e.target.id==='import-progress'){
  const file=e.target.files?.[0];if(!file)return;try{if(file.size>250000)throw Error('ফাইলটি খুব বড়।');const d=JSON.parse(await file.text());if(d.app!=='photopixc.quranic-arabic'||d.version!==1||!d.progress||!Array.isArray(d.progress.learned)||!Array.isArray(d.progress.bookmarked))throw Error('এটি এই পাঠশালার Progress ফাইল নয়।');if(!confirm('Import করলে বর্তমান অগ্রগতি বদলে যাবে। চালিয়ে যাবেন?'))return;const valid=new Set(WORDS.map(w=>w.id));state={learned:[...new Set(d.progress.learned)].filter(id=>valid.has(id)),bookmarked:[...new Set(d.progress.bookmarked)].filter(id=>valid.has(id)),quizzes:Math.max(0,Math.floor(Number(d.progress.quizzes)||0)),bestScore:Math.max(0,Math.min(10,Math.floor(Number(d.progress.bestScore)||0)))};if(d.extensions?.v4&&V4)V4.importState(d.extensions.v4);if(Array.isArray(d.extensions?.lastTen)){lastTenLearned=[...new Set(d.extensions.lastTen)].filter(n=>Number.isInteger(n)&&n>=105&&n<=114);localStorage.setItem(lastTenKey,JSON.stringify(lastTenLearned))}save();render();toast('Progress Import হয়েছে।')}catch(err){toast(err.message||'ভুল Progress ফাইল।')}}});
  window.addEventListener('hashchange',()=>{render();window.scrollTo({top:0,behavior:'instant'})});
+ window.addEventListener('keydown',e=>{
+  if(route()==='flashcards' && (e.code==='Space'||e.code==='Enter') && !e.target.closest('input,textarea,button')){
+   e.preventDefault();
+   flashcardFlipped=!flashcardFlipped;
+   render();
+  }
+ });
  $('nav-toggle').addEventListener('click',()=>{const nav=$('top-nav');const expanded=nav.classList.toggle('open');$('nav-toggle').setAttribute('aria-expanded',String(expanded))});
  if(!location.hash)history.replaceState(null,'','#qa-home');render();
 })();

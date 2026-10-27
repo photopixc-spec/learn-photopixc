@@ -87,3 +87,326 @@
 @media (max-width:1024px){.last10-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:550px){.last10-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.last10-pick{padding:10px}.last10-progress{align-items:flex-start;flex-direction:column}.last10-progress progress{width:100%}.last10-module{padding:19px}}
 @media print{.last10-grid,.last10-progress{display:none!important}}
+
+/* ==========================================================================
+   V7 — Side-by-Side Word Study Layout & Columnar Letter Analysis
+   ========================================================================== */
+.word-study-split {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(360px, 1.45fr);
+  gap: 22px;
+  align-items: stretch;
+  margin: 18px 0 24px;
+}
+.word-card-left {
+  background: #f2f7ef;
+  border: 1px solid #d4e2d2;
+  border-radius: 20px;
+  padding: 34px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+.word-display-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+}
+.word-ar-big {
+  font-size: clamp(62px, 6.5vw, 88px);
+  line-height: 1.45;
+  color: var(--deep);
+  margin-bottom: 12px;
+}
+.word-bn-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--deep);
+  margin: 4px 0 6px;
+}
+.word-bn-meaning {
+  font-size: 16px;
+  color: #4f6b5b;
+  margin-bottom: 12px;
+}
+.word-sample-ref {
+  font-size: 13px;
+  color: var(--muted);
+}
+.word-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 24px;
+  width: 100%;
+}
+.word-card-actions .btn {
+  font-size: 12px;
+  padding: 8px 13px;
+}
+
+/* Right side: Letter Analysis Columnar Grid */
+.word-analysis-right {
+  background: #fff;
+  border: 1px solid #d4e2d2;
+  border-radius: 20px;
+  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+}
+.analysis-title-group {
+  text-align: center;
+  margin-bottom: 18px;
+}
+.analysis-title-group h2 {
+  font-size: 24px;
+  color: var(--deep);
+  margin: 0 0 8px;
+}
+.letters-col-scroll {
+  overflow-x: auto;
+  border: 1px solid #d9e5d8;
+  border-radius: 14px;
+  background: #fff;
+  margin-bottom: 12px;
+}
+.letters-col-grid {
+  display: flex;
+  direction: rtl;
+  min-width: 100%;
+}
+.letter-col-item {
+  flex: 1;
+  min-width: 125px;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #e3ede2;
+}
+.letter-col-item:last-child {
+  border-left: none;
+}
+.col-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px 8px;
+  border-bottom: 1px solid #e3ede2;
+  min-height: 52px;
+  box-sizing: border-box;
+}
+.col-cell:last-child {
+  border-bottom: none;
+}
+.cell-pos {
+  background: #fafcf9;
+  font-size: 13px;
+  font-weight: 700;
+  color: #557262;
+}
+.pos-tag {
+  background: #edf5eb;
+  padding: 3px 10px;
+  border-radius: 99px;
+}
+.cell-form .arabic {
+  font-size: 38px;
+  color: var(--deep);
+}
+.cell-base .arabic {
+  font-size: 34px;
+  color: var(--deep);
+}
+.cell-name .letter-click {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--green);
+}
+.cell-harakat {
+  padding: 10px 6px;
+  background: #fdfefd;
+}
+
+@media (max-width: 860px) {
+  .word-study-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   V7 — Flashcard Self Assessment Mode (যাচাই করা)
+   ========================================================================== */
+.flashcard-page-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.flashcard-mode-tabs {
+  display: flex;
+  gap: 10px;
+  margin: 22px 0 16px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+  overflow-x: auto;
+}
+.flash-mode-btn {
+  padding: 10px 18px;
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 11px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--deep);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.flash-mode-btn.active, .flash-mode-btn:hover {
+  background: var(--green);
+  color: #fff;
+  border-color: var(--green);
+}
+.flashcard-stage {
+  perspective: 1200px;
+  max-width: 520px;
+  margin: 18px auto 26px;
+}
+.flashcard-box {
+  position: relative;
+  width: 100%;
+  min-height: 380px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  cursor: pointer;
+  border-radius: 24px;
+  outline: none;
+}
+.flashcard-box:focus-visible {
+  box-shadow: 0 0 0 3px #176b53;
+}
+.flashcard-box.is-flipped {
+  transform: rotateY(180deg);
+}
+.flashcard-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 24px;
+  border: 2px solid #cfdfce;
+  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  box-shadow: 0 12px 32px rgba(24,60,49,0.06);
+}
+.flashcard-front {
+  background: linear-gradient(150deg, #f7faf5 0%, #ffffff 100%);
+}
+.flashcard-back {
+  background: linear-gradient(150deg, #edf7eb 0%, #ffffff 100%);
+  border-color: #8ebd97;
+  transform: rotateY(180deg);
+}
+.card-side-pill {
+  font-size: 11px;
+  font-weight: 700;
+  color: #557262;
+  background: #eaf2e8;
+  padding: 4px 12px;
+  border-radius: 99px;
+  letter-spacing: 0.5px;
+}
+.card-side-pill.back-pill {
+  background: #176b53;
+  color: #fff;
+}
+.flashcard-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex: 1;
+  padding: 16px 0;
+  width: 100%;
+}
+.flash-big-glyph {
+  font-size: clamp(65px, 8vw, 96px);
+  line-height: 1.4;
+  color: var(--deep);
+  margin-bottom: 12px;
+}
+.flash-mid-glyph {
+  font-size: 54px;
+  line-height: 1.4;
+  color: var(--green);
+  margin-bottom: 6px;
+}
+.flash-question-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: #557062;
+  margin-top: 6px;
+}
+.flash-sound-btn {
+  margin-top: 14px;
+  font-size: 13px;
+  padding: 7px 14px;
+}
+.flash-hint-bottom {
+  font-size: 12px;
+  color: var(--muted);
+}
+.flash-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--deep);
+  margin: 4px 0 6px;
+}
+.flash-meaning {
+  font-size: 18px;
+  color: #3b5f4c;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.flash-meta-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.flashcard-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 540px;
+  margin: 0 auto;
+}
+.btn-review-card {
+  border-color: #d1b47f;
+  background: #fffdf7;
+  color: #7a5a22;
+}
+.btn-review-card:hover {
+  background: #fbf5e6;
+}
+.btn-master-card {
+  background: var(--green);
+  color: #fff;
+}
+.btn-next-card {
+  border-color: #ccdccd;
+}
+
