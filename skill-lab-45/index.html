@@ -545,6 +545,7 @@
   <link rel="stylesheet" href="v77.css">
   <link rel="stylesheet" href="v78.css">
   <link rel="stylesheet" href="debug-lab.css">
+  <link rel="stylesheet" href="deliverables.css">
 </head>
   <body>
     <a class="v79-skip" href="#main-academy">মূল পাঠে যান</a>
@@ -613,6 +614,9 @@
 <button class="tab" data-view="debug" type="button" aria-label="বাস্তব ট্রাবলশুটিং পাজল">
 <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg> ডিবাগ ল্যাব
 </button>
+<button class="tab" data-view="deliverables" type="button" aria-label="বাস্তব ক্লায়েন্ট ডেলিভারেবল ও প্রজেক্ট পেপার">
+<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> ক্লায়েন্ট রিপোর্ট
+</button>
 <button class="tab" data-view="portfolio" type="button">
           <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M8 6V4h8v2M3 11h18"/></svg>
           পোর্টফোলিও
@@ -639,6 +643,12 @@
           <h2 style="font-size:22px;margin:8px 0 6px">🛠️ বাস্তব ট্রাবলশুটিং পাজল (Debug Challenges)</h2>
           <p style="color:var(--muted);margin:0 0 14px">GA4 ডুপ্লিকেট সেল, Meta CAPI ড্রপ, গুগল সার্চে টাকা নষ্ট ও কনসেন্ট ব্লকিং—বাস্তব অ্যাকাউন্টের ৫টি জটিল সমস্যা সমাধান করে নিজের প্রফেশনাল দক্ষতা যাচাই করো।</p>
           <button type="button" class="btn primary" id="openDebugLab">ডিবাগ চ্যালেঞ্জ শুরু করুন →</button>
+        </div>
+        <div class="v82-deliv-card" style="border:1.5px solid #2563eb;background:linear-gradient(110deg,#eff6ff,#fffdfa);border-radius:18px;padding:22px 24px;margin:18px 0;">
+          <span class="v75-badge" style="background:#2563eb;color:#fff">PORTFOLIO READY · NEW</span>
+          <h2 style="font-size:22px;margin:8px 0 6px">💼 ৩টি আসল ক্লায়েন্ট ডেলিভারেবল পেপার</h2>
+          <p style="color:var(--muted);margin:0 0 14px">কোর্স শেষে বাস্তব ক্লায়েন্টকে জমা দেওয়ার মতো ৩টি আন্তর্জাতিক মানের ডকুমেন্ট: GTM/GA4 ট্র্যাকিং স্পেক-শীট, ফানেল অ্যাড স্ট্র্যাটেজি এবং অ্যাকাউন্ট অডিট রিপোর্ট তৈরি ও ১-ক্লিকে PDF প্রিন্ট করুন।</p>
+          <button type="button" class="btn primary" id="openDeliverables" style="background:#2563eb;border-color:#2563eb;">ডেলিভারেবল তৈরি করুন →</button>
         </div>
         <div class="v73-home-grid" aria-label="V7.3 নতুন টুল">
  <div class="v73-feature"><span class="v72-pill">SKILL CHECK</span><h2>🎯 Skill Assessment</h2><p>৬টি Skill-এ ৩০ প্রশ্ন, ভুল বিশ্লেষণ ও Smart Revision।</p><button class="btn primary" id="v73HomeSkills" type="button">দক্ষতা যাচাই →</button></div>
@@ -914,6 +924,11 @@
       <!-- ============ REAL-WORLD TROUBLESHOOTING & DEBUG LAB ============ -->
       <section class="view" id="view-debug" aria-label="বাস্তব ট্রাবলশুটিং পাজল ও ডিবাগ চ্যালেঞ্জ">
         <div id="debugLabContainer"></div>
+      </section>
+
+      <!-- ============ 3 REAL CLIENT DELIVERABLES GENERATOR ============ -->
+      <section class="view" id="view-deliverables" aria-label="৩টি বাস্তব ক্লায়েন্ট ডেলিভারেবল পেপার">
+        <div id="deliverablesContainer"></div>
       </section>
 
     </main>
@@ -2063,5 +2078,6 @@
   <script src="v78.js"></script>
   <script src="v79.js"></script>
   <script src="debug-lab.js"></script>
+  <script src="deliverables.js"></script>
 </body>
 </html>
