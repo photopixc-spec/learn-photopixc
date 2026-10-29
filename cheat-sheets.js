@@ -169,13 +169,19 @@ function cheatSheetMarkup(index){
  </article>`;
 }
 function renderCheatSheets(index=null){
+ if(index==='ai'||location.hash==='#ai-cheats'){
+  document.body.classList.add('cheat-mode');
+  const content=typeof renderAICheatSheetContent==='function'?renderAICheatSheetContent():'<p>AI Cheat Sheet loading...</p>';
+  $('#main').innerHTML=`<div class="tabs" style="margin-bottom:20px;"><a class="button" href="#cheats">← Google Ads চিট শিট (১৭টি)</a><a class="button primary" href="#ai-cheats">AI & Creative চিট শিট ✦</a></div>${content}`;
+  return;
+ }
  const single=Number.isInteger(index)&&index>=0&&index<modules.length;
  document.body.classList.add('cheat-mode');
  if(!single){
-  $('#main').innerHTML='<div class="cheat-intro">'+header('এক পাতায় মডিউল রিভিশন','CHEAT SHEET','১৭টি module-এর মূল কথা, সূত্র, সাধারণ ভুল ও মনে রাখার সংক্ষিপ্ত নিয়ম।')+'</div>'+`<div class="cheat-toolbar"><button id="print-all-cheats" class="primary">সব ১৭টি sheet Print / PDF</button><p class="small muted">A4 · Portrait · Scale 100% · Headers and footers বন্ধ রাখুন। প্রতিটি module আলাদা পাতা।</p></div><div class="three-col cheat-index">${modules.map((m,i)=>`<article class="card"><span class="eyebrow">মডিউল ${bn(i+1)}</span><h2>${esc(m.name)}</h2><a class="button" href="#cheat-${i+1}">Cheat Sheet খুলুন →</a><a class="button text" href="#lesson-${lessons.find(l=>l.module===i).id}">মূল lesson →</a></article>`).join('')}</div><div class="cheat-print-all">${modules.map((_,i)=>cheatSheetMarkup(i)).join('')}</div>`;
+  $('#main').innerHTML='<div class="cheat-intro">'+header('এক পাতায় মডিউল রিভিশন','CHEAT SHEET','১৭টি module-এর মূল কথা, সূত্র, সাধারণ ভুল ও মনে রাখার সংক্ষিপ্ত নিয়ম।')+'</div>'+`<div class="tabs" style="margin-bottom:20px;"><a class="button primary" href="#cheats">Google Ads চিট শিট (১৭টি)</a><a class="button" href="#ai-cheats">AI & Creative চিট শিট (নতুন) ✦</a></div><div class="cheat-toolbar"><button id="print-all-cheats" class="primary">সব ১৭টি sheet Print / PDF</button><p class="small muted">A4 · Portrait · Scale 100% · Headers and footers বন্ধ রাখুন। প্রতিটি module আলাদা পাতা।</p></div><div class="three-col cheat-index">${modules.map((m,i)=>`<article class="card"><span class="eyebrow">মডিউল ${bn(i+1)}</span><h2>${esc(m.name)}</h2><a class="button" href="#cheat-${i+1}">Cheat Sheet খুলুন →</a><a class="button text" href="#g-lesson-${lessons.find(l=>l.module===i).id}">মূল lesson →</a></article>`).join('')}</div><div class="cheat-print-all">${modules.map((_,i)=>cheatSheetMarkup(i)).join('')}</div>`;
   $('#print-all-cheats').onclick=()=>window.print();
  }else{
-  $('#main').innerHTML=`<div class="cheat-toolbar"><a class="button" href="#cheats">← সব Cheat Sheet</a><button id="print-cheat" class="primary">এই sheet Print / PDF</button><a class="button" href="#lesson-${lessons.find(l=>l.module===index).id}">মূল lesson পড়ুন →</a><p class="small muted">A4 · Portrait · Scale 100% · Headers and footers বন্ধ রাখুন।</p></div>${cheatSheetMarkup(index)}<nav class="cheat-toolbar" aria-label="Cheat Sheet navigation">${index>0?`<a class="button" href="#cheat-${index}">← আগের module</a>`:''}${index<modules.length-1?`<a class="button" href="#cheat-${index+2}">পরের module →</a>`:''}</nav>`;
+  $('#main').innerHTML=`<div class="cheat-toolbar"><a class="button" href="#cheats">← সব Cheat Sheet</a><button id="print-cheat" class="primary">এই sheet Print / PDF</button><a class="button" href="#g-lesson-${lessons.find(l=>l.module===index).id}">মূল lesson পড়ুন →</a><p class="small muted">A4 · Portrait · Scale 100% · Headers and footers বন্ধ রাখুন।</p></div>${cheatSheetMarkup(index)}<nav class="cheat-toolbar" aria-label="Cheat Sheet navigation">${index>0?`<a class="button" href="#cheat-${index}">← আগের module</a>`:''}${index<modules.length-1?`<a class="button" href="#cheat-${index+2}">পরের module →</a>`:''}</nav>`;
   $('#print-cheat').onclick=()=>window.print();
  }
 }

@@ -2,7 +2,7 @@
 function legacySchoolRoute(hash){
  const m=hash.match(/^#(?:g-)?lesson-(\d+)$/);
  if(m&&+m[1]>=1&&+m[1]<=102)return '/google-ads/#g-lesson-'+Number(m[1]);
- if(/^#(?:home|syllabus|skills|studio|labs|analytics|portfolio|review|revision|resources|cheats|cheat-\d+)$/.test(hash))return '/google-ads/'+hash;
+ if(/^#(?:home|syllabus|skills|studio|labs|analytics|portfolio|review|revision|resources|cheats|cheat-\d+|ai-marketing|ai-tools|ai-cheats|ai-proof|ai-module-\d+)$/.test(hash))return '/google-ads/'+hash;
  return null;
 }
 const legacyTarget=legacySchoolRoute(location.hash);if(legacyTarget)location.replace(legacyTarget);
