@@ -1263,16 +1263,16 @@ function renderAIMarketing(routeHash = '#ai-marketing') {
 
     <nav class="ai-tabs-bar" aria-label="AI Marketing Navigation">
       <button class="ai-tab-btn ${activeAITab==='modules'?'active':''}" data-tab="modules">
-        📚 ৬টি কোর মডিউল
+        📚 Modules (01–06)
       </button>
       <button class="ai-tab-btn ${activeAITab==='tools'?'active':''}" data-tab="tools">
-        🧪 ৩টি ইন্টারেক্টিভ স্যান্ডবক্স টুলস
+        ✏️ AI Sandbox Tools
       </button>
       <button class="ai-tab-btn ${activeAITab==='cheats'?'active':''}" data-tab="cheats">
-        📋 AI & Creative চিট শিট
+        📋 AI & Creative Cheat Sheet
       </button>
       <button class="ai-tab-btn ${activeAITab==='proof'?'active':''}" data-tab="proof">
-        🏆 স্ট্র্যাটেজিস্ট প্রুফ কার্ড
+        🏆 Skill Proof Card
       </button>
     </nav>
 
@@ -1480,7 +1480,7 @@ function renderSingleModuleView(moduleId) {
       <div class="lesson-navigation">
         ${m.id > 1 ? `<a href="#ai-module-${m.id-1}" class="button">← আগের মডিউল ${bn(m.id-1)}</a>` : '<div></div>'}
         <a href="#ai-marketing" class="button text">সব মডিউলে ফিরে যান</a>
-        ${m.id < 6 ? `<a href="#ai-module-${m.id+1}" class="button primary">পরের মডিউল ${bn(m.id+1)} →</a>` : `<a href="#ai-tools" class="button primary">স্যান্ডবক্স টুলস প্র্যাকটিস করুন →</a>`}
+        ${m.id < 6 ? `<a href="#ai-module-${m.id+1}" class="button primary">পরের মডিউল ${bn(m.id+1)} →</a>` : `<a href="#ai-tools" class="button primary">✏️ AI Sandbox Tools প্র্যাকটিস করুন →</a>`}
       </div>
     </article>
   `;
@@ -1612,13 +1612,13 @@ function renderAIHomeTrackCard() {
       </div>
       <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:10px;">
         <a href="#ai-marketing" class="button primary" style="background:var(--ai-purple);border-color:var(--ai-purple);">
-          AI Marketing পাঠশালা শুরু করুন →
+          📚 Modules (01–06) শুরু করুন →
         </a>
         <a href="#ai-tools" class="button">
-          🧪 ৩টি স্যান্ডবক্স টুলস
+          ✏️ AI Sandbox Tools
         </a>
         <a href="#ai-cheats" class="button text">
-          চিট শিট দেখুন
+          📋 AI & Creative Cheat Sheet
         </a>
       </div>
     </section>

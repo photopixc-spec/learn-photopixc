@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap');
+
 /* PhotoPixc AI Marketing Track Stylesheet
    Matches 100% existing design language: --ink, --paper, --line, --green, --greenlight, --radius
 */
 :root {
+  font-family: 'Hind Siliguri', 'Noto Sans Bengali', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
   --ai-purple: #4a2882;
   --ai-purple-soft: #f3effa;
   --ai-teal: #0d6b63;
@@ -11,6 +14,11 @@
   --ai-danger: #a32d29;
   --ai-danger-soft: #fdeeee;
 }
+
+body, button, input, textarea, select, h1, h2, h3, h4, p, span, small, label, a, .ai-track-hero, .ai-story-box, .ai-lesson-card, .ai-compare-box, .ai-tool-shell, .ai-proof-card {
+  font-family: 'Hind Siliguri', 'Noto Sans Bengali', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+}
+
 
 /* Light / Dark Mode support */
 @media (prefers-color-scheme: dark) {
