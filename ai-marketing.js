@@ -1246,6 +1246,29 @@ function renderAIMarketing(routeHash = '#ai-marketing') {
     expandedModuleId = null;
   }
 
+  // 1. ISOLATED SINGLE MODULE VIEW:
+  // When a user selects a module (e.g. #ai-module-1),
+  // hide the track hero banner, navigation tabs, and the overview grid completely.
+  // Render ONLY the single module view with top breadcrumb & bottom Prev/Back/Next navigation.
+  if (expandedModuleId) {
+    main.innerHTML = `
+      <div class="module-view-header" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:18px;padding:12px 18px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);">
+        <a href="#ai-marketing" class="button" style="padding:8px 16px;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:6px;">
+          ← সব মডিউলে ফিরে যান (All Modules)
+        </a>
+        <div style="font-size:13px;font-weight:700;color:var(--muted);display:flex;align-items:center;gap:8px;">
+          <span class="ai-badge friendly">মডিউল ${bn(expandedModuleId)} / ${bn(aiMarketingModules.length)}</span>
+          <span>AI with Marketing Track</span>
+        </div>
+      </div>
+      ${renderSingleModuleView(expandedModuleId)}
+    `;
+    initSingleModuleEvents(expandedModuleId);
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    return;
+  }
+
+  // 2. TRACK HOME OVERVIEW:
   main.innerHTML = `
     <div class="ai-track-hero">
       ${renderAIBadges()}
@@ -1357,23 +1380,7 @@ function renderAITabContent() {
     return;
   }
 
-  // ActiveTab === 'modules'
-  // If user clicked into a specific module, show ONLY that single module view
-  if (expandedModuleId) {
-    container.innerHTML = `
-      <div style="margin-bottom:14px;display:flex;align-items:center;gap:10px;">
-        <a href="#ai-marketing" class="button" style="padding:8px 16px;font-size:13px;display:inline-flex;align-items:center;gap:6px;">
-          ← সব মডিউলে ফিরে যান (Back to Modules)
-        </a>
-      </div>
-      ${renderSingleModuleView(expandedModuleId)}
-    `;
-    initSingleModuleEvents(expandedModuleId);
-    window.scrollTo({top: 0, behavior: 'smooth'});
-    return;
-  }
-
-  // Otherwise, show the Home Overview grid of all 6 modules
+  // ActiveTab === 'modules': Home Overview grid of all 6 modules
   container.innerHTML = `
     <div class="three-col" style="margin-bottom:28px;">
       ${aiMarketingModules.map(m => {
@@ -1399,10 +1406,6 @@ function renderAITabContent() {
       }).join('')}
     </div>
   `;
-
-  if (expandedModuleId) {
-    initSingleModuleEvents(expandedModuleId);
-  }
 }
 
 function renderSingleModuleView(moduleId) {
