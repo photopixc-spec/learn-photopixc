@@ -1229,13 +1229,21 @@ function renderAIMarketing(routeHash = '#ai-marketing') {
     if (id >= 1 && id <= 6) {
       activeAITab = 'modules';
       expandedModuleId = id;
+    } else {
+      expandedModuleId = null;
     }
   } else if (routeHash === '#ai-tools') {
     activeAITab = 'tools';
+    expandedModuleId = null;
   } else if (routeHash === '#ai-cheats') {
     activeAITab = 'cheats';
+    expandedModuleId = null;
   } else if (routeHash === '#ai-proof') {
     activeAITab = 'proof';
+    expandedModuleId = null;
+  } else {
+    activeAITab = 'modules';
+    expandedModuleId = null;
   }
 
   main.innerHTML = `
@@ -1283,6 +1291,16 @@ function renderAIMarketing(routeHash = '#ai-marketing') {
   document.querySelectorAll('.ai-tab-btn').forEach(btn => {
     btn.onclick = () => {
       activeAITab = btn.dataset.tab;
+      expandedModuleId = null;
+      if (activeAITab === 'modules') {
+        if (location.hash !== '#ai-marketing') location.hash = '#ai-marketing';
+      } else if (activeAITab === 'tools') {
+        if (location.hash !== '#ai-tools') location.hash = '#ai-tools';
+      } else if (activeAITab === 'cheats') {
+        if (location.hash !== '#ai-cheats') location.hash = '#ai-cheats';
+      } else if (activeAITab === 'proof') {
+        if (location.hash !== '#ai-proof') location.hash = '#ai-proof';
+      }
       document.querySelectorAll('.ai-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === activeAITab));
       renderAITabContent();
     };
@@ -1340,37 +1358,45 @@ function renderAITabContent() {
   }
 
   // ActiveTab === 'modules'
+  // If user clicked into a specific module, show ONLY that single module view
+  if (expandedModuleId) {
+    container.innerHTML = `
+      <div style="margin-bottom:14px;display:flex;align-items:center;gap:10px;">
+        <a href="#ai-marketing" class="button" style="padding:8px 16px;font-size:13px;display:inline-flex;align-items:center;gap:6px;">
+          ← সব মডিউলে ফিরে যান (Back to Modules)
+        </a>
+      </div>
+      ${renderSingleModuleView(expandedModuleId)}
+    `;
+    initSingleModuleEvents(expandedModuleId);
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    return;
+  }
+
+  // Otherwise, show the Home Overview grid of all 6 modules
   container.innerHTML = `
     <div class="three-col" style="margin-bottom:28px;">
       ${aiMarketingModules.map(m => {
         const isDone = !!st.modulesCompleted?.[m.id];
         return `
-          <div class="card module-card" style="border-top:4px solid ${isDone?'var(--green)':'var(--ai-purple)'};">
+          <div class="card module-card" style="border-top:4px solid ${isDone?'var(--green)':'var(--ai-purple)'};display:flex;flex-direction:column;">
             <div class="card-head">
               <span class="module-num">${m.badge}</span>
               <span class="pill gray">${m.time}</span>
             </div>
             <h3 style="margin-top:10px;font-size:17px;">${m.titleBn}</h3>
-            <p class="small muted" style="margin-bottom:12px;">${m.titleEn}</p>
-            <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;">
+            <p class="small muted" style="margin-bottom:14px;flex:1;">${m.titleEn}</p>
+            <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:14px;">
               <span style="font-size:12px;font-weight:700;color:${isDone?'var(--green)':'var(--muted)'};">
-                ${isDone?'✅ সম্পন্ন':'⏳ বাকি'}
+                ${isDone?'✅ সম্পন্ন':'⏳ শুরু করুন'}
               </span>
-              <a href="#ai-module-${m.id}" class="button" style="padding:7px 14px;font-size:12px;">
+              <a href="#ai-module-${m.id}" class="button primary" style="padding:8px 16px;font-size:12px;background:var(--ai-purple);border-color:var(--ai-purple);">
                 মডিউল খুলুন →
               </a>
             </div>
           </div>
         `;
       }).join('')}
-    </div>
-
-    <div id="ai-module-expanded-view">
-      ${expandedModuleId ? renderSingleModuleView(expandedModuleId) : `
-        <div class="notice">
-          <strong>পরামর্শ:</strong> উপরে যেকোনো মডিউলে ক্লিক করে তার ৬০ সেকেন্ডের গল্প, কোর লেসন, উইনিং কম্প্যারিজন ও কুইজ সমাধান শুরু করুন।
-        </div>
-      `}
     </div>
   `;
 
@@ -1476,11 +1502,11 @@ function renderSingleModuleView(moduleId) {
         `).join('')}
       </div>
 
-      <!-- Navigation Footer -->
-      <div class="lesson-navigation">
-        ${m.id > 1 ? `<a href="#ai-module-${m.id-1}" class="button">← আগের মডিউল ${bn(m.id-1)}</a>` : '<div></div>'}
-        <a href="#ai-marketing" class="button text">সব মডিউলে ফিরে যান</a>
-        ${m.id < 6 ? `<a href="#ai-module-${m.id+1}" class="button primary">পরের মডিউল ${bn(m.id+1)} →</a>` : `<a href="#ai-tools" class="button primary">✏️ AI Sandbox Tools প্র্যাকটিস করুন →</a>`}
+      <!-- Navigation Footer (Previous, All Modules, Next) -->
+      <div class="lesson-navigation" style="display:flex;justify-content:space-between;align-items:center;margin-top:32px;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:20px;">
+        ${m.id > 1 ? `<a href="#ai-module-${m.id-1}" class="button" style="padding:10px 18px;font-weight:700;">← আগের মডিউল ${bn(m.id-1)}</a>` : '<div style="min-width:120px;"></div>'}
+        <a href="#ai-marketing" class="button" style="padding:10px 18px;font-weight:700;">🏠 সব মডিউলে ফিরে যান</a>
+        ${m.id < 6 ? `<a href="#ai-module-${m.id+1}" class="button primary" style="padding:10px 18px;font-weight:700;background:var(--green);border-color:var(--green);">পরের মডিউল ${bn(m.id+1)} →</a>` : `<a href="#ai-tools" class="button primary" style="padding:10px 18px;font-weight:700;background:var(--ai-purple);border-color:var(--ai-purple);">✏️ AI Sandbox Tools-এ যান →</a>`}
       </div>
     </article>
   `;
