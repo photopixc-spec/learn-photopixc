@@ -1,4 +1,4 @@
-/* PhotoPixc Quranic Arabic — Free interactive learning modules, V4.
+/* PhotoPixc Quranic Arabic — Free interactive learning modules, V4 & V7 Upgrades.
    No network requests, paid API, trackers, or external JS dependencies. */
 'use strict';
 window.QA_V4 = (() => {
@@ -28,7 +28,7 @@ window.QA_V4 = (() => {
   }
   let progress=load();
   let api;
-  let builder={word:null,tiles:[],picked:[],checked:false};
+  let builder={word:null,tiles:[],picked:[],checked:false,weakOnly:false};
   let markExercise={entry:null,options:[],answered:null};
   let kidsExercise={entry:null,options:[],answered:null,round:1,correct:0};
   let reviewReveal=false, reviewCursor=0;
@@ -68,20 +68,35 @@ window.QA_V4 = (() => {
     return `<section class="card v4-level-card"><span class="eyebrow">নিজের মতো করে শিখুন</span><h2>তুমি আরবি কতটুকু জানো?</h2><p class="muted">একটি স্তর বেছে নাও। পরে যেকোনো সময় বদলাতে পারবে।</p><div class="v4-level-grid">${LEVELS.map(l=>`<button type="button" data-v4-level="${l.id}" class="v4-level-option ${progress.level===l.id?'selected':''}" aria-pressed="${progress.level===l.id}"><strong>${esc(l.name)}</strong><small>${esc(l.text)}</small></button>`).join('')}</div>${progress.level?`<p class="v4-ok">✓ পছন্দ সংরক্ষিত। <a href="#qa-${LEVELS.find(x=>x.id===progress.level).to}">প্রস্তাবিত পাঠ শুরু করুন →</a></p>`:''}</section>`;
   }
   function dashboard(){
-    return `<section class="v4-home-additions"><div class="section-head"><h2>প্রতিদিনের অনুশীলন · একদম ফ্রি</h2><span class="pill">V4</span></div>${levelCard()}
+    const weakCount = api?.getWeakItems ? api.getWeakItems().length : 0;
+    return `<section class="v4-home-additions"><div class="section-head"><h2>প্রতিদিনের অনুশীলন · একদম ফ্রি</h2><span class="pill">V7 গেমিফাইড</span></div>${levelCard()}
     <div class="v4-feature-grid">
-      <article class="card v4-feature"><span class="v4-feature-icon">بِـ</span><h3>অক্ষর দিয়ে শব্দ বানাও</h3><p>শব্দের অক্ষরগুলো ঠিক ক্রমে বসিয়ে নিজে পড়া শিখো।</p><a class="button" href="#qa-builder">Word Builder খুলুন</a></article>
+      <article class="card v4-feature"><span class="v4-feature-icon">🧩</span><h3>Word Builder Puzzle</h3><p>শব্দার্থ ও অডিও শুনে এলোমেলো অক্ষর জোড়া লাগিয়ে শব্দ বানাও।</p><a class="button primary" href="#qa-builder">Word Builder ধাঁধা খেলুন →</a></article>
       <article class="card v4-feature"><span class="v4-feature-icon">بِ</span><h3>হরকত অনুশীলন</h3><p>যবর, যের, পেশ, সুকুন, তাশদীদ—চিহ্ন দেখেই চিনো।</p><a class="button" href="#qa-harakat">হরকত চিনুন</a></article>
       <article class="card v4-feature"><span class="v4-feature-icon">৫</span><h3>আজকের ৫টি শব্দ</h3><p>প্রতিদিন পাঁচটি শব্দ এবং নির্দিষ্ট বিরতিতে Revision।</p><a class="button" href="#qa-daily">Daily 5 Words</a></article>
       <article class="card v4-feature"><span class="v4-feature-icon">★</span><h3>Kids Learning Mode</h3><p>বড় অক্ষর ও মজার প্রশ্নে অক্ষরের নাম শেখো।</p><a class="button" href="#qa-kids">Kids Mode শুরু</a></article>
-    </div>${statsHtml()}</section>`;
+    </div>
+    ${weakCount > 0 ? `
+    <div style="margin: 14px 0 20px; text-align: center;">
+      <button type="button" class="btn-weak-review" data-start-weak-flash>
+        🎯 দুর্বল শব্দগুলো ঝালাই করুন (Review Weak Items) <span class="weak-badge">${bn(weakCount)}</span>
+      </button>
+    </div>
+    ` : ''}
+    ${statsHtml()}</section>`;
   }
-  function selectBuilderWord(id){
-    const available=eligibleWords();const chosen=wordById(id)||available[0];
-    if(!chosen){builder={word:null,tiles:[],picked:[],checked:false};return;}
+  function selectBuilderWord(id, weakOnly=false){
+    let pool = eligibleWords();
+    if(weakOnly && api?.getWeakItems){
+      const weakIds = api.getWeakItems();
+      const weakPool = pool.filter(w => weakIds.includes(w.id));
+      if(weakPool.length) pool = weakPool;
+    }
+    const chosen = id ? wordById(id) : pool[Math.floor(Math.random()*pool.length)];
+    if(!chosen){builder={word:null,tiles:[],picked:[],checked:false,weakOnly};return;}
     const pieces=glyphPieces(chosen.ar),tiles=seededShuffle(pieces.map((part,i)=>({part,index:i})));
     if(pieces.length>1&&tiles.every((p,i)=>p.index===i))tiles.push(tiles.shift());
-    builder={word:chosen,tiles,picked:[],checked:false};
+    builder={word:chosen,tiles,picked:[],checked:false,weakOnly};
   }
   function builderView(){
     if(!builder.word)selectBuilderWord('w001');
@@ -90,11 +105,60 @@ window.QA_V4 = (() => {
     const assembled=builder.picked.map(i=>pieceGlyph(builder.tiles[i].part)).join('');
     const success=builder.checked&&builder.picked.every((tileIndex,originalIndex)=>pieceGlyph(builder.tiles[tileIndex].part)===pieceGlyph(glyphPieces(w.ar)[originalIndex]));
     const labels=builder.picked.map((i,k)=>`<button type="button" class="v4-placed arabic" data-v4-remove="${k}" ${builder.checked?'disabled':''} title="এই অক্ষরটি সরান">${esc(pieceGlyph(builder.tiles[i].part))}</button>`).join('');
-    return `<span class="eyebrow">V4 · INTERACTIVE WORD BUILDER</span><h1>অক্ষর জুড়ে শব্দ বানাও</h1><p class="muted">আরবি ডান থেকে বাঁয়ে পড়তে হয়। নিচে অক্ষরে চাপ দিয়ে বাংলা উচ্চারণের সঙ্গে মিলিয়ে শব্দটি সাজাও। একই অক্ষর একাধিকবার থাকলেও দুটোই লাগবে।</p>
-    <section class="card v4-practice"><div class="v4-word-hint"><small>শব্দটির বাংলা উচ্চারণ ও অর্থ</small><b>${esc(w.bn)}</b><span>${esc(w.meaning)}</span></div><div class="v4-assembled" dir="rtl" lang="ar" aria-label="তোমার সাজানো অক্ষর">${labels||'<span class="v4-placeholder">এখানে অক্ষরগুলো বসবে</span>'}</div>
-    <div class="v4-divider"></div><p class="v4-overline">এখান থেকে সঠিক ক্রমে অক্ষর বেছে নাও</p><div class="v4-tiles" dir="rtl">${builder.tiles.map((p,i)=>`<button type="button" class="v4-tile arabic" data-v4-tile="${i}" ${builder.picked.includes(i)||builder.checked?'disabled':''}>${esc(pieceGlyph(p.part))}</button>`).join('')}</div>
-    ${builder.checked?`<div class="v4-feedback ${success?'yes':'no'}"><strong>${success?'✓ সঠিকভাবে সাজিয়েছ!':'এবার মূল বানানের সঙ্গে মিলিয়ে দেখো।'}</strong><div class="v4-answer arabic" dir="rtl" lang="ar">${esc(w.ar)}</div><span>সঠিক শব্দ: ${esc(w.bn)} — ${esc(w.meaning)}</span>${success?'<p>অক্ষরের হরকতসহ মিলিয়ে শিখেছ।</p>':'<p>ভুল হলে আবার চেষ্টা করতে পারো।</p>'}</div>`:''}
-    <div class="actions"><button type="button" class="btn primary" data-v4-check-builder ${!done||builder.checked?'disabled':''}>উত্তর যাচাই</button><button type="button" class="btn" data-v4-reset-builder>আবার সাজাও</button><button type="button" class="btn" data-v4-next-builder>পরের শব্দ →</button><a class="button" href="#qa-word-${esc(w.id)}">মূল হরকত টেবিল দেখো ↗</a></div></section><p class="notice">এই অনুশীলনে ২–৭ অক্ষরের নির্বাচিত শব্দগুলো ব্যবহার করা হয়েছে। এখানে প্রাসঙ্গিক লিখনরূপ শনাক্ত করা শেখানো হয়; সম্পূর্ণ তাজবীদ পাঠ নয়।</p>`;
+    const weakList = api?.getWeakItems ? api.getWeakItems() : [];
+
+    return `<span class="eyebrow">INTERACTIVE PUZZLE · DUOLINGO-STYLE WORD BUILDER</span>
+    <h1>অক্ষর জুড়ে শব্দ বানাও (Word Builder Puzzle)</h1>
+    <p class="muted">অর্থ ও অডিও শুনে এলোমেলো অক্ষরগুলো সঠিক ডান-থেকে-বাম (RTL) ক্রমে ট্যাপ করে শব্দ তৈরি করো।</p>
+    
+    <section class="card v4-practice ${builder.checked && !success ? 'puzzle-shake' : ''}">
+      <div class="v4-puzzle-header">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="font-size:36px;" aria-hidden="true">${w.icon || '📖'}</span>
+          <div>
+            <div style="font-size:12px;color:var(--muted);font-weight:700;">শব্দটির অর্থ</div>
+            <strong style="font-size:20px;color:var(--deep);">${esc(w.meaning)}</strong>
+            <small style="display:block;color:#557262;">উচ্চারণ: ${esc(w.bn)}</small>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <button type="button" class="v4-puzzle-audio-btn" data-speak="${esc(w.id)}">
+            ♪ উচ্চারণ শুনুন
+          </button>
+          <a class="button" href="#qa-word-${esc(w.id)}" style="font-size:12px;">অক্ষর বিশ্লেষণ ↗</a>
+        </div>
+      </div>
+
+      <div class="v4-assembled" dir="rtl" lang="ar" aria-label="তোমার সাজানো অক্ষর">
+        ${labels||'<span class="v4-placeholder">নিচের অক্ষরের টাইলগুলোতে চাপ দিলে এখানে ক্রমানুসারে বসবে</span>'}
+      </div>
+      
+      <p class="v4-overline">নিচের টাইলগুলোতে চাপ দিয়ে সঠিক ক্রমে বসাও (ডান থেকে বামে)</p>
+      <div class="v4-tiles" dir="rtl">
+        ${builder.tiles.map((p,i)=>`<button type="button" class="v4-tile arabic" data-v4-tile="${i}" ${builder.picked.includes(i)||builder.checked?'disabled':''}>${esc(pieceGlyph(p.part))}</button>`).join('')}
+      </div>
+
+      ${builder.checked?`
+        <div class="v4-feedback ${success?'yes':'no'}">
+          <strong>${success?'🎉 মাশাআল্লাহ! চমৎকারভাবে শব্দটি সাজিয়েছ!':'শেখার সুযোগ: সঠিক বানান মিলিয়ে দেখো'}</strong>
+          <div class="v4-answer arabic" dir="rtl" lang="ar">${esc(w.ar)}</div>
+          <span>সঠিক শব্দ: <strong>${esc(w.bn)}</strong> — ${esc(w.meaning)}</span>
+          ${success?'<p>তোমার শেখা অগ্রগতিত শব্দ যুক্ত হয়েছে এবং স্ট্রিক বৃদ্ধি পেয়েছে! ⭐⭐⭐</p>':'<p>শব্দটি দুর্বল তালিকায় রাখা হলো যাতে পরে ঝালাই করতে পারো।</p>'}
+        </div>
+      `:''}
+
+      <div class="actions" style="margin-top:20px;">
+        <button type="button" class="btn primary" data-v4-check-builder ${!done||builder.checked?'disabled':''}>উত্তর যাচাই করুন ✓</button>
+        <button type="button" class="btn" data-v4-reset-builder>আবার সাজাও ↺</button>
+        <button type="button" class="btn" data-v4-next-builder>পরের ধাঁধা →</button>
+        ${weakList.length > 0 ? `
+          <button type="button" class="btn ${builder.weakOnly ? 'primary' : ''}" data-v4-toggle-weak-builder>
+            🎯 ${builder.weakOnly ? 'সব শব্দে ফিরুন' : `শুধু দুর্বল শব্দ (${bn(weakList.length)}টি)`}
+          </button>
+        ` : ''}
+      </div>
+    </section>
+    <p class="notice">এই ধাঁধায় ছোট সূরাগুলোর শব্দ থেকে অক্ষর সাজানো শেখানো হয়। শিশুর নির্ভুল পাঠে হরকতযুক্ত টাইলগুলো স্পর্শভিত্তিক খেলায় সাহায্য করে।</p>`;
   }
   function markSamples(){const samples=[];for(const w of words())for(const p of glyphPieces(w.ar))for(const mark of Array.from(p.marks))if(MARKS[mark])samples.push({letter:p.base,mark,word:w});return samples;}
   const ALLMARKS=Object.keys(MARKS);
@@ -139,15 +203,101 @@ window.QA_V4 = (() => {
   }
   function handleClick(hit){
     if(hit.dataset.v4Level){progress.level=hit.dataset.v4Level;save();draw();notify('তোমার শেখার স্তর সংরক্ষিত হয়েছে।');return true;}
-    if(hit.dataset.v4Tile!==undefined){const n=+hit.dataset.v4Tile;if(!builder.checked&&!builder.picked.includes(n)&&builder.tiles[n]){builder.picked.push(n);draw();}return true;}
-    if(hit.dataset.v4Remove!==undefined){if(!builder.checked){builder.picked.splice(+hit.dataset.v4Remove,1);draw();}return true;}
-    if(hit.hasAttribute('data-v4-check-builder')){if(builder.picked.length===builder.tiles.length&&!builder.checked){builder.checked=true;const right=builder.picked.every((i,k)=>pieceGlyph(builder.tiles[i].part)===pieceGlyph(glyphPieces(builder.word.ar)[k]));if(right){progress.stats.builder++;save();}draw();}return true;}
-    if(hit.hasAttribute('data-v4-reset-builder')){selectBuilderWord(builder.word?.id);draw();return true;}
-    if(hit.hasAttribute('data-v4-next-builder')){const other=eligibleWords().filter(w=>w.id!==builder.word?.id&&w.length<=6);selectBuilderWord(other[Math.floor(Math.random()*other.length)]?.id);draw();return true;}
-    if(hit.dataset.v4HarakaAnswer!==undefined){if(markExercise.answered===null){markExercise.answered=+hit.dataset.v4HarakaAnswer;if(markExercise.options[markExercise.answered]===markExercise.entry.mark){progress.stats.harakat++;save();}draw();}return true;}
-    if(hit.hasAttribute('data-v4-next-haraka')){nextHarakat();draw();return true;}
-    if(hit.dataset.v4KidsAnswer!==undefined){if(kidsExercise.answered===null){kidsExercise.answered=+hit.dataset.v4KidsAnswer;if(kidsExercise.options[kidsExercise.answered]===kidsExercise.entry.name){kidsExercise.correct++;progress.stats.kids++;save();}draw();}return true;}
-    if(hit.hasAttribute('data-v4-next-kids')){if(kidsExercise.round>=10)nextKids(true);else{kidsExercise.round++;nextKids();}draw();return true;}
+    if(hit.dataset.v4Tile!==undefined){
+      const n=+hit.dataset.v4Tile;
+      if(!builder.checked&&!builder.picked.includes(n)&&builder.tiles[n]){
+        builder.picked.push(n);
+        api?.soundFx?.playClick();
+        draw();
+      }
+      return true;
+    }
+    if(hit.dataset.v4Remove!==undefined){
+      if(!builder.checked){
+        builder.picked.splice(+hit.dataset.v4Remove,1);
+        api?.soundFx?.playClick();
+        draw();
+      }
+      return true;
+    }
+    if(hit.hasAttribute('data-v4-check-builder')){
+      if(builder.picked.length===builder.tiles.length&&!builder.checked){
+        builder.checked=true;
+        const right=builder.picked.every((i,k)=>pieceGlyph(builder.tiles[i].part)===pieceGlyph(glyphPieces(builder.word.ar)[k]));
+        if(right){
+          progress.stats.builder++;
+          save();
+          api?.soundFx?.playSuccess();
+          api?.confetti?.();
+          api?.updateStreak?.();
+          if(!api.state.learned.includes(builder.word.id)){
+            api.state.learned.push(builder.word.id);
+            api.save();
+          }
+          if(api?.removeWeakItem) api.removeWeakItem(builder.word.id);
+          notify('মাশাআল্লাহ! সঠিকভাবে শব্দ সাজিয়েছ!');
+        } else {
+          api?.soundFx?.playWrong();
+          if(api?.addWeakItem) api.addWeakItem(builder.word.id);
+          notify('ভুল হয়েছে। সঠিক রূপটি দেখে আবার চেষ্টা করো।');
+        }
+        draw();
+      }
+      return true;
+    }
+    if(hit.hasAttribute('data-v4-reset-builder')){
+      api?.soundFx?.playClick();
+      selectBuilderWord(builder.word?.id, builder.weakOnly);
+      draw();
+      return true;
+    }
+    if(hit.hasAttribute('data-v4-next-builder')){
+      api?.soundFx?.playClick();
+      const other=eligibleWords().filter(w=>w.id!==builder.word?.id&&w.length<=6);
+      selectBuilderWord(other[Math.floor(Math.random()*other.length)]?.id, builder.weakOnly);
+      draw();
+      return true;
+    }
+    if(hit.hasAttribute('data-v4-toggle-weak-builder')){
+      api?.soundFx?.playClick();
+      builder.weakOnly = !builder.weakOnly;
+      selectBuilderWord(null, builder.weakOnly);
+      draw();
+      return true;
+    }
+    if(hit.dataset.v4HarakaAnswer!==undefined){
+      if(markExercise.answered===null){
+        markExercise.answered=+hit.dataset.v4HarakaAnswer;
+        if(markExercise.options[markExercise.answered]===markExercise.entry.mark){
+          progress.stats.harakat++;
+          save();
+          api?.soundFx?.playSuccess();
+          api?.confetti?.();
+        } else {
+          api?.soundFx?.playWrong();
+        }
+        draw();
+      }
+      return true;
+    }
+    if(hit.hasAttribute('data-v4-next-haraka')){api?.soundFx?.playClick();nextHarakat();draw();return true;}
+    if(hit.dataset.v4KidsAnswer!==undefined){
+      if(kidsExercise.answered===null){
+        kidsExercise.answered=+hit.dataset.v4KidsAnswer;
+        if(kidsExercise.options[kidsExercise.answered]===kidsExercise.entry.name){
+          kidsExercise.correct++;
+          progress.stats.kids++;
+          save();
+          api?.soundFx?.playSuccess();
+          api?.confetti?.();
+        } else {
+          api?.soundFx?.playWrong();
+        }
+        draw();
+      }
+      return true;
+    }
+    if(hit.hasAttribute('data-v4-next-kids')){api?.soundFx?.playClick();if(kidsExercise.round>=10)nextKids(true);else{kidsExercise.round++;nextKids();}draw();return true;}
     if(hit.dataset.v4Daily){const w=wordById(hit.dataset.v4Daily);if(w&&todaysFive().some(a=>a.id===w.id))markToday(w);return true;}
     if(hit.hasAttribute('data-v4-reveal')){reviewReveal=true;draw();return true;}
     if(hit.dataset.v4Remember){reviewAnswer(hit.dataset.v4Remember==='yes');return true;}
@@ -166,13 +316,12 @@ window.QA_V4 = (() => {
   }
   function create(parentApi){
     api=parentApi;
-    // Keep the learner's existing V1–V3 "learned" selections: schedule them for a first V4 revision.
     let changed=false;
     for(const id of api.state.learned){
       if(wordById(id) && !progress.review[id]) {progress.review[id]={next:getDate(),interval:1,streak:0};changed=true;}
     }
     if(changed)save();
-    return {routes,dashboard,renderRoute,handleClick,statsHtml,reviewCount,exportState,importState};
+    return {routes,dashboard,renderRoute,handleClick,statsHtml,reviewCount,exportState,importState,selectBuilderWord};
   }
   return {create};
 })();

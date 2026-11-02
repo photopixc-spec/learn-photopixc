@@ -1,0 +1,19 @@
+{
+  "name": "কুরআনিক আরবি পাঠশালা",
+  "short_name": "আরবি পাঠশালা",
+  "description": "বাংলায় শিশু ও নতুনদের জন্য কুরআনিক আরবি ও নামাজ শেখার ১০০% অফলাইন ও গেমিফাইড পাঠশালা",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f8fbf7",
+  "theme_color": "#176b53",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

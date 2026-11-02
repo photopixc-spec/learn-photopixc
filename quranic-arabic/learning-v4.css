@@ -52,3 +52,64 @@ button.v4-done:disabled{opacity:1;background:#e4f0e4;color:var(--green);border-c
 
 /* Hide transliteration only (not the Arabic Quranic text or meanings) during memorization. */
 .prayer-surah-panel.hide-translit .prayer-bn{display:none}
+
+
+/* Word Builder Puzzle Enhancements */
+.v4-puzzle-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
+  border: 1.5px solid #86efac;
+  border-radius: 16px;
+  padding: 14px 20px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.v4-puzzle-audio-btn {
+  background: var(--green);
+  color: #fff;
+  border: none;
+  border-radius: 99px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 750;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.v4-puzzle-audio-btn:hover {
+  transform: scale(1.05);
+}
+.v4-tile {
+  box-shadow: 0 4px 0 #93c590;
+  transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+}
+.v4-tile:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0 #93c590;
+}
+.v4-tile:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #93c590;
+}
+.v4-placed {
+  box-shadow: 0 3px 0 #176b53;
+  animation: placeBounce 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes placeBounce {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.v4-practice.puzzle-shake {
+  animation: puzzleShake 0.4s ease-in-out;
+}
+@keyframes puzzleShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
