@@ -505,7 +505,7 @@ function renderAIBadges() {
 function renderPromptHookGenerator() {
   return `
     <div class="ai-tool-shell" id="tool-prompt-hook">
-      <div class="ai-compare-head" style="color:var(--ai-purple);font-size:18px;">
+      <div class="ai-compare-head" style="color:var(--color-accent,#0e7c6b);font-size:18px;">
         <span>🪄 টুল ০১: Interactive AI Prompt & Hook Generator</span>
       </div>
       <p class="small muted">আপনার নিশ ও লক্ষ্য নির্বাচন করুন। এআই আপনাকে সাথে সাথে কপি-রেডি মাস্টার প্রম্পট এবং ৩টি উইনিং বাংলা ও ইংরেজি হুক জেনারেট করে দেবে।</p>
@@ -1074,7 +1074,7 @@ function renderAICheatSheetContent() {
       </section>
 
       <section style="margin:24px 0;">
-        <h3 style="color:var(--ai-purple);margin-bottom:12px;">⚡ ২. ডিজাইনার ও মার্কেটারের নো-কোড এআই টুলস্ট্যাক</h3>
+        <h3 style="color:var(--color-accent,#0e7c6b);margin-bottom:12px;">⚡ ২. ডিজাইনার ও মার্কেটারের নো-কোড এআই টুলস্ট্যাক</h3>
         <div class="table-wrap">
           <table>
             <thead>
@@ -1386,7 +1386,7 @@ function renderAITabContent() {
       ${aiMarketingModules.map(m => {
         const isDone = !!st.modulesCompleted?.[m.id];
         return `
-          <div class="card module-card" style="border-top:4px solid ${isDone?'var(--green)':'var(--ai-purple)'};display:flex;flex-direction:column;">
+          <div class="card module-card" style="border-top:4px solid ${isDone?'var(--color-accent,#0e7c6b)':'var(--color-border,#d9dee8)'};display:flex;flex-direction:column;">
             <div class="card-head">
               <span class="module-num">${m.badge}</span>
               <span class="pill gray">${m.time}</span>
@@ -1394,10 +1394,10 @@ function renderAITabContent() {
             <h3 style="margin-top:10px;font-size:17px;">${m.titleBn}</h3>
             <p class="small muted" style="margin-bottom:14px;flex:1;">${m.titleEn}</p>
             <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:14px;">
-              <span style="font-size:12px;font-weight:700;color:${isDone?'var(--green)':'var(--muted)'};">
+              <span style="font-size:12px;font-weight:700;color:${isDone?'var(--color-accent,#0e7c6b)':'var(--muted)'};">
                 ${isDone?'✅ সম্পন্ন':'⏳ শুরু করুন'}
               </span>
-              <a href="#ai-module-${m.id}" class="button primary" style="padding:8px 16px;font-size:12px;background:var(--ai-purple);border-color:var(--ai-purple);">
+              <a href="#ai-module-${m.id}" class="button primary" style="padding:8px 16px;font-size:12px;">
                 মডিউল খুলুন →
               </a>
             </div>
@@ -1509,7 +1509,7 @@ function renderSingleModuleView(moduleId) {
       <div class="lesson-navigation" style="display:flex;justify-content:space-between;align-items:center;margin-top:32px;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:20px;">
         ${m.id > 1 ? `<a href="#ai-module-${m.id-1}" class="button" style="padding:10px 18px;font-weight:700;">← আগের মডিউল ${bn(m.id-1)}</a>` : '<div style="min-width:120px;"></div>'}
         <a href="#ai-marketing" class="button" style="padding:10px 18px;font-weight:700;">🏠 সব মডিউলে ফিরে যান</a>
-        ${m.id < 6 ? `<a href="#ai-module-${m.id+1}" class="button primary" style="padding:10px 18px;font-weight:700;background:var(--green);border-color:var(--green);">পরের মডিউল ${bn(m.id+1)} →</a>` : `<a href="#ai-tools" class="button primary" style="padding:10px 18px;font-weight:700;background:var(--ai-purple);border-color:var(--ai-purple);">✏️ AI Sandbox Tools-এ যান →</a>`}
+        ${m.id < 6 ? `<a href="#ai-module-${m.id+1}" class="button primary" style="padding:10px 18px;font-weight:700;background:var(--color-accent,#0e7c6b);border-color:var(--color-accent,#0e7c6b);">পরের মডিউল ${bn(m.id+1)} →</a>` : `<a href="#ai-tools" class="button primary" style="padding:10px 18px;font-weight:700;background:var(--color-accent,#0e7c6b);border-color:var(--color-accent,#0e7c6b);">✏️ AI Sandbox Tools-এ যান →</a>`}
       </div>
     </article>
   `;
@@ -1625,7 +1625,7 @@ function renderAIHomeTrackCard() {
   const st = getAIMarketingState();
   const done = Object.values(st.modulesCompleted || {}).filter(Boolean).length;
   return `
-    <section class="card" style="border:2px solid var(--ai-purple);background:linear-gradient(135deg, #fcfaff 0%, #ffffff 70%, #f2ecfa 100%);grid-column:1/-1;padding:28px;margin-bottom:12px;">
+    <section class="card" style="border:1px solid var(--color-border,#d9dee8);border-radius:var(--radius-card,12px);background:var(--color-canvas,#ffffff);grid-column:1/-1;padding:28px;margin-bottom:12px;">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;">
         <div>
           ${renderAIBadges()}
@@ -1635,12 +1635,12 @@ function renderAIHomeTrackCard() {
           </p>
         </div>
         <div style="text-align:right;">
-          <div style="font-size:24px;font-weight:800;color:var(--green);">${bn(done)}/৬ মডিউল</div>
+          <div style="font-size:24px;font-weight:800;color:var(--color-accent,#0e7c6b);">${bn(done)}/৬ মডিউল</div>
           <small class="muted">${bn(Math.round(done/6*100))}% সম্পন্ন</small>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:10px;">
-        <a href="#ai-marketing" class="button primary" style="background:var(--ai-purple);border-color:var(--ai-purple);">
+        <a href="#ai-marketing" class="button primary">
           📚 Modules (01–06) শুরু করুন →
         </a>
         <a href="#ai-tools" class="button">

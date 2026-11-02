@@ -1,69 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap');
-
-/* PhotoPixc AI Marketing Track Stylesheet
-   Matches 100% existing design language: --ink, --paper, --line, --green, --greenlight, --radius
-*/
+/* PhotoPixc AI Marketing Track Stylesheet — Fully Aligned with DESIGN.md */
 :root {
-  font-family: 'Hind Siliguri', 'Noto Sans Bengali', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
-  --ai-purple: #4a2882;
-  --ai-purple-soft: #f3effa;
-  --ai-teal: #0d6b63;
-  --ai-teal-soft: #e3f5f3;
-  --ai-amber: #b06500;
-  --ai-amber-soft: #fef5e7;
-  --ai-danger: #a32d29;
-  --ai-danger-soft: #fdeeee;
+  --ai-teal: var(--color-accent, #0e7c6b);
+  --ai-teal-dark: var(--color-accent-dark, #0a5c50);
+  --ai-amber: var(--color-highlight, #ffb020);
+  --ai-danger: var(--color-error, #c0392b);
 }
 
 body, button, input, textarea, select, h1, h2, h3, h4, p, span, small, label, a, .ai-track-hero, .ai-story-box, .ai-lesson-card, .ai-compare-box, .ai-tool-shell, .ai-proof-card {
-  font-family: 'Hind Siliguri', 'Noto Sans Bengali', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+  font-family: var(--font-ui, 'Inter', 'Hind Siliguri', 'Noto Sans Bengali', system-ui, -apple-system, sans-serif);
 }
 
-
-/* Light / Dark Mode support */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ink: #e9efe7;
-    --muted: #a3b3a4;
-    --paper: #121814;
-    --white: #1a221d;
-    --line: #2b382f;
-    --green: #4cc084;
-    --greenlight: #1e3328;
-    --ai-purple: #b39ddb;
-    --ai-purple-soft: #271c38;
-    --ai-teal: #4dd0e1;
-    --ai-teal-soft: #162f33;
-    --ai-amber: #ffb74d;
-    --ai-amber-soft: #382c16;
-    --ai-danger: #ef9a9a;
-    --ai-danger-soft: #381d1c;
-  }
-}
-
-/* Track Header & Hero */
+/* Track Header & Hero — Section 1 & 5 */
 .ai-track-hero {
-  background: linear-gradient(135deg, #eaf4ed 0%, #f6f7f2 60%, #f2ecfa 100%);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
+  background: var(--color-surface, #f6f9f8);
+  border: 1px solid var(--color-border, #d9dee8);
+  border-radius: var(--radius-card, 12px);
   padding: 36px 32px;
-  margin-bottom: 30px;
-}
-@media (prefers-color-scheme: dark) {
-  .ai-track-hero {
-    background: linear-gradient(135deg, #18261e 0%, #161e19 60%, #201a2c 100%);
-  }
+  margin-bottom: 28px;
 }
 .ai-track-hero h1 {
   font-size: clamp(26px, 3.2vw, 40px);
   margin: 12px 0;
-  line-height: 1.3;
+  line-height: 1.25;
+  font-weight: 800;
+  color: var(--color-ink, #102a43);
 }
 .ai-track-hero p {
   max-width: 780px;
   font-size: 15px;
-  line-height: 1.85;
-  color: var(--muted);
+  line-height: 1.8;
+  color: var(--color-muted, #52606d);
 }
 .ai-badges-row {
   display: flex;
@@ -75,20 +41,32 @@ body, button, input, textarea, select, h1, h2, h3, h4, p, span, small, label, a,
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 5px 11px;
+  padding: 4px 10px;
   font-size: 11px;
-  font-weight: 750;
-  letter-spacing: 0.6px;
-  border-radius: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 999px;
   text-transform: uppercase;
 }
-.ai-badge.free { background: var(--greenlight); color: var(--green); }
-.ai-badge.creative { background: #ede7f6; color: #4a2882; }
-.ai-badge.friendly { background: var(--ai-amber-soft); color: var(--ai-amber); }
-.ai-badge.portfolio { background: #e0f2f1; color: #00695c; }
-@media (prefers-color-scheme: dark) {
-  .ai-badge.creative { background: #2f2045; color: #d1c4e9; }
-  .ai-badge.portfolio { background: #133330; color: #80cbc4; }
+.ai-badge.free {
+  background: var(--greenlight, #e8f5f2);
+  color: var(--color-accent-dark, #0a5c50);
+  border: 1px solid #c2e2dc;
+}
+.ai-badge.creative {
+  background: var(--color-surface, #f6f9f8);
+  color: var(--color-ink, #102a43);
+  border: 1px solid var(--color-border, #d9dee8);
+}
+.ai-badge.friendly {
+  background: var(--color-surface, #f6f9f8);
+  color: var(--color-muted, #52606d);
+  border: 1px solid var(--color-border, #d9dee8);
+}
+.ai-badge.portfolio {
+  background: var(--color-highlight, #ffb020);
+  color: var(--color-text-on-highlight, #102a43);
+  font-weight: 700;
 }
 
 /* Track Navigation Tabs */
@@ -97,57 +75,57 @@ body, button, input, textarea, select, h1, h2, h3, h4, p, span, small, label, a,
   flex-wrap: wrap;
   gap: 10px;
   margin: 22px 0 28px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--color-border, #d9dee8);
   padding-bottom: 14px;
 }
 .ai-tab-btn {
-  background: var(--white);
-  border: 1px solid var(--line);
-  color: var(--ink);
+  background: var(--color-canvas, #ffffff);
+  border: 1px solid var(--color-border, #d9dee8);
+  color: var(--color-ink, #102a43);
   font-size: 13px;
-  font-weight: 650;
-  padding: 9px 18px;
-  border-radius: 8px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--radius, 8px);
   cursor: pointer;
+  min-height: 44px;
   transition: all 0.15s ease;
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
-.ai-tab-btn:hover { background: #edf1e9; }
+.ai-tab-btn:hover {
+  background: var(--color-surface, #f6f9f8);
+  border-color: var(--color-ink, #102a43);
+}
 .ai-tab-btn.active {
-  background: var(--green);
-  color: #fff;
-  border-color: var(--green);
+  background: var(--color-accent, #0e7c6b);
+  color: var(--color-text-on-accent, #ffffff);
+  border-color: var(--color-accent, #0e7c6b);
 }
 
 /* Story Box ("৬০ সেকেন্ডের সহজ গল্প") */
 .ai-story-box {
-  background: #fbf9f2;
-  border-left: 4px solid #b06500;
-  border-radius: 0 12px 12px 0;
+  background: #fbfbf9;
+  border: 1px solid var(--color-border, #d9dee8);
+  border-left: 4px solid var(--color-highlight, #ffb020);
+  border-radius: 0 var(--radius-card, 12px) var(--radius-card, 12px) 0;
   padding: 22px 26px;
   margin: 22px 0;
-}
-@media (prefers-color-scheme: dark) {
-  .ai-story-box {
-    background: #252015;
-    border-left-color: #ffb74d;
-  }
 }
 .ai-story-box .story-title {
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 15px;
-  font-weight: 750;
-  color: var(--ai-amber);
+  font-weight: 700;
+  color: var(--color-warning-text, #8a5a00);
   margin-bottom: 8px;
 }
 .ai-story-box p {
-  font-size: 14.5px;
-  line-height: 1.85;
+  font-size: 15px;
+  line-height: 1.8;
   margin: 0;
+  color: var(--color-ink, #102a43);
 }
 
 /* Core Lesson Cards Grid */
@@ -158,17 +136,18 @@ body, button, input, textarea, select, h1, h2, h3, h4, p, span, small, label, a,
   margin: 20px 0;
 }
 .ai-lesson-card {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 20px;
+  background: var(--color-canvas, #ffffff);
+  border: 1px solid var(--color-border, #d9dee8);
+  border-radius: var(--radius-card, 12px);
+  padding: 22px;
   display: flex;
   flex-direction: column;
 }
 .ai-lesson-card h4 {
   font-size: 16px;
   margin: 0 0 10px;
-  color: var(--ink);
+  color: var(--color-ink, #102a43);
+  font-weight: 700;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -176,9 +155,9 @@ body, button, input, textarea, select, h1, h2, h3, h4, p, span, small, label, a,
 .ai-lesson-card ul {
   padding-left: 18px;
   margin: 0;
-  font-size: 13.5px;
-  line-height: 1.8;
-  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--color-ink, #102a43);
 }
 .ai-lesson-card li { margin-bottom: 6px; }
 
@@ -187,80 +166,77 @@ body, button, input, textarea, select, h1, h2, h3, h4, p, span, small, label, a,
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
-  margin: 24px 0;
+  margin: 20px 0;
 }
-@media (max-width: 720px) {
+@media (max-width: 760px) {
   .ai-comparison-grid { grid-template-columns: 1fr; }
 }
 .ai-compare-box {
-  padding: 20px;
-  border-radius: 12px;
-  font-size: 13.5px;
-  line-height: 1.8;
+  border-radius: var(--radius-card, 12px);
+  padding: 22px;
 }
 .ai-compare-box.weak {
-  background: #fdf2f0;
-  border: 1px solid #f0cac7;
-  border-top: 4px solid #a32d29;
+  background: #fdf6f5;
+  border: 1px solid #f2cfca;
 }
 .ai-compare-box.winning {
-  background: #edf6f0;
-  border: 1px solid #cce5d4;
-  border-top: 4px solid var(--green);
-}
-@media (prefers-color-scheme: dark) {
-  .ai-compare-box.weak { background: #2a1b1b; border-color: #552726; border-top-color: #ef9a9a; }
-  .ai-compare-box.winning { background: #18281f; border-color: #2b4f3b; border-top-color: #4cc084; }
+  background: #f2faf8;
+  border: 1px solid #bad4bf;
 }
 .ai-compare-head {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  font-size: 15px;
   font-weight: 750;
-  font-size: 14px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
-.ai-compare-box.weak .ai-compare-head { color: #a32d29; }
-.ai-compare-box.winning .ai-compare-head { color: var(--green); }
-@media (prefers-color-scheme: dark) {
-  .ai-compare-box.weak .ai-compare-head { color: #ef9a9a; }
-  .ai-compare-box.winning .ai-compare-head { color: #4cc084; }
+.ai-compare-box.weak .ai-compare-head { color: var(--color-error, #c0392b); }
+.ai-compare-box.winning .ai-compare-head { color: var(--color-accent-dark, #0a5c50); }
+.ai-compare-box ul {
+  padding-left: 18px;
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.75;
 }
+.ai-compare-box li { margin-bottom: 8px; }
 
 /* Practice Task Box */
 .ai-practice-box {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 22px;
+  background: var(--color-surface, #f6f9f8);
+  border: 1px solid var(--color-border, #d9dee8);
+  border-radius: var(--radius-card, 12px);
+  padding: 24px;
   margin: 24px 0;
 }
 .ai-practice-box textarea {
   width: 100%;
   min-height: 110px;
   padding: 12px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
+  border: 1px solid var(--color-border, #d9dee8);
+  border-radius: var(--radius, 8px);
   font-size: 14px;
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--color-canvas, #ffffff);
+  color: var(--color-ink, #102a43);
   line-height: 1.7;
   resize: vertical;
   margin-top: 10px;
 }
+.ai-practice-box textarea:focus {
+  border-color: var(--color-accent, #0e7c6b);
+  outline: 2px solid var(--color-accent, #0e7c6b);
+  outline-offset: 1px;
+}
 
 /* Quick Check Quiz Section */
 .ai-quiz-section {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 12px;
+  background: var(--color-canvas, #ffffff);
+  border: 1px solid var(--color-border, #d9dee8);
+  border-radius: var(--radius-card, 12px);
   padding: 24px;
   margin: 24px 0;
 }
 .ai-question-card {
   margin-bottom: 22px;
   padding-bottom: 18px;
-  border-bottom: 1px dashed var(--line);
+  border-bottom: 1px dashed var(--color-border, #d9dee8);
 }
 .ai-question-card:last-child {
   border-bottom: 0;
@@ -274,45 +250,49 @@ body, button, input, textarea, select, h1, h2, h3, h4, p, span, small, label, a,
 }
 .ai-opt-btn {
   text-align: left;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 11px 14px;
-  font-size: 13.5px;
-  color: var(--ink);
+  background: var(--color-surface, #f6f9f8);
+  border: 1px solid var(--color-border, #d9dee8);
+  border-radius: var(--radius, 8px);
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--color-ink, #102a43);
   cursor: pointer;
   line-height: 1.6;
+  min-height: 44px;
   transition: all 0.15s ease;
 }
-.ai-opt-btn:hover { background: #edf1e9; }
+.ai-opt-btn:hover {
+  background: var(--color-canvas, #ffffff);
+  border-color: var(--color-ink, #102a43);
+}
 .ai-opt-btn.correct {
-  background: var(--greenlight) !important;
-  border-color: var(--green) !important;
-  color: var(--green) !important;
+  background: var(--greenlight, #e8f5f2) !important;
+  border-color: var(--color-accent, #0e7c6b) !important;
+  color: var(--color-accent-dark, #0a5c50) !important;
   font-weight: 700;
 }
 .ai-opt-btn.incorrect {
-  background: var(--ai-danger-soft) !important;
-  border-color: var(--ai-danger) !important;
-  color: var(--ai-danger) !important;
+  background: var(--redlight, #fbeeed) !important;
+  border-color: var(--color-error, #c0392b) !important;
+  color: var(--color-error, #c0392b) !important;
 }
 .ai-feedback-box {
-  padding: 10px 14px;
-  border-radius: 7px;
-  font-size: 13px;
+  padding: 12px 16px;
+  border-radius: var(--radius, 8px);
+  font-size: 13.5px;
   line-height: 1.7;
   margin-top: 8px;
   display: none;
 }
 .ai-feedback-box.show { display: block; }
-.ai-feedback-box.ok { background: var(--greenlight); color: var(--green); }
-.ai-feedback-box.err { background: var(--ai-danger-soft); color: var(--ai-danger); }
+.ai-feedback-box.ok { background: var(--greenlight, #e8f5f2); color: var(--color-accent-dark, #0a5c50); border: 1px solid #bad4bf; }
+.ai-feedback-box.err { background: var(--redlight, #fbeeed); color: var(--color-error, #c0392b); border: 1px solid #f2cfca; }
 
 /* Sandbox Mini-Tools Layout */
 .ai-tool-shell {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
+  background: var(--color-canvas, #ffffff);
+  border: 1px solid var(--color-border, #d9dee8);
+  border-radius: var(--radius-card, 12px);
   padding: 28px;
   margin: 24px 0;
 }
@@ -329,12 +309,12 @@ body, button, input, textarea, select, h1, h2, h3, h4, p, span, small, label, a,
 .ai-phone-preview {
   max-width: 330px;
   margin: 0 auto;
-  border: 10px solid #28332c;
+  border: 10px solid var(--color-dark, #0b1f33);
   border-radius: 36px;
-  background: #fff;
-  color: #111;
+  background: #ffffff;
+  color: var(--color-ink, #102a43);
   padding: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 30px rgba(11, 31, 51, 0.12);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -342,39 +322,40 @@ body, button, input, textarea, select, h1, h2, h3, h4, p, span, small, label, a,
 .ai-phone-speaker {
   width: 50px;
   height: 4px;
-  background: #3c4c41;
+  background: var(--color-muted, #52606d);
   border-radius: 4px;
   margin: 0 auto 6px;
 }
 .ai-mock-ad-card {
-  border: 1px solid #e2e5e1;
-  border-radius: 12px;
+  border: 1px solid var(--color-border, #d9dee8);
+  border-radius: var(--radius-card, 12px);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   font-family: inherit;
 }
-.ai-mock-ad-card.theme-green { background: #f4faf6; border-color: #b9e0cb; }
-.ai-mock-ad-card.theme-dark { background: #131715; color: #fff; border-color: #27382d; }
+.ai-mock-ad-card.theme-green { background: #f2faf8; border-color: #bad4bf; }
+.ai-mock-ad-card.theme-dark { background: var(--color-dark, #0b1f33); color: #ffffff; border-color: var(--color-dark-card, #162e44); }
 .ai-mock-ad-card.theme-amber { background: #fdfaf2; border-color: #ebdcb9; }
-.ai-mock-ad-card.theme-coral { background: #fff8f6; border-color: #fed9d3; }
+.ai-mock-ad-card.theme-coral { background: #fdf6f5; border-color: #f2cfca; }
 
 .ai-mock-image-placeholder {
   height: 140px;
-  background: #e6ede6;
+  background: var(--color-surface, #f6f9f8);
+  border-bottom: 1px solid var(--color-border, #d9dee8);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  color: #617366;
+  color: var(--color-muted, #52606d);
   font-weight: 600;
   text-align: center;
   padding: 10px;
 }
-.ai-mock-ad-card.theme-dark .ai-mock-image-placeholder { background: #202b23; color: #a4b5a8; }
+.ai-mock-ad-card.theme-dark .ai-mock-image-placeholder { background: var(--color-dark-card, #162e44); color: #daead7; border-bottom-color: #243f5a; }
 
 .ai-mock-body {
-  padding: 12px;
+  padding: 14px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -386,17 +367,17 @@ body, button, input, textarea, select, h1, h2, h3, h4, p, span, small, label, a,
   margin: 0;
 }
 .ai-mock-sub {
-  font-size: 12px;
+  font-size: 12.5px;
   opacity: 0.85;
   line-height: 1.5;
   margin: 0;
 }
 .ai-mock-cta-btn {
-  background: var(--green);
+  background: var(--color-accent, #0e7c6b);
   color: #fff;
   border: 0;
-  border-radius: 6px;
-  padding: 7px 12px;
+  border-radius: var(--radius, 8px);
+  padding: 8px 14px;
   font-size: 12px;
   font-weight: 700;
   text-align: center;
@@ -405,9 +386,9 @@ body, button, input, textarea, select, h1, h2, h3, h4, p, span, small, label, a,
 
 /* Gauge / Score Badge */
 .ai-score-gauge {
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 12px;
+  background: var(--color-surface, #f6f9f8);
+  border: 1px solid var(--color-border, #d9dee8);
+  border-radius: var(--radius-card, 12px);
   padding: 16px;
   text-align: center;
 }
@@ -415,24 +396,18 @@ body, button, input, textarea, select, h1, h2, h3, h4, p, span, small, label, a,
   font-size: 38px;
   font-weight: 800;
   line-height: 1.1;
-  color: var(--green);
+  color: var(--color-accent, #0e7c6b);
 }
 
-/* Proof Card styling */
+/* Proof Card styling — Section 4.2 */
 .ai-proof-card {
-  border: 2px solid var(--green);
-  border-radius: 16px;
-  background: linear-gradient(135deg, #fffef9 0%, #f4faf6 100%);
+  border: 1px solid var(--color-border, #d9dee8);
+  border-radius: var(--radius-card, 12px);
+  background: var(--color-canvas, #ffffff);
   padding: 32px;
-  box-shadow: 0 8px 24px rgba(23, 107, 83, 0.08);
+  box-shadow: none;
   margin: 24px 0;
   position: relative;
-}
-@media (prefers-color-scheme: dark) {
-  .ai-proof-card {
-    background: linear-gradient(135deg, #17241c 0%, #1a221d 100%);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  }
 }
 .ai-proof-header {
   display: flex;
@@ -440,7 +415,7 @@ body, button, input, textarea, select, h1, h2, h3, h4, p, span, small, label, a,
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 12px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--color-border, #d9dee8);
   padding-bottom: 16px;
 }
 .ai-proof-skills {
