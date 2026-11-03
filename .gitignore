@@ -7,3 +7,23 @@ Thumbs.db
 
 # Server files not needed for static hosting
 php.ini
+
+# Node & Capacitor build output
+node_modules/
+www/
+android/.gradle/
+android/app/build/
+android/build/
+*.apk
+*.aab
+
+# Local workspace archives and unrelated scratch directories
+.wrangler/
+Organized_WhatsApp_Chats/
+Organized_WhatsApp_Chats_With_Dates/
+*.zip
+Personal_Social_AI_Manager_v0.3_COMPLETE_HANDOVER/
+Photopix Blog Images 1 to 15/
+preorder-zaynshop/
+seo-control-center/
+temp_photopixc_automations/

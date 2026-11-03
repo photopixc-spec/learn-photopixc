@@ -1,0 +1,27 @@
+{
+  "appId": "com.photopixc.learn",
+  "appName": "PhotoPixC Learn",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1500,
+      "launchAutoHide": true,
+      "backgroundColor": "#0b1f33",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#0e7c6b"
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_notification",
+      "iconColor": "#0e7c6b"
+    }
+  }
+}
+
