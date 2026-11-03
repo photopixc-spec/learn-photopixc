@@ -44,7 +44,19 @@ for (const item of ITEMS_TO_COPY) {
 
   const stat = fs.statSync(src);
   if (stat.isDirectory()) {
-    fs.cpSync(src, dest, { recursive: true });
+    fs.cpSync(src, dest, {
+      recursive: true,
+      filter: (source) => {
+        const basename = path.basename(source);
+        if (basename.endsWith('-INSTRUCTIONS.txt') || 
+            basename.endsWith('-INSTRUCTIONS-BN.txt') || 
+            (basename.startsWith('README-') && basename.endsWith('.txt')) ||
+            (basename === 'fonts' && source.includes('google-ads'))) {
+          return false;
+        }
+        return true;
+      }
+    });
     console.log(`📁 Copied directory: ${item}`);
   } else {
     fs.copyFileSync(src, dest);

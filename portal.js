@@ -7,4 +7,4 @@ function legacySchoolRoute(hash){
 }
 const legacyTarget=legacySchoolRoute(location.hash);if(legacyTarget)location.replace(legacyTarget);
 window.addEventListener('hashchange',()=>{const target=legacySchoolRoute(location.hash);if(target)location.replace(target);});
-if('serviceWorker' in navigator&&window.isSecureContext)navigator.serviceWorker.getRegistration('/').then(r=>{if(r&&r.scope===location.origin+'/')return r.update();}).catch(()=>{});
+if((!window.Capacitor || !window.Capacitor.isNativePlatform()) && 'serviceWorker' in navigator && window.isSecureContext)navigator.serviceWorker.getRegistration('/').then(r=>{if(r&&r.scope===location.origin+'/')return r.update();}).catch(()=>{});

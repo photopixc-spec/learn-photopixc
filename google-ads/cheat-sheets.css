@@ -1,5 +1,5 @@
-@font-face{font-family:"Pathshala Bengali";src:url("fonts/NotoSansBengali-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
-@font-face{font-family:"Pathshala Bengali";src:url("fonts/NotoSansBengali-Bold.ttf") format("truetype");font-weight:700;font-display:swap}
+@font-face{font-family:"Pathshala Bengali";src:url("../shared/fonts/NotoSansBengali-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"Pathshala Bengali";src:url("../shared/fonts/NotoSansBengali-Bold.ttf") format("truetype");font-weight:700;font-display:swap}
 .cheat-sheet{font-family:"Inter","Pathshala Bengali","Hind Siliguri",system-ui,sans-serif}
 .cheat-sheet{box-sizing:border-box;max-width:var(--max-width-reading,720px);margin:20px auto;padding:32px 36px;background:var(--color-canvas,#ffffff);border:1px solid var(--color-border,#d9dee8);border-top:6px solid var(--color-accent,#0e7c6b);border-radius:var(--radius-card,12px);color:var(--color-ink,#102a43);overflow-wrap:anywhere}
 .cheat-kicker{font-size:12px;font-weight:700;letter-spacing:.05em;color:var(--color-accent-dark,#0a5c50);text-transform:uppercase}

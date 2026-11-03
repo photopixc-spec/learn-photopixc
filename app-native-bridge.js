@@ -306,6 +306,16 @@
   // Initialize Native Features if inside Capacitor
   onReady(() => {
     if (isCapacitor) {
+      // Disable and clear Service Workers on Native Platform to prevent stale cache
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(regs => {
+          for (const r of regs) {
+            console.log('[Native Bridge] Unregistering ServiceWorker on Native platform:', r.scope);
+            r.unregister();
+          }
+        }).catch(() => {});
+      }
+
       const plugins = window.Capacitor.Plugins || {};
       const { App, StatusBar, SplashScreen, LocalNotifications } = plugins;
 

@@ -71,12 +71,14 @@
 </footer>
 <div id="toast" role="status" aria-live="polite"></div>
 <script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('sw.js').catch(err => {
-        console.warn('SW registration skipped:', err);
+  if (!window.Capacitor || !window.Capacitor.isNativePlatform()) {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => {
+          console.warn('SW registration skipped:', err);
+        });
       });
-    });
+    }
   }
 </script>
 </body>
