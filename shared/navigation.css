@@ -1,4 +1,63 @@
 /* Shared PhotoPixc Header Navigation — Fully Aligned with DESIGN.md */
+html, body {
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+/* UI Elements Touch & Selection Control */
+button,
+.tab,
+.mobile-nav-item,
+.mobile-bottom-nav,
+.topbar,
+header,
+nav,
+.school,
+.card-action,
+.mobile-continue-card,
+.mobile-app-header-bar,
+.mobile-lesson-sticky-bar,
+.btn,
+.button,
+[role="button"],
+[role="tab"] {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Explicitly preserve selectable reading & formula content */
+.cheat-sheet,
+.cheat-sheet *,
+article,
+main p,
+main li,
+.lesson-content,
+pre,
+pre *,
+code,
+table td,
+table th,
+textarea,
+input {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+  -webkit-touch-callout: default !important;
+}
+
+/* Android Notch & Safe-Area Support for Sticky Headers */
+.topbar,
+header.topbar,
+.mobile-app-header-bar,
+header {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Android Gesture Bar Safe-Area Support for Bottom Navigation Bars */
+.mobile-bottom-nav,
+.mobile-lesson-sticky-bar {
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+}
 .topbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;padding:16px 32px;background:var(--color-canvas,#ffffff);border-bottom:1px solid var(--color-border,#d9dee8);position:sticky;top:0;z-index:3;font-family:'Inter','Hind Siliguri','Noto Sans Bengali',system-ui,-apple-system,sans-serif;line-height:normal;color:var(--color-ink,#102a43)}
 .topbar .brand{display:flex;flex-shrink:0;gap:12px;align-items:center;text-decoration:none;color:var(--color-ink,#102a43);font-size:22px;font-weight:800;line-height:1.2}
 .topbar .brand small{display:block;font-size:9.5px;letter-spacing:1.6px;margin-top:5px;color:var(--color-muted,#52606d);font-weight:600}

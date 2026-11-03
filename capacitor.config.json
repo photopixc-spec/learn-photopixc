@@ -2,6 +2,7 @@
   "appId": "com.photopixc.learn",
   "appName": "PhotoPixC Learn",
   "webDir": "www",
+  "backgroundColor": "#0f172a",
   "server": {
     "androidScheme": "https",
     "html5mode": false
@@ -10,7 +11,7 @@
     "SplashScreen": {
       "launchShowDuration": 1500,
       "launchAutoHide": true,
-      "backgroundColor": "#0b1f33",
+      "backgroundColor": "#0f172a",
       "androidSplashResourceName": "splash",
       "androidScaleType": "CENTER_CROP",
       "showSpinner": false

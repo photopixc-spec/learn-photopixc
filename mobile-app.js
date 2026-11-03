@@ -313,7 +313,7 @@
       modal.innerHTML = `
         <div style="
           background: #ffffff; width: 100%; max-width: 500px;
-          border-radius: 20px 20px 0 0; padding: 24px 20px calc(24px + var(--safe-bottom));
+          border-radius: 20px 20px 0 0; padding: 24px 20px calc(24px + env(safe-area-inset-bottom, 0px) + 12px);
           font-family: var(--font-ui); color: #102a43; box-shadow: 0 -10px 30px rgba(0,0,0,0.25);
           animation: slideUpModal 0.25s ease-out;
         ">

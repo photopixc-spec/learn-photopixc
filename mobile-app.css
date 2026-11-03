@@ -20,8 +20,57 @@ html, body {
   touch-action: manipulation;
 }
 
+/* Native UI Touch & Selection Control */
+button,
+.tab,
+.mobile-nav-item,
+.mobile-bottom-nav,
+.topbar,
+header,
+nav,
+.school,
+.card-action,
+.mobile-continue-card,
+.mobile-app-header-bar,
+.mobile-lesson-sticky-bar,
+.btn,
+.button,
+[role="button"],
+[role="tab"] {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Explicitly preserve selectable reading & formula content */
+.cheat-sheet,
+.cheat-sheet *,
+article,
+main p,
+main li,
+.lesson-content,
+pre,
+pre *,
+code,
+table td,
+table th,
+textarea,
+input {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+  -webkit-touch-callout: default !important;
+}
+
+/* Android Notch & Safe-Area Support for Sticky Headers */
+.mobile-app-header-bar,
+.topbar,
+header.topbar,
+header {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
 body.has-mobile-app {
-  padding-bottom: calc(var(--mobile-nav-height) + var(--safe-bottom) + 20px) !important;
+  padding-bottom: calc(var(--mobile-nav-height) + env(safe-area-inset-bottom, 0px) + 24px) !important;
 }
 
 /* 2. Streak Badge & Header Enhancements */
@@ -170,8 +219,8 @@ body.has-mobile-app {
   bottom: 0;
   left: 0;
   right: 0;
-  height: calc(var(--mobile-nav-height) + var(--safe-bottom));
-  padding-bottom: var(--safe-bottom);
+  height: calc(var(--mobile-nav-height) + env(safe-area-inset-bottom, 0px) + 12px);
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -225,7 +274,7 @@ body.has-mobile-app {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 10px 16px calc(10px + var(--safe-bottom));
+  padding: 10px 16px calc(env(safe-area-inset-bottom, 0px) + 12px);
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
