@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -53,14 +53,40 @@ jobs:
           cd android
           ./gradlew assembleDebug --no-daemon
 
-      - name: Verify APK Output
+      - name: Stage APK for Release
         run: |
-          ls -la android/app/build/outputs/apk/debug/
+          mkdir -p release-apk
+          cp android/app/build/outputs/apk/debug/app-debug.apk release-apk/PhotoPixC-Learn-v1.0.apk
 
       - name: Upload Debug APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: PhotoPixC-Learn-Debug-v1.0.apk
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          path: release-apk/PhotoPixC-Learn-v1.0.apk
           if-no-files-found: error
           retention-days: 30
+
+      - name: Publish GitHub Release (Public APK Download)
+        uses: softprops/action-gh-release@v2
+        if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/')
+        with:
+          tag_name: v1.0.0
+          name: PhotoPixC Learn Android App v1.0.0
+          body: |
+            ## 📱 PhotoPixC Learn — Official Android Application (v1.0.0)
+
+            - **সম্পূর্ণ অফলাইন:** ইন্টারনেট ছাড়াই ফোনে ৫টি পাঠশালার সব লেসন, টুলস ও কুইজ পড়ুন।
+            - **১০০% ফ্রি:** কোনো সাবস্ক্রিপশন বা বিজ্ঞাপন নেই।
+            - **সাইজ:** মাত্র ~১২ MB।
+            - **হার্ডওয়্যার ব্যাক বাটন:** স্বাচ্ছন্দ্যে সিলেবাস ও লেসনের মধ্যে নেভিগেট করুন।
+            - **স্টাডি রিমাইন্ডার:** প্রতিদিন রাত ৮:০০টায় অফলাইনে পড়ার রিমাইন্ডার।
+
+            ### যেভাবে ইনস্টল করবেন:
+            1. নিচে দেওয়া **`PhotoPixC-Learn-v1.0.apk`** ফাইলে ক্লিক করে ডাউনলোড করুন।
+            2. ডাউনলোড শেষে ফাইলে চাপ দিলে যদি বলে *"Allow unknown apps"*, Settings-এ গিয়ে এলাউ করে দিন।
+            3. **Install** বাটনে চাপ দিন এবং সম্পূর্ণ অফলাইনে শেখা শুরু করুন!
+          draft: false
+          prerelease: false
+          files: release-apk/PhotoPixC-Learn-v1.0.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
