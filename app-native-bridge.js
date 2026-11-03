@@ -13,55 +13,264 @@
 
   console.log('[PhotoPixC Native Bridge] Initialized. Native platform:', isCapacitor);
 
-  // 1. Android Hardware Back Button Handler
+  // ==========================================================================
+  // Reliable Progress Persistence: Sync localStorage with IndexedDB
+  // ==========================================================================
+  function initPersistentStorage() {
+    if (typeof window === 'undefined' || !window.indexedDB || !window.localStorage) return;
+
+    const DB_NAME = 'photopixc_progress_persistence_db';
+    const DB_VERSION = 1;
+    const STORE_NAME = 'progress_backup_store';
+    let dbInstance = null;
+    let dbOpenPromise = null;
+
+    function getDB() {
+      if (dbInstance) return Promise.resolve(dbInstance);
+      if (dbOpenPromise) return dbOpenPromise;
+
+      dbOpenPromise = new Promise((resolve, reject) => {
+        try {
+          const request = window.indexedDB.open(DB_NAME, DB_VERSION);
+          request.onupgradeneeded = (e) => {
+            const db = e.target.result;
+            if (!db.objectStoreNames.contains(STORE_NAME)) {
+              db.createObjectStore(STORE_NAME, { keyPath: 'key' });
+            }
+          };
+          request.onsuccess = (e) => {
+            dbInstance = e.target.result;
+            resolve(dbInstance);
+          };
+          request.onerror = (e) => {
+            console.warn('[Progress Persistence] IndexedDB open error:', e.target.error);
+            reject(e.target.error);
+          };
+        } catch (err) {
+          reject(err);
+        }
+      });
+      return dbOpenPromise;
+    }
+
+    async function saveToIndexedDB(key, value) {
+      try {
+        const db = await getDB();
+        const tx = db.transaction(STORE_NAME, 'readwrite');
+        const store = tx.objectStore(STORE_NAME);
+        store.put({ key: String(key), value: String(value), timestamp: Date.now() });
+      } catch (_) {}
+    }
+
+    async function removeFromIndexedDB(key) {
+      try {
+        const db = await getDB();
+        const tx = db.transaction(STORE_NAME, 'readwrite');
+        const store = tx.objectStore(STORE_NAME);
+        store.delete(String(key));
+      } catch (_) {}
+    }
+
+    async function reconcileStorage() {
+      try {
+        const db = await getDB();
+        const tx = db.transaction(STORE_NAME, 'readonly');
+        const store = tx.objectStore(STORE_NAME);
+        const req = store.getAll();
+
+        req.onsuccess = () => {
+          const records = req.result || [];
+          let restored = 0;
+          for (const item of records) {
+            if (item && item.key) {
+              const currentVal = origGetItem.call(window.localStorage, item.key);
+              if (currentVal === null && item.value !== null && item.value !== undefined) {
+                origSetItem.call(window.localStorage, item.key, item.value);
+                restored++;
+              }
+            }
+          }
+          if (restored > 0) {
+            console.log(`[Progress Persistence] Restored ${restored} learning progress keys from IndexedDB.`);
+          }
+
+          // Backup any current localStorage keys into IndexedDB
+          for (let i = 0; i < window.localStorage.length; i++) {
+            const k = window.localStorage.key(i);
+            if (k) {
+              const v = origGetItem.call(window.localStorage, k);
+              if (v !== null) saveToIndexedDB(k, v);
+            }
+          }
+        };
+      } catch (err) {
+        console.warn('[Progress Persistence] Reconcile error:', err);
+      }
+    }
+
+    const origSetItem = Storage.prototype.setItem;
+    const origGetItem = Storage.prototype.getItem;
+    const origRemoveItem = Storage.prototype.removeItem;
+
+    Storage.prototype.setItem = function(key, value) {
+      origSetItem.call(this, key, value);
+      if (this === window.localStorage) {
+        saveToIndexedDB(key, value);
+      }
+    };
+
+    Storage.prototype.removeItem = function(key) {
+      origRemoveItem.call(this, key);
+      if (this === window.localStorage) {
+        removeFromIndexedDB(key);
+      }
+    };
+
+    reconcileStorage();
+
+    window.PhotoPixcStorage = {
+      save: saveToIndexedDB,
+      remove: removeFromIndexedDB,
+      reconcile: reconcileStorage
+    };
+  }
+
+  // Activate persistent storage backup immediately
+  initPersistentStorage();
+
+  // ==========================================================================
+  // Smart Multi-Layer Android Hardware Back Button Handler
+  // ==========================================================================
   function initBackButton(App) {
     let lastBackPressTime = 0;
 
     App.addListener('backButton', () => {
-      console.log('[Native Bridge] Hardware Back Pressed. Current hash:', window.location.hash);
+      console.log('[Native Bridge] Hardware Back Pressed. Path:', window.location.pathname, 'Hash:', window.location.hash);
 
-      // Layer 1: Check open sidebars, drawers, or mobile menus
+      /* ========================================================================
+         Priority 1: Close active modal, drawer, cheat-sheet popup, or quiz overlay
+         ======================================================================== */
+      // A. Progress Modal or Data Transfer Modal
+      const progressModal = document.querySelector('#mobile-progress-modal');
+      if (progressModal && (progressModal.style.display === 'flex' || progressModal.classList.contains('active'))) {
+        progressModal.style.display = 'none';
+        progressModal.classList.remove('active');
+        return;
+      }
+
+      const transferModal = document.querySelector('#photopixc-transfer-modal');
+      if (transferModal && (transferModal.style.display === 'flex' || transferModal.classList.contains('active'))) {
+        transferModal.style.display = 'none';
+        transferModal.classList.remove('active');
+        return;
+      }
+
+      // B. Skill Lab 45 Grouped Tools Drawer (#v79-tools)
+      const v79Tools = document.querySelector('#v79-tools');
+      if (v79Tools && !v79Tools.hidden) {
+        const closeBtn = v79Tools.querySelector('.v79-close');
+        if (closeBtn && typeof closeBtn.click === 'function') closeBtn.click();
+        else v79Tools.hidden = true;
+        return;
+      }
+
+      // C. Sidebars, Navigation Drawers & Mobile Menus
       const openSidebar = document.querySelector('#sidebar.open, .sidebar.open, .drawer.active, #mobile-menu.open, .nav-menu.active');
       if (openSidebar) {
         openSidebar.classList.remove('open', 'active');
+        document.body.classList.remove('nav-open');
+        return;
+      }
+      if (document.body.classList.contains('nav-open')) {
+        document.body.classList.remove('nav-open');
         return;
       }
 
-      // Layer 2: Check open dialogs or modals
-      const openModal = document.querySelector('.modal.active, .popup.open, dialog[open], #photopixc-transfer-modal.active');
+      // D. HTML5 Dialog Elements
+      const openDialog = document.querySelector('dialog[open]');
+      if (openDialog) {
+        if (typeof openDialog.close === 'function') openDialog.close();
+        else openDialog.removeAttribute('open');
+        return;
+      }
+
+      // E. Cheat-sheet modal, quiz overlay, or generic popups
+      const openModal = document.querySelector(
+        '.modal.active, .modal.show, .popup.open, .popup.active, ' +
+        '.overlay.active, .overlay.open, .cheat-sheet-modal.open, ' +
+        '.quiz-overlay.open, #cheat-modal.active, #quiz-modal.active, ' +
+        '[role="dialog"][aria-modal="true"]:not([style*="display: none"])'
+      );
       if (openModal) {
-        if (typeof openModal.close === 'function') openModal.close();
-        else openModal.classList.remove('active', 'open');
+        const closeBtn = openModal.querySelector('.close, .btn-close, [data-close], [aria-label*="close" i], .modal-close');
+        if (closeBtn && typeof closeBtn.click === 'function') {
+          closeBtn.click();
+        } else {
+          openModal.classList.remove('active', 'open', 'show');
+          openModal.style.display = 'none';
+        }
         return;
       }
 
-      // Layer 3: If inside a lesson, return to syllabus/home
+      /* ========================================================================
+         Determine Page Location (Sub-Module vs Main Hub)
+         ======================================================================== */
+      const pathname = window.location.pathname || '';
       const hash = window.location.hash || '';
-      if (hash.startsWith('#g-lesson-') || hash.startsWith('#ai-module-') || hash.startsWith('#m-lesson-') || hash.startsWith('#lesson-')) {
-        window.location.hash = '#syllabus';
-        return;
-      }
 
-      // Layer 4: If in a sub-section of a school, return to school home
-      if (hash && hash !== '#home' && hash !== '#syllabus') {
-        window.location.hash = '#home';
-        return;
-      }
+      const isSubApp = pathname.includes('/google-ads/') || 
+                       pathname.includes('/meta-ads/') || 
+                       pathname.includes('/quranic-arabic/') || 
+                       pathname.includes('/skill-lab-45/');
 
-      // Layer 5: If in a sub-app (Google Ads, Meta Ads, etc.), return to Root Portal
-      const isSubApp = window.location.pathname.includes('/google-ads/') || 
-                       window.location.pathname.includes('/meta-ads/') || 
-                       window.location.pathname.includes('/quranic-arabic/') ||
-                       window.location.pathname.includes('/skill-lab-45/');
+      /* ========================================================================
+         Priority 2: Inside a sub-view or tab within a sub-module
+         ======================================================================== */
       if (isSubApp) {
+        let isInsideSubView = false;
+
+        if (pathname.includes('/google-ads/') || pathname.includes('/meta-ads/')) {
+          isInsideSubView = !!hash && hash !== '#home';
+        } else if (pathname.includes('/quranic-arabic/')) {
+          isInsideSubView = !!hash && hash !== '#qa-home';
+        } else if (pathname.includes('/skill-lab-45/')) {
+          const activeNonHomeView = document.querySelector('.view.active:not(#view-home)');
+          isInsideSubView = (!!hash && hash !== '#home' && hash !== '#view-home') || !!activeNonHomeView;
+        }
+
+        if (isInsideSubView) {
+          if (window.history.length > 1) {
+            window.history.back();
+            return;
+          } else {
+            // Graceful fallback to module root
+            if (pathname.includes('/quranic-arabic/')) {
+              window.location.hash = '#qa-home';
+            } else if (pathname.includes('/skill-lab-45/')) {
+              if (typeof window.showView === 'function') window.showView('home');
+              else window.location.hash = '#home';
+            } else {
+              window.location.hash = '#home';
+            }
+            return;
+          }
+        }
+
+        /* ========================================================================
+           Priority 3: On root page of any sub-module -> Redirect to Main Hub
+           ======================================================================== */
         window.location.href = '../index.html';
         return;
       }
 
-      // Layer 6: Root Portal Exit confirmation (2 presses within 2 seconds)
+      /* ========================================================================
+         Priority 4: Only when on Main Hub (public/index.html) -> Exit Confirmation
+         ======================================================================== */
       const now = Date.now();
       if (now - lastBackPressTime < 2000) {
-        App.exitApp();
+        if (App && typeof App.exitApp === 'function') {
+          App.exitApp();
+        }
       } else {
         lastBackPressTime = now;
         showToast('অ্যাপ থেকে বের হতে আবার ব্যাক চাপুন');
@@ -131,7 +340,7 @@
       toast.id = 'photopixc-native-toast';
       toast.style.cssText = `
         position: fixed;
-        bottom: 70px;
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 84px);
         left: 50%;
         transform: translateX(-50%);
         background: rgba(11, 31, 51, 0.92);

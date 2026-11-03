@@ -383,10 +383,35 @@
     modal.style.display = 'flex';
   }
 
-  // 8. Lifecycle Hooks
+  // 8. Lifecycle Hooks & History Routing Integration
   window.addEventListener('hashchange', () => {
     updateActiveNavTab();
     handleLessonStickyBar();
+  });
+
+  // Enable seamless Android Back-Button history routing for Skill Lab 45 views
+  window.addEventListener('skill-lab:viewchange', (e) => {
+    const viewName = e.detail && e.detail.name;
+    if (viewName && window.location.hash !== '#' + viewName) {
+      if (viewName === 'home') {
+        if (window.location.hash && window.location.hash !== '#home') {
+          try { history.replaceState({ view: 'home' }, '', '#home'); } catch (_) {}
+        }
+      } else {
+        try { history.pushState({ view: viewName }, '', '#' + viewName); } catch (_) {}
+      }
+    }
+  });
+
+  window.addEventListener('popstate', (e) => {
+    if (typeof window.showView === 'function') {
+      const rawHash = (window.location.hash || '').replace('#', '');
+      const targetView = (e.state && e.state.view) || rawHash || 'home';
+      const viewEl = document.getElementById('view-' + targetView);
+      if (viewEl && !viewEl.classList.contains('active')) {
+        window.showView(targetView);
+      }
+    }
   });
 
   onReady(() => {
