@@ -3,7 +3,8 @@
   "appName": "PhotoPixC Learn",
   "webDir": "www",
   "server": {
-    "androidScheme": "https"
+    "androidScheme": "https",
+    "html5mode": false
   },
   "plugins": {
     "SplashScreen": {

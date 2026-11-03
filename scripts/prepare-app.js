@@ -1,7 +1,8 @@
 /**
- * PhotoPixC Learn - Mobile App Packaging Script (v2.0)
+ * PhotoPixC Learn - Mobile App Packaging Script (v2.1)
  * Bundles the website into www/ for Capacitor Android compilation.
  * Injects Mobile-First Redesign (Bottom Nav, Streak, Sticky Lesson Bar)
+ * Normalizes all links to explicit .html files for Android local WebView.
  * Leaves all root production source files 100% untouched.
  */
 const fs = require('fs');
@@ -10,7 +11,7 @@ const path = require('path');
 const ROOT_DIR = path.resolve(__dirname, '..');
 const WWW_DIR = path.join(ROOT_DIR, 'www');
 
-console.log('🚀 Preparing web assets for PhotoPixC Learn Android App v2.0...');
+console.log('🚀 Preparing web assets for PhotoPixC Learn Android App v2.1...');
 
 // 1. Clean previous www build
 if (fs.existsSync(WWW_DIR)) {
@@ -51,7 +52,15 @@ for (const item of ITEMS_TO_COPY) {
   }
 }
 
-// 3. Inject native bridge and mobile app redesign into HTML entrypoints in www/
+// 3. Normalize portal.js for local Android WebView
+const portalPath = path.join(WWW_DIR, 'portal.js');
+if (fs.existsSync(portalPath)) {
+  let pContent = fs.readFileSync(portalPath, 'utf8');
+  pContent = pContent.replace(/\/google-ads\//g, 'google-ads/index.html');
+  fs.writeFileSync(portalPath, pContent, 'utf8');
+}
+
+// 4. Inject native bridge and mobile app redesign into HTML entrypoints in www/
 const HTML_ENTRYPOINTS = [
   'index.html',
   'google-ads/index.html',
@@ -86,6 +95,28 @@ for (const relPath of HTML_ENTRYPOINTS) {
       const scriptTags = `\n  <!-- PhotoPixC Native Android Bridge & Mobile Redesign -->\n  <script src="${bridgePath}"></script>\n  <script src="${mobileJsPath}"></script>\n</body>`;
       content = content.replace('</body>', scriptTags);
       console.log(`🔌 Injected Native Bridge & Mobile Controller into www/${relPath}`);
+    }
+
+    // D. Normalize all links for Android local WebView
+    if (depth === 0) {
+      // Root index.html
+      content = content
+        .replace(/href="\/google-ads\/"/g, 'href="google-ads/index.html"')
+        .replace(/href="\/meta-ads\/"/g, 'href="meta-ads/index.html"')
+        .replace(/href="\/quranic-arabic\/"/g, 'href="quranic-arabic/index.html"')
+        .replace(/href="\/skill-lab-45\/"/g, 'href="skill-lab-45/index.html"')
+        .replace(/href="\/google-ads\/#/g, 'href="google-ads/index.html#')
+        .replace(/href="\/meta-ads\/#/g, 'href="meta-ads/index.html#');
+    } else {
+      // Sub-apps (google-ads/, meta-ads/, etc.)
+      content = content
+        .replace(/href="\/"/g, 'href="../index.html"')
+        .replace(/href="\/google-ads\/"/g, 'href="../google-ads/index.html"')
+        .replace(/href="\/meta-ads\/"/g, 'href="../meta-ads/index.html"')
+        .replace(/href="\/quranic-arabic\/"/g, 'href="../quranic-arabic/index.html"')
+        .replace(/href="\/skill-lab-45\/"/g, 'href="../skill-lab-45/index.html"')
+        .replace(/href="\/google-ads\/#/g, 'href="../google-ads/index.html#')
+        .replace(/href="\/meta-ads\/#/g, 'href="../meta-ads/index.html#');
     }
 
     fs.writeFileSync(filePath, content, 'utf8');

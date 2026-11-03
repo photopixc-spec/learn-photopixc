@@ -1,10 +1,18 @@
 /**
- * PhotoPixC Learn - Mobile App Dedicated Controller (v2.0)
+ * PhotoPixC Learn - Mobile App Dedicated Controller (v2.1)
  * Drives Bottom Navigation, Continue Learning Widget, Streak Gamification,
- * and Sticky Lesson Navigation.
+ * and Sticky Lesson Navigation with robust file-based routing.
  */
 (function() {
   'use strict';
+
+  function onReady(fn) {
+    if (document.readyState === 'interactive' || document.readyState === 'complete') {
+      setTimeout(fn, 1);
+    } else {
+      document.addEventListener('DOMContentLoaded', fn);
+    }
+  }
 
   const isNative = typeof window !== 'undefined' && 
                    window.Capacitor && 
@@ -27,12 +35,10 @@
 
       if (!history.includes(today)) {
         history.push(today);
-        // keep last 60 days
         if (history.length > 60) history.shift();
         localStorage.setItem('photopixc_streak_history', JSON.stringify(history));
       }
 
-      // calculate consecutive days
       let streak = 0;
       let checkDate = new Date();
       while (true) {
@@ -41,7 +47,6 @@
           streak++;
           checkDate.setDate(checkDate.getDate() - 1);
         } else {
-          // allow today to be day 1 if user just started today
           break;
         }
       }
@@ -54,7 +59,6 @@
   // 2. Continue Learning Resolver
   function getContinueLearningTarget() {
     try {
-      // 1. Check Google Ads
       const gRaw = localStorage.getItem('ads-bangla-course-v1');
       if (gRaw) {
         const gState = JSON.parse(gRaw);
@@ -66,13 +70,12 @@
               school: 'Google Ads পাঠশালা',
               title: `লেসন ${nextLessonNum}`,
               desc: `${completedCount}টি লেসন সমাপ্ত · আপনার অগ্রগতি এগিয়ে নিন`,
-              url: isSubApp('google-ads') ? `#g-lesson-${nextLessonNum}` : `google-ads/#g-lesson-${nextLessonNum}`
+              url: isSubApp('google-ads') ? `#g-lesson-${nextLessonNum}` : `google-ads/index.html#g-lesson-${nextLessonNum}`
             };
           }
         }
       }
 
-      // 2. Check Meta Ads
       const mRaw = localStorage.getItem('meta-bangla-course-v1');
       if (mRaw) {
         const mState = JSON.parse(mRaw);
@@ -84,7 +87,7 @@
               school: 'Meta Ads পাঠশালা',
               title: `লেসন ${nextMLesson}`,
               desc: `${mCount}টি লেসন সমাপ্ত · বিজ্ঞাপন স্ট্র্যাটেজি শিখুন`,
-              url: isSubApp('meta-ads') ? `#m-lesson-${nextMLesson}` : `meta-ads/#m-lesson-${nextMLesson}`
+              url: isSubApp('meta-ads') ? `#m-lesson-${nextMLesson}` : `meta-ads/index.html#m-lesson-${nextMLesson}`
             };
           }
         }
@@ -93,12 +96,11 @@
       console.warn('[Mobile App] Error reading continue target:', e);
     }
 
-    // Default target for new learners
     return {
       school: 'Google Ads পাঠশালা',
       title: 'লেসন ০১: বিজ্ঞাপনের ভিত্তি ও Google Ads পরিচিতি',
       desc: 'আজকের ৫ মিনিট দিয়ে আপনার শেখার যাত্রা শুরু করুন',
-      url: isSubApp('google-ads') ? '#g-lesson-1' : 'google-ads/#g-lesson-1'
+      url: isSubApp('google-ads') ? '#g-lesson-1' : 'google-ads/index.html#g-lesson-1'
     };
   }
 
@@ -111,7 +113,6 @@
     if (document.getElementById('mobile-top-bar')) return;
 
     const streakCount = updateAndGetStreak();
-    const isRoot = window.location.pathname === '/' || window.location.pathname.endsWith('index.html');
 
     const topBar = document.createElement('div');
     topBar.id = 'mobile-top-bar';
@@ -178,9 +179,9 @@
                      window.location.pathname.includes('/quranic-arabic/') ||
                      window.location.pathname.includes('/skill-lab-45/');
 
-    const homeUrl = inSchool ? '../index.html' : '#home';
-    const syllabusUrl = inSchool ? '#syllabus' : 'google-ads/#syllabus';
-    const labsUrl = inSchool ? '#labs' : 'google-ads/#labs';
+    const homeUrl = inSchool ? '../index.html' : 'index.html';
+    const syllabusUrl = inSchool ? '#syllabus' : 'google-ads/index.html#syllabus';
+    const labsUrl = inSchool ? '#labs' : 'google-ads/index.html#labs';
 
     nav.innerHTML = `
       <a href="${homeUrl}" class="mobile-nav-item" id="nav-tab-home">
@@ -203,7 +204,16 @@
 
     document.body.appendChild(nav);
 
-    // Progress Modal Trigger
+    if (!inSchool) {
+      const homeLink = nav.querySelector('#nav-tab-home');
+      if (homeLink) {
+        homeLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    }
+
     const progressBtn = nav.querySelector('#nav-tab-progress');
     if (progressBtn) {
       progressBtn.addEventListener('click', showProgressModal);
@@ -273,7 +283,6 @@
 
       stickyBar.style.display = 'flex';
 
-      // Connect Complete Checkbox
       const completeBtn = stickyBar.querySelector('#btn-sticky-toggle-read');
       completeBtn.addEventListener('click', () => {
         const checkbox = document.querySelector('input[type="checkbox"][id*="read"], input[type="checkbox"][id*="lesson"]');
@@ -326,7 +335,6 @@
       });
     }
 
-    // Refresh Stats
     const statsContainer = modal.querySelector('#progress-stats-body');
     const streak = updateAndGetStreak();
 
@@ -381,7 +389,7 @@
     handleLessonStickyBar();
   });
 
-  document.addEventListener('DOMContentLoaded', () => {
+  onReady(() => {
     injectMobileHeader();
     injectContinueCard();
     injectBottomNav();

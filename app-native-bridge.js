@@ -295,8 +295,16 @@
     modal.classList.add('active');
   }
 
+  function onReady(fn) {
+    if (document.readyState === 'interactive' || document.readyState === 'complete') {
+      setTimeout(fn, 1);
+    } else {
+      document.addEventListener('DOMContentLoaded', fn);
+    }
+  }
+
   // Initialize Native Features if inside Capacitor
-  document.addEventListener('DOMContentLoaded', () => {
+  onReady(() => {
     if (isCapacitor) {
       const plugins = window.Capacitor.Plugins || {};
       const { App, StatusBar, SplashScreen, LocalNotifications } = plugins;
