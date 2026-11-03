@@ -254,3 +254,35 @@
   margin-top: 20px;
   flex-wrap: wrap;
 }
+
+
+/* ==========================================================================
+   Mobile Touch-Friendly Controls: 44px Minimum Touch Targets & 16px Inputs
+   ========================================================================== */
+.debug-tab-btn,
+.debug-option-btn,
+.debug-actions button,
+.debug-actions .btn,
+.debug-wrap button,
+.debug-wrap select,
+.debug-wrap input {
+  min-height: 44px;
+}
+
+.debug-wrap input,
+.debug-wrap select,
+.debug-wrap textarea {
+  font-size: 16px !important;
+}
+
+.debug-wrap input[type="range"] {
+  height: 44px;
+  cursor: pointer;
+  accent-color: var(--accent, #0e7c6b);
+}
+
+.simulated-console {
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-x pan-y !important;
+}

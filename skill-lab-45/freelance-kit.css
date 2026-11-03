@@ -276,3 +276,39 @@
     color: #000 !important;
   }
 }
+
+
+/* ==========================================================================
+   Mobile Touch-Friendly Controls: 44px Minimum Touch Targets & 16px Inputs
+   ========================================================================== */
+.fl-tab-btn,
+.fl-btn-copy,
+.fl-actions button,
+.fl-actions .btn,
+.fl-wrap button,
+.fl-customizer-field input,
+.fl-customizer-field select,
+.fl-wrap input,
+.fl-wrap select {
+  min-height: 44px;
+}
+
+.fl-customizer-field input,
+.fl-customizer-field select,
+.fl-wrap input,
+.fl-wrap select,
+.fl-wrap textarea {
+  font-size: 16px !important;
+}
+
+.fl-wrap input[type="range"] {
+  height: 44px;
+  cursor: pointer;
+  accent-color: var(--accent, #0e7c6b);
+}
+
+.fl-code-box {
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-x pan-y !important;
+}

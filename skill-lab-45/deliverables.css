@@ -216,3 +216,65 @@
     box-shadow: none !important;
   }
 }
+
+
+/* ==========================================================================
+   Mobile & Touch Screen Optimization: Sticky First Column & 44px Targets
+   ========================================================================== */
+.deliv-tablewrap {
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-x pan-y !important;
+  position: relative;
+}
+
+.deliv-table {
+  min-width: 580px;
+  border-collapse: separate !important;
+  border-spacing: 0;
+}
+
+.deliv-table th:first-child,
+.deliv-table td:first-child {
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 2 !important;
+  background: var(--surface, #ffffff) !important;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.06);
+}
+
+.deliv-table thead th:first-child {
+  z-index: 3 !important;
+  background: var(--surface2, #f4f7fb) !important;
+}
+
+.deliv-tab-btn,
+.deliv-actions-row button,
+.deliv-actions-row .btn,
+.deliv-wrap button,
+.deliv-field input,
+.deliv-field select,
+.deliv-field textarea,
+.deliv-table input,
+.deliv-table select,
+.deliv-wrap input,
+.deliv-wrap select {
+  min-height: 44px;
+}
+
+.deliv-field input,
+.deliv-field select,
+.deliv-field textarea,
+.deliv-table input,
+.deliv-table select,
+.deliv-wrap input,
+.deliv-wrap select,
+.deliv-wrap textarea {
+  font-size: 16px !important;
+}
+
+.deliv-wrap input[type="range"] {
+  height: 44px;
+  cursor: pointer;
+  accent-color: var(--accent, #0e7c6b);
+}

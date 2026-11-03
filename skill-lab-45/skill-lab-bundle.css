@@ -89,3 +89,84 @@
 @media(max-width:880px){.v78-layout{grid-template-columns:1fr}.v78-home{flex-direction:column;align-items:flex-start}}@media(max-width:520px){.v78-panel,.v78-aside{padding:15px}.v78-grid{grid-template-columns:1fr}.v78-head select{min-width:0;width:100%}.v78-head label{width:100%}.v78-steps{gap:6px}.v78-step{font-size:.85rem;padding:7px 9px}.v78-buttons .v78-btn{flex:1}}
 @media print{body:has(#view-capstone.active) .topbar,body:has(#view-capstone.active) .tabbar,body:has(#view-capstone.active) .v78-steps,body:has(#view-capstone.active) .v78-footer,body:has(#view-capstone.active) .v78-buttons{display:none!important}.v78-layout{display:block}.v78-panel{border:0}}
 
+/* ==========================================================================
+   Mobile Data Tables: Smooth Touch Scroll & Sticky First Column
+   (capstone-data/*.csv, case-data/*.csv, simulator-data/*.csv)
+   ========================================================================== */
+.v76-table-scroll,
+.v77-scroll,
+.v78-tablewrap,
+.table-scroll,
+.table-wrap {
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-x pan-y !important;
+  position: relative;
+  max-width: 100%;
+  border-radius: 10px;
+  margin: 14px 0;
+}
+
+.v76-table,
+.v76-inline-table,
+.v77-scroll table,
+.v78-table,
+.v78-tablewrap table {
+  min-width: 520px;
+  border-collapse: separate !important;
+  border-spacing: 0;
+}
+
+.v76-table th:first-child,
+.v76-table td:first-child,
+.v76-inline-table th:first-child,
+.v76-inline-table td:first-child,
+.v77-scroll table th:first-child,
+.v77-scroll table td:first-child,
+.v78-table th:first-child,
+.v78-table td:first-child,
+.v78-tablewrap table th:first-child,
+.v78-tablewrap table td:first-child {
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 2 !important;
+  background: var(--surface, #ffffff) !important;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.06);
+}
+
+.v76-table thead th:first-child,
+.v76-inline-table thead th:first-child,
+.v77-scroll table thead th:first-child,
+.v78-table thead th:first-child,
+.v78-tablewrap table thead th:first-child {
+  z-index: 3 !important;
+  background: var(--surface2, #eef6ee) !important;
+}
+
+/* Touch-Friendly Controls & Mobile Inputs */
+.v78-btn,
+.v78-steps .v78-step,
+.v77-choice,
+.v77-option,
+.v76-table input,
+.v78-table input,
+.v78-panel textarea,
+.v78-panel input:not([type=checkbox]):not([type=radio]),
+.v78-panel select {
+  min-height: 44px;
+}
+
+.v78-table input,
+.v78-panel textarea,
+.v78-panel input:not([type=checkbox]):not([type=radio]),
+.v78-panel select {
+  font-size: 16px !important;
+}
+
+input[type="range"] {
+  height: 44px;
+  cursor: pointer;
+  accent-color: var(--accent, #0e7c6b);
+}
+
+
