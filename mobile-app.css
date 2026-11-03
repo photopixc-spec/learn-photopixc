@@ -1,0 +1,327 @@
+/**
+ * PhotoPixC Learn - Mobile App Dedicated Stylesheet (v2.0)
+ * Designed for Thumb Zone ergonomics, Safe Area Insets, and Native Touch Feel.
+ */
+
+/* 1. Safe Area Insets & Native Touch Physics */
+:root {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --mobile-nav-height: 62px;
+  --color-accent-soft: rgba(14, 124, 107, 0.12);
+  --color-accent-glow: rgba(14, 124, 107, 0.25);
+}
+
+html, body {
+  overscroll-behavior-y: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+body.has-mobile-app {
+  padding-bottom: calc(var(--mobile-nav-height) + var(--safe-bottom) + 20px) !important;
+}
+
+/* 2. Streak Badge & Header Enhancements */
+.mobile-app-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--safe-top) + 12px) 16px 12px;
+  background: var(--color-canvas, #ffffff);
+  border-bottom: 1px solid var(--color-border, #d9dee8);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.mobile-streak-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff5e5;
+  border: 1px solid #ffd188;
+  color: #b45309;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font-ui);
+}
+
+.mobile-streak-flame {
+  display: inline-block;
+  animation: flamePulse 1.8s infinite ease-in-out;
+}
+
+@keyframes flamePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+}
+
+/* 3. Continue Learning Hero Widget */
+.mobile-continue-card {
+  margin: 16px 16px 20px;
+  background: linear-gradient(135deg, #0b1f33 0%, #162e44 100%);
+  border-radius: 16px;
+  padding: 20px;
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(11, 31, 51, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-continue-card::after {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 110px;
+  height: 110px;
+  background: radial-gradient(circle, var(--color-accent, #0e7c6b) 0%, transparent 70%);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.mobile-continue-tag {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #2ab69e;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mobile-continue-title {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.35;
+  margin: 0 0 8px;
+  color: #ffffff;
+}
+
+.mobile-continue-sub {
+  font-size: 13px;
+  color: #9fb3c8;
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+
+.mobile-continue-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 18px;
+  background: var(--color-accent, #0e7c6b);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14.5px;
+  font-weight: 700;
+  font-family: var(--font-ui);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(14, 124, 107, 0.4);
+  transition: transform 0.12s ease, background 0.15s ease;
+  min-height: 48px;
+}
+
+.mobile-continue-btn:active {
+  transform: scale(0.98);
+  background: var(--color-accent-dark, #0a5c50);
+}
+
+/* 4. Touch-Friendly Cards on Mobile */
+@media (max-width: 768px) {
+  .schools {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding: 0 16px !important;
+  }
+
+  .school {
+    padding: 22px !important;
+    border-radius: 16px !important;
+    transition: transform 0.15s ease, border-color 0.15s ease !important;
+  }
+
+  .school:active {
+    transform: scale(0.985);
+  }
+
+  .school a {
+    width: 100% !important;
+    min-height: 48px !important;
+    border-radius: 10px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+  }
+}
+
+/* 5. Modern Bottom Navigation Bar (Thumb Zone) */
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--mobile-nav-height) + var(--safe-bottom));
+  padding-bottom: var(--safe-bottom);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(217, 222, 232, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 99999;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.mobile-nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 0;
+  text-decoration: none;
+  color: #627d98;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  transition: color 0.15s ease, transform 0.12s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.mobile-nav-item:active {
+  transform: scale(0.92);
+}
+
+.mobile-nav-icon {
+  font-size: 20px;
+  margin-bottom: 3px;
+  line-height: 1;
+}
+
+.mobile-nav-item.active {
+  color: var(--color-accent, #0e7c6b);
+  font-weight: 800;
+}
+
+.mobile-nav-item.active .mobile-nav-icon {
+  transform: scale(1.1);
+}
+
+/* 6. Sticky Bottom Lesson Action Bar */
+.mobile-lesson-sticky-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 16px calc(10px + var(--safe-bottom));
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid var(--color-border, #d9dee8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  z-index: 99998;
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.mobile-lesson-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 11px 14px;
+  border-radius: 10px;
+  font-family: var(--font-ui);
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid var(--color-border, #d9dee8);
+  background: #ffffff;
+  color: var(--color-ink, #102a43);
+  min-height: 46px;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.mobile-lesson-btn:active {
+  transform: scale(0.96);
+}
+
+.mobile-lesson-btn.primary {
+  background: var(--color-accent, #0e7c6b);
+  border-color: var(--color-accent, #0e7c6b);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(14, 124, 107, 0.35);
+}
+
+.mobile-lesson-btn.complete-toggle {
+  background: #f0fdf4;
+  border-color: #86efac;
+  color: #166534;
+}
+
+.mobile-lesson-btn.complete-toggle.is-completed {
+  background: #166534;
+  border-color: #166534;
+  color: #ffffff;
+}
+
+/* 7. Top Thin Module Progress Bar */
+.mobile-top-progress-track {
+  position: fixed;
+  top: var(--safe-top);
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(217, 222, 232, 0.6);
+  z-index: 10001;
+}
+
+.mobile-top-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--color-accent, #0e7c6b);
+  transition: width 0.3s ease;
+}
+
+/* 8. Touch-Optimized Quiz Option Buttons */
+.mobile-quiz-touch-option {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: 52px !important;
+  padding: 12px 18px !important;
+  margin-bottom: 10px !important;
+  background: var(--color-surface, #f6f9f8) !important;
+  border: 1.5px solid var(--color-border, #d9dee8) !important;
+  border-radius: 12px !important;
+  font-size: 14.5px !important;
+  font-family: var(--font-ui) !important;
+  line-height: 1.45 !important;
+  color: var(--color-ink, #102a43) !important;
+  cursor: pointer !important;
+  transition: transform 0.12s ease, border-color 0.15s ease, background 0.15s ease !important;
+  user-select: none !important;
+}
+
+.mobile-quiz-touch-option:active {
+  transform: scale(0.98) !important;
+  background: var(--color-accent-soft) !important;
+  border-color: var(--color-accent) !important;
+}
