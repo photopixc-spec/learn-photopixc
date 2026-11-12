@@ -372,3 +372,402 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+
+/* ==========================================================================
+   4-Layer Word Letter-Form-Pronunciation Breakdown Styles (#qa-words)
+   ========================================================================== */
+
+.word-4step-box {
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 14px;
+  padding: 12px;
+  margin-top: 8px;
+}
+
+.word-step-label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* RTL Grid of Letter Breakdown Columns (Right-to-Left reading order!) */
+.letter-breakdown-track {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: stretch;
+  margin: 8px 0;
+}
+
+.letter-step-col {
+  flex: 1;
+  min-width: 78px;
+  max-width: 125px;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+/* Row 1 inside column: Contextual Letter as it sits in the word */
+.lsc-contextual {
+  background: #eff6ff;
+  padding: 8px 6px 4px 6px;
+  border-bottom: 1px dashed #bfdbfe;
+}
+.lsc-contextual .ar-form {
+  font-family: var(--font-ar);
+  font-size: 2.1rem;
+  line-height: 1.95 !important;
+  color: var(--primary);
+  display: block;
+  direction: rtl;
+}
+
+/* Row 2 inside column: Which form it took (শুরুতে / মাঝে / শেষে / একাকী) + Base Letter */
+.lsc-form-info {
+  background: #f8fafc;
+  padding: 6px 4px;
+  border-bottom: 1px dashed #e2e8f0;
+  font-size: 0.75rem;
+  color: #334155;
+  line-height: 1.3;
+}
+.lsc-form-badge {
+  display: inline-block;
+  background: #e0f2fe;
+  color: #0369a1;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  margin-bottom: 2px;
+}
+.lsc-base-letter {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+.lsc-base-letter strong {
+  font-family: var(--font-ar);
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+/* Row 3 inside column: Bangla Pronunciation of that exact letter/syllable */
+.lsc-pron {
+  background: #fffbeb;
+  padding: 6px 4px;
+  color: #92400e;
+  font-weight: 700;
+  font-size: 0.86rem;
+  margin-top: auto;
+}
+
+.word-combined-pron-bar {
+  background: #dcfce7;
+  border: 1px solid #86efac;
+  color: #14532d;
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin-top: 8px;
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+
+/* ==========================================================================
+   V5 Original Word System & Surah Bangla Pronunciation Styles
+   ========================================================================== */
+
+.v5-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #0f4c5c;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+}
+
+.word-filter-bar {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 10px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.v5-toggle-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+  align-items: center;
+}
+
+.v5-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  min-height: 40px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  font-family: var(--font-bn);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+}
+.v5-filter-pill.active {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.qa-word-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.qa-word-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+.qa-word-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.qa-word-ref {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.qa-word-ar-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 10px 14px;
+  text-align: center;
+}
+.qa-word-ar {
+  font-family: var(--font-ar);
+  font-size: 2.5rem;
+  line-height: 2.05;
+  color: var(--primary);
+  display: block;
+}
+.qa-word-pron-pill {
+  display: inline-block;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #92400e;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 3px 12px;
+  border-radius: 999px;
+  margin-top: 4px;
+}
+.qa-word-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid #e2e8f0;
+}
+.qa-icon-btn {
+  min-width: 42px;
+  min-height: 42px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  font-family: var(--font-bn);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.qa-icon-btn.active-star {
+  background: #fef3c7;
+  border-color: #f59e0b;
+  color: #92400e;
+}
+.qa-icon-btn.active-done {
+  background: #dcfce7;
+  border-color: #16a34a;
+  color: #14532d;
+}
+
+/* Word Study Card Detail View (#qa-word-w...) */
+.word-study-shell {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+.morph-stage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+  direction: rtl;
+}
+.morph-box {
+  background: #f8fafc;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 12px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.morph-box.morph-animating {
+  border-color: var(--accent);
+  background: #fffbeb;
+  transform: scale(1.03);
+}
+.waveform-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 12px 16px;
+  border-radius: 14px;
+  margin: 14px 0;
+}
+.wave-bars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  height: 28px;
+}
+.wave-bar-seg {
+  flex: 1;
+  background: #38bdf8;
+  border-radius: 3px;
+  height: 40%;
+  transition: height 0.2s ease;
+}
+.waveform-bar.playing .wave-bar-seg:nth-child(odd) {
+  height: 95%;
+  background: #4ade80;
+}
+.waveform-bar.playing .wave-bar-seg:nth-child(even) {
+  height: 55%;
+}
+
+/* Surah Verse & Word-by-Word Bangla Pronunciation Cards */
+.ayah-card {
+  background: #ffffff;
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+.ayah-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #cbd5e1;
+}
+.ayah-ar-line {
+  font-family: var(--font-ar);
+  font-size: 2.05rem;
+  line-height: 2.15;
+  color: var(--primary);
+  text-align: right;
+  direction: rtl;
+  background: #f8fafc;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+.ayah-pron-box {
+  background: #fffbeb;
+  border-left: 4px solid var(--accent);
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 1.02rem;
+  color: #78350f;
+}
+.ayah-bn-box {
+  background: #f0fdf4;
+  border-left: 4px solid var(--success);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.98rem;
+  color: #14532d;
+}
+.wbw-chips-row {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.wbw-chip {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 6px 10px;
+  text-align: center;
+  min-width: 78px;
+}
+.wbw-chip .ar {
+  font-size: 1.35rem;
+  line-height: 1.8 !important;
+  color: var(--primary);
+  display: block;
+}
+.wbw-chip .wbw-pron {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #92400e;
+  display: block;
+}
+.wbw-chip .wbw-mean {
+  font-size: 0.74rem;
+  color: var(--muted);
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .word-filter-bar {
+    grid-template-columns: 1fr;
+  }
+}
