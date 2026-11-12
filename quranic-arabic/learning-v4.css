@@ -1,115 +1,374 @@
-/* V4 free learning features — inherits PhotoPixc green / cream design system */
-.v4-home-additions{margin:18px 0 22px}
-.v4-level-card{background:linear-gradient(120deg,#eaf4e9,#fffefa);padding:24px}
-.v4-level-card h2{margin:7px 0}.v4-level-card p{font-size:13px}
-.v4-level-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin-top:17px}
-.v4-level-option{display:flex;min-height:113px;flex-direction:column;align-items:flex-start;text-align:left;gap:8px;padding:14px;border:1px solid #cadccf;background:#fff;border-radius:12px;color:var(--deep)}
-.v4-level-option strong{font-size:14px}.v4-level-option small{font-size:11px;line-height:1.7;color:var(--muted)}
-.v4-level-option.selected{border:2px solid var(--green);background:#e9f5e9}.v4-ok{color:var(--green);margin-bottom:0}
-.v4-feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin:17px 0}
-.v4-feature{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:19px 21px}
-.v4-feature h3{font-size:17px;margin:2px 0}.v4-feature p{font-size:12px;color:var(--muted);flex:1}
-.v4-feature .button{margin-top:8px}
-.v4-feature-icon{min-height:52px;min-width:52px;display:grid;place-items:center;background:#e8f1e5;color:var(--green);font:bold 31px/1.8 'Noto Naskh Arabic','Amiri',Bangla,serif;border-radius:10px;padding:1px 8px}
-.v4-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:13px 0 20px}
-.v4-stats span{display:grid;gap:3px;padding:12px 10px;border-radius:10px;border:1px solid var(--border);font-size:10px;color:var(--muted);background:white;text-align:center}
-.v4-stats b{font:bold 24px/1.3 Bangla,system-ui,sans-serif;color:var(--green)}
-.v4-practice{max-width:920px;margin-top:18px;padding:26px}
-.v4-practice p{font-size:13px}
-.v4-word-hint{display:grid;gap:2px;border:1px solid #d2e2d1;border-radius:13px;background:#eff6eb;padding:12px 19px;text-align:center;align-items:center}
-.v4-word-hint small{font-size:11px;color:var(--muted)}.v4-word-hint b{font-size:22px;color:var(--deep)}.v4-word-hint span{font-size:13px;color:var(--muted)}
-.v4-assembled{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:9px;min-height:128px;margin:19px 0;border:2px dashed #bad4b9;background:#fcfefb;border-radius:14px;padding:19px}
-.v4-placeholder{font:12px/1.9 Bangla,sans-serif;direction:ltr;color:var(--muted)}
-.v4-placed,.v4-tile{display:grid;place-items:center;width:66px;height:78px;font-size:41px;line-height:1.7;border:1px solid #afccac;border-radius:13px;background:#f0f6ed;color:var(--deep);padding:0 5px}
-.v4-placed{background:#e0ede0;border-color:var(--green)}
-.v4-tile:hover:not(:disabled),.v4-placed:hover:not(:disabled){border-color:var(--green);background:#e5f2e4}
-.v4-tiles{display:flex;justify-content:center;align-items:center;gap:9px;flex-wrap:wrap;padding:14px 0}
-.v4-overline{font-size:12px;color:var(--muted);font-weight:650;text-align:center}.v4-divider{height:1px;background:var(--border);margin:20px 0}
-.v4-feedback{padding:16px;border:1px solid #d6e1d4;background:#f5f7f1;border-radius:12px;margin:18px 0;display:grid;gap:5px;font-size:13px}
-.v4-feedback.yes{border-color:#86bd99;background:#e5f4e7}.v4-feedback.no{border-color:#d9b38a;background:#fdf3e7}
-.v4-feedback strong{font-size:15px}.v4-answer{font-size:50px;color:var(--deep);padding:0 4px}
-.v4-harakat-hero,.v4-kids-glyph{height:205px;max-width:560px;margin:0 auto 13px;border-radius:17px;background:#eff6eb;display:grid;place-items:center;font-size:112px;line-height:1.5;color:var(--deep);border:1px solid #d6e5d4}
-.v4-kids-glyph{font-size:122px;background:#f2f8e9}
-.v4-centered{text-align:center;margin:13px 0 17px;font-size:22px}
-.v4-answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;max-width:700px;margin:16px auto}
-.v4-answer-choice{display:flex;align-items:center;justify-content:center;text-align:center;padding:14px 11px;min-height:60px;border-radius:12px;background:#fff;border:1px solid #cfdecf;color:var(--deep);font-size:14px;font-weight:650}
-.v4-answer-choice:hover:not(:disabled){border-color:var(--green);background:#f1f9ef}
-.v4-answer-choice.right,.v4-answer-choice.right:disabled{opacity:1;background:#d9f0df;border-color:#268052}
-.v4-answer-choice.wrong,.v4-answer-choice.wrong:disabled{opacity:1;background:#fff1e9;border-color:#cd8970}
-.v4-daily-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
-.v4-daily-word{display:flex;flex-direction:column;gap:3px;padding:19px}
-.v4-daily-word strong{font-size:16px}.v4-daily-word>span{color:var(--muted);font-size:13px}
-.v4-daily-word small{color:var(--muted)}.v4-daily-word .actions{gap:7px;margin-top:13px}
-.v4-daily-word .button,.v4-daily-word .btn{font-size:12px;padding:8px 11px}
-.v4-daily-ar{font-size:49px;line-height:1.9;text-align:center;color:var(--green);background:#f0f7ec;border-radius:12px;margin-bottom:7px}
-button.v4-done:disabled{opacity:1;background:#e4f0e4;color:var(--green);border-color:#accdb0}
-.v4-review,.v4-review-empty{padding:26px;margin:16px 0 22px}.v4-review small{font-size:12px;color:var(--muted)}.v4-review-word{text-align:center;font-size:68px;color:var(--deep);background:#f0f7ed;border-radius:12px;padding:5px 20px;margin:13px 0;line-height:1.9}
-.v4-reveal{font-size:17px;background:#fdf8ee;padding:11px 15px;border-radius:10px}.v4-reveal p{font-size:14px;color:var(--muted)}
-@media(max-width:990px){.v4-level-grid{grid-template-columns:1fr}.v4-level-option{min-height:0}}
-@media(max-width:720px){.v4-feature-grid,.v4-daily-grid{grid-template-columns:1fr}.v4-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.v4-practice{padding:16px}.v4-placed,.v4-tile{width:51px;height:65px;font-size:30px}.v4-assembled{min-height:97px;padding:12px;gap:6px}.v4-tiles{gap:6px}.v4-answers{grid-template-columns:1fr}.v4-harakat-hero,.v4-kids-glyph{height:175px;font-size:92px}.v4-kids-glyph{font-size:105px}.v4-centered{font-size:19px}.v4-review-word{font-size:54px}}
-@media(max-width:380px){.v4-tile,.v4-placed{width:42px;height:56px;font-size:26px}}
-@media print{.v4-feature .button,.v4-level-option,.v4-practice button,.v4-daily-word .actions{display:none!important}}
+/* ==========================================================================
+   PhotoPixC Quranic Arabic V4/V8 Interactive Modules Stylesheet
+   Covers: 5-Step Kids Flow, Guided Tracing Canvas, Harakat Train,
+           3-Form Lego Word Builder, Web Speech Mic Game & Sticker Badges
+   ========================================================================== */
 
-/* Hide transliteration only (not the Arabic Quranic text or meanings) during memorization. */
-.prayer-surah-panel.hide-translit .prayer-bn{display:none}
+.v4-overline {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
 
+.v4-level-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
 
-/* Word Builder Puzzle Enhancements */
-.v4-puzzle-header {
+.v4-level-option {
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  background: var(--surface);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+}
+.v4-level-option.selected {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+/* 5-Step Gamified Progression Path */
+.step-flow-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 16px 0;
+}
+.step-node-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
-  border: 1.5px solid #86efac;
+  gap: 14px;
+  background: var(--surface);
+  border: 2px solid var(--border);
   border-radius: 16px;
-  padding: 14px 20px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
+  padding: 16px;
+  box-shadow: var(--shadow);
 }
-.v4-puzzle-audio-btn {
-  background: var(--green);
-  color: #fff;
-  border: none;
-  border-radius: 99px;
-  padding: 8px 16px;
-  font-size: 13px;
-  font-weight: 750;
-  display: inline-flex;
+.step-node-card.unlocked {
+  border-color: var(--primary);
+}
+.step-badge-num {
+  min-width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--primary);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.25rem;
+  display: flex;
   align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  transition: transform 0.2s;
+  justify-content: center;
+  flex-shrink: 0;
 }
-.v4-puzzle-audio-btn:hover {
-  transform: scale(1.05);
+
+/* Interactive Dot-to-Dot Tracing Canvas */
+.tracing-box {
+  background: #fffbeb;
+  border: 2px dashed var(--accent);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  margin: 14px 0;
 }
-.v4-tile {
-  box-shadow: 0 4px 0 #93c590;
-  transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+.tracing-canvas-wrap {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  margin: 0 auto 12px auto;
+  background: #ffffff;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  touch-action: none;
+  overflow: hidden;
+}
+.tracing-guide-glyph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-ar);
+  font-size: 145px;
+  color: rgba(15, 76, 92, 0.14);
+  pointer-events: none;
   user-select: none;
 }
-.v4-tile:hover:not(:disabled) {
-  transform: translateY(-3px);
-  box-shadow: 0 7px 0 #93c590;
+#trace-canvas {
+  position: relative;
+  z-index: 2;
+  width: 260px;
+  height: 260px;
+  cursor: crosshair;
 }
-.v4-tile:active:not(:disabled) {
-  transform: translateY(2px);
-  box-shadow: 0 2px 0 #93c590;
+
+/* Harakat Sound Train Cards */
+.train-track {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.train-car {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  text-align: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.12s ease, border-color 0.15s ease;
+}
+.train-car:hover, .train-car.active {
+  border-color: var(--accent);
+  background: #fffbeb;
+  transform: translateY(-2px);
+}
+.train-glyph {
+  font-family: var(--font-ar);
+  font-size: 3rem;
+  line-height: 2.1;
+  color: var(--primary);
+  direction: rtl;
+}
+
+/* Lego 3-Form Word Builder */
+.v4-assembled {
+  min-height: 92px;
+  background: #f8fafc;
+  border: 2px dashed var(--primary);
+  border-radius: 16px;
+  padding: 14px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 14px 0;
+}
+.v4-tiles {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 16px 0;
+}
+.v4-tile, .v4-placed {
+  min-width: 68px;
+  min-height: 64px;
+  padding: 8px 16px;
+  border-radius: 14px;
+  border: 2px solid var(--primary);
+  background: var(--surface);
+  font-family: var(--font-ar);
+  font-size: 2rem;
+  line-height: 2.0;
+  color: var(--primary);
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+  box-shadow: 0 3px 0 var(--primary);
+}
+.v4-tile small, .v4-placed small {
+  font-family: var(--font-bn);
+  font-size: 0.7rem;
+  color: var(--muted);
+  line-height: 1.1;
 }
 .v4-placed {
-  box-shadow: 0 3px 0 #176b53;
-  animation: placeBounce 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background: var(--primary-light);
 }
-@keyframes placeBounce {
-  0% { transform: scale(0.7); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+
+/* Kids Quiz 4-Option Big Buttons (Never Blank!) */
+.kids-quiz-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  padding: 20px;
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
 }
-.v4-practice.puzzle-shake {
-  animation: puzzleShake 0.4s ease-in-out;
+.kids-prompt-glyph {
+  font-family: var(--font-ar);
+  font-size: 4.2rem;
+  line-height: 2.1;
+  color: var(--primary);
+  background: var(--primary-light);
+  border-radius: 18px;
+  padding: 12px 24px;
+  display: inline-block;
+  margin: 10px 0;
+  direction: rtl;
 }
-@keyframes puzzleShake {
-  0%, 100% { transform: translateX(0); }
-  20%, 60% { transform: translateX(-8px); }
-  40%, 80% { transform: translateX(8px); }
+.kids-options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 18px 0;
+}
+.kids-opt-btn {
+  min-height: 64px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  font-family: var(--font-bn);
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  touch-action: manipulation;
+  box-shadow: 0 3px 0 var(--border);
+}
+.kids-opt-btn:hover {
+  border-color: var(--primary);
+}
+.kids-opt-btn.correct {
+  background: var(--success-soft);
+  border-color: var(--success);
+  color: #14532d;
+}
+.kids-opt-btn.wrong {
+  background: var(--danger-soft);
+  border-color: var(--danger);
+  color: #7f1d1d;
+}
+
+/* Web Speech API Microphone Box */
+.mic-checker-box {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 2px solid #86efac;
+  border-radius: 16px;
+  padding: 16px;
+  margin-top: 16px;
+  text-align: center;
+}
+.mic-btn {
+  min-width: 56px;
+  min-height: 56px;
+  border-radius: 999px;
+  border: none;
+  background: var(--success);
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 12px 22px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+}
+.mic-btn.listening {
+  background: var(--danger);
+  animation: pulseMic 1.1s infinite;
+}
+@keyframes pulseMic {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+/* Surah Selector Chips (Clearly Labeled in Bangla & Arabic) */
+.surah-chip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.surah-chip {
+  min-height: 54px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  font-family: var(--font-bn);
+  touch-action: manipulation;
+}
+.surah-chip.active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+.surah-chip strong {
+  font-size: 0.95rem;
+  color: var(--primary);
+}
+.surah-chip span {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/* Tajweed Legend Bar */
+.tajweed-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  font-size: 0.85rem;
+}
+.tj-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+/* Sticker Badges Grid */
+.sticker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+.sticker-card {
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  text-align: center;
+  background: var(--surface);
+}
+.sticker-card.earned {
+  border-color: var(--accent);
+  background: #fffbeb;
+}
+.sticker-ico {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 6px;
+}
+
+@media (max-width: 600px) {
+  .kids-options-grid {
+    grid-template-columns: 1fr;
+  }
+  .surah-chip-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

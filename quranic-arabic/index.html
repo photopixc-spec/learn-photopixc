@@ -1,85 +1,190 @@
-<!doctype html>
-<html lang="bn">
+<!DOCTYPE html>
+<html lang="bn" data-age-mode="kids">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0e7c6b">
-  <meta name="description" content="কুরআনিক আরবি পাঠশালা: আরবি হরফ, যুক্তরূপ, হরকত, Word Builder, প্রতিদিন পাঁচটি শব্দ, Smart Revision, Kids Mode, কুইজ ও পাঁচ ওয়াক্ত নামাজ শিক্ষা ও শেষ দশটি সূরা। বিনামূল্যে বাংলা পাঠ।">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0f4c5c">
+  <title>কুরআনিক আরবি শিক্ষা (৫–১৫ বছর) · PhotoPixC Learn</title>
   <link rel="canonical" href="https://learn.photopixc.com/quranic-arabic/">
   <link rel="manifest" href="manifest.json">
-  <title>কুরআনিক আরবি পাঠশালা | PhotoPixc Learning</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css?v=7">
+  <!-- Google Fonts with local/system fallback for Bengali & Quranic Arabic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="stylesheet" href="learning-v4.css?v=8">
   <script src="data/alphabet.js?v=7" defer></script>
   <script src="data/words.js?v=7" defer></script>
   <script src="data/salah.js?v=7" defer></script>
-  <link rel="stylesheet" href="learning-v4.css?v=7">
-  <script src="learning-v4.js?v=7" defer></script>
-  <script src="app.js?v=7" defer></script>
+  <script src="learning-v4.js?v=8" defer></script>
+  <script src="app.js?v=8" defer></script>
 </head>
 <body>
-<a href="#main" class="skip">মূল বিষয়বস্তুতে যান</a>
-<header class="topbar">
-  <a class="brand" href="/" aria-label="PhotoPixc পাঠশালা পোর্টাল">
-    <span class="mark" aria-hidden="true">ق</span>
-    <span>কুরআনিক আরবি পাঠশালা<small>PHOTOPIXC LEARNING</small></span>
-  </a>
-  <div class="topbar-gamified-right">
-    <div id="topbar-streak" class="streak-badge" title="প্রতিদিনের অনুশীলনের ধারাবাহিকতা">
-      <span class="streak-icon">🔥</span> <strong id="streak-count">১</strong> দিন
+  <header class="topbar" role="banner">
+    <div class="topbar-left">
+      <button id="nav-toggle" class="mobile-toggle" type="button" aria-label="মেনু খুলুন বা বন্ধ করুন" aria-expanded="false">
+        <span class="hamburger-icon">☰</span>
+      </button>
+      <a class="brand" href="#qa-home" aria-label="PhotoPixC Quranic Arabic Home">
+        <span class="brand-badge">🕋</span>
+        <span class="brand-text">
+          <strong>PhotoPixC আরবি</strong>
+          <small>কুরআনিক আরবি (৫–১৫ বছর)</small>
+        </span>
+      </a>
     </div>
-    <button id="btn-sound-toggle" class="sound-toggle-btn" type="button" title="শব্দ ও সাউন্ড এফেক্ট টগল করুন" aria-label="সাউন্ড এফেক্ট টগল">🔔</button>
-    <button id="nav-toggle" class="mobile-toggle" type="button" aria-controls="top-nav" aria-expanded="false">☰ মেনু</button>
+
+    <div class="topbar-gamified-right">
+      <!-- Age Mode Switcher: 5-9 Kids vs 10-15 Junior Scholar -->
+      <div class="age-mode-pill" role="group" aria-label="বয়সভিত্তিক লার্নিং মোড">
+        <button type="button" id="mode-kids-btn" class="age-btn active" data-mode="kids" title="৫–৯ বছর: ছবি, বড় হরফ ও গেম">
+          🎈 ৫–৯ বছর
+        </button>
+        <button type="button" id="mode-scholar-btn" class="age-btn" data-mode="scholar" title="১০–১৫ বছর: শব্দমূল, তাজবীদ ও আয়াত">
+          🎓 ১০–১৫ বছর
+        </button>
+      </div>
+
+      <button type="button" id="btn-tajweed-toggle" class="tajweed-toggle-btn active" title="ফ্রি তাজবীদ কালার-কোডিং চালু/বন্ধ করুন" aria-pressed="true">
+        🌈 তাজবীদ রঙ
+      </button>
+
+      <div id="topbar-streak" class="streak-badge" title="প্রতিদিনের ধারাবাহিক স্ট্রিক">
+        <span class="streak-icon" aria-hidden="true">🔥</span>
+        <strong id="streak-count">০</strong>
+      </div>
+
+      <button id="btn-sound-toggle" class="sound-toggle-btn" type="button" aria-label="সাউন্ড চালু বা বন্ধ করুন" title="সাউন্ড চালু/বন্ধ">
+        🔊
+      </button>
+    </div>
+
+    <nav id="topbar-nav" class="desktop-only-nav" aria-label="মূল ওয়েবসাইট নেভিগেশন">
+      <a href="/">হোম</a>
+      <a href="/quranic-arabic/" class="active">কুরআনিক আরবি</a>
+    </nav>
+  </header>
+
+  <div class="shell">
+    <aside id="sidebar" aria-label="আরবি শেখার মেনু">
+      <div class="side-header">
+        <div class="side-title">📚 কুরআনিক আরবি ধাপ</div>
+        <div class="mini">৫–১৫ বছর বয়সীদের সহজ ৫-ধাপের পাঠ্যক্রম</div>
+      </div>
+
+      <nav id="side-links" class="side-links">
+        <a href="#qa-home" id="qa-home" data-route="home" class="side-link active">
+          <span class="nav-ico">🏠</span>
+          <span class="nav-lbl">হোম ড্যাশবোর্ড</span>
+        </a>
+        <a href="#qa-path" id="qa-path" data-route="path" class="side-link">
+          <span class="nav-ico">🗺️</span>
+          <span class="nav-lbl">৫-ধাপের গাইডেড পাথ</span>
+        </a>
+        <a href="#qa-alphabet" id="qa-alphabet" data-route="alphabet" class="side-link">
+          <span class="nav-ico">🔤</span>
+          <span class="nav-lbl">১. আরবি হরফ ও মাখরাজ</span>
+        </a>
+        <a href="#qa-harakat" id="qa-harakat" data-route="harakat" class="side-link">
+          <span class="nav-ico">🚂</span>
+          <span class="nav-lbl">২. হরকত সাউন্ড ট্রেন</span>
+        </a>
+        <a href="#qa-builder" id="qa-builder" data-route="builder" class="side-link">
+          <span class="nav-ico">🧩</span>
+          <span class="nav-lbl">৩. লেগো শব্দ গঠন</span>
+        </a>
+        <a href="#qa-words" id="qa-words" data-route="words" class="side-link">
+          <span class="nav-ico">📖</span>
+          <span class="nav-lbl">৪. কুরআনিক শব্দভাণ্ডার</span>
+        </a>
+        <a href="#qa-kids" id="qa-kids" data-route="kids" class="side-link">
+          <span class="nav-ico">🎮</span>
+          <span class="nav-lbl">কিডস কুইজ ও মাইক গেম</span>
+        </a>
+        <a href="#qa-flashcards" id="qa-flashcards" data-route="flashcards" class="side-link">
+          <span class="nav-ico">🃏</span>
+          <span class="nav-lbl">ফ্ল্যাশকার্ড রিভিশন</span>
+        </a>
+        <a href="#qa-last-ten" id="qa-last-ten" data-route="last-ten" class="side-link">
+          <span class="nav-ico">🕌</span>
+          <span class="nav-lbl">৫. শেষ ১০টি সূরা</span>
+        </a>
+        <a href="#qa-salah" id="qa-salah" data-route="salah" class="side-link">
+          <span class="nav-ico">🤲</span>
+          <span class="nav-lbl">নামাজের দোয়া ও শিক্ষা</span>
+        </a>
+        <a href="#qa-daily" id="qa-daily" data-route="daily" class="side-link">
+          <span class="nav-ico">🌟</span>
+          <span class="nav-lbl">আজকের মিশন</span>
+        </a>
+        <a href="#qa-quiz" id="qa-quiz" data-route="quiz" class="side-link">
+          <span class="nav-ico">🏆</span>
+          <span class="nav-lbl">মেধা যাচাই কুইজ</span>
+        </a>
+        <a href="#qa-progress" id="qa-progress" data-route="progress" class="side-link">
+          <span class="nav-ico">🎖️</span>
+          <span class="nav-lbl">স্টিকার অ্যালবাম ও প্রগতি</span>
+        </a>
+        <a href="#qa-about" id="qa-about" data-route="about" class="side-link">
+          <span class="nav-ico">ℹ️</span>
+          <span class="nav-lbl">অ্যাপ নির্দেশিকা</span>
+        </a>
+      </nav>
+
+      <div class="side-progress">
+        <div class="side-progress-row">
+          <span>মোট অগ্রগতি</span>
+          <strong id="side-completion">০%</strong>
+        </div>
+        <div class="progress-bar-track">
+          <div id="side-progress-fill" class="progress-bar-fill" style="width: 0%;"></div>
+        </div>
+        <div class="mini-note">সম্পূর্ণ ফ্রি ও অফলাইন সাপোর্ট</div>
+      </div>
+    </aside>
+
+    <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+
+    <main id="main" tabindex="-1">
+      <div id="view" aria-live="polite"></div>
+    </main>
   </div>
-  <nav id="top-nav" aria-label="পাঠশালা নেভিগেশন">
-    <a href="/">সকল পাঠশালা</a>
-    <a href="/google-ads/">Google Ads</a>
-    <a href="/meta-ads/">Meta Ads</a>
-    <a href="/quranic-arabic/" aria-current="page">কুরআনিক আরবি</a>
-    <a href="/skill-lab-45/">Skill Lab 45</a>
-    <a href="/google-ads/#ai-marketing">AI Marketing</a>
+
+  <!-- Mobile Bottom Navigation Bar (5 Core Tabs for 1-Thumb Mobile Use) -->
+  <nav id="mobile-bottom-nav" class="mobile-bottom-nav" aria-label="মোবাইল কুইক নেভিগেশন">
+    <a href="#qa-home" data-route="home" class="mob-tab active">
+      <span class="mob-ico">🏠</span>
+      <span class="mob-txt">হোম</span>
+    </a>
+    <a href="#qa-alphabet" data-route="alphabet" class="mob-tab">
+      <span class="mob-ico">🔤</span>
+      <span class="mob-txt">হরফ</span>
+    </a>
+    <a href="#qa-builder" data-route="builder" class="mob-tab">
+      <span class="mob-ico">🧩</span>
+      <span class="mob-txt">শব্দ গঠন</span>
+    </a>
+    <a href="#qa-kids" data-route="kids" class="mob-tab">
+      <span class="mob-ico">🎮</span>
+      <span class="mob-txt">কিডস গেম</span>
+    </a>
+    <a href="#qa-last-ten" data-route="last-ten" class="mob-tab">
+      <span class="mob-ico">🕌</span>
+      <span class="mob-txt">১০ সূরা</span>
+    </a>
   </nav>
-</header>
-<div class="shell">
- <aside id="sidebar" aria-label="পাঠ্যক্রম">
-  <div class="side-title">শেখার পথ <span class="mini">নামাজ + শেষ ১০ সূরা</span></div>
-  <div class="mini-note">হরফ, শব্দের যুক্তরূপ, নামাজের সূরা-দোয়া ও অনুশীলন।</div>
-  <nav id="side-links" class="side-links" aria-label="অধ্যায়সমূহ">
-   <a href="#qa-home" data-route="home">⌂ &nbsp; কোর্স হোম</a>
-   <a href="#qa-path" data-route="path" class="nav-highlight">🌟 &nbsp; শেখার পথ (Guided Path)</a>
-   <a href="#qa-alphabet" data-route="alphabet">ا &nbsp; ২৮টি আরবি হরফ</a>
-   <a href="#qa-words" data-route="words">◫ &nbsp; শব্দ শেখা (V5)</a>
-   <a href="#qa-flashcards" data-route="flashcards">🎴 &nbsp; যাচাই করা (ফ্ল্যাশ-কার্ড)</a>
-   <a href="#qa-builder" data-route="builder">✦ &nbsp; Word Builder</a>
-   <a href="#qa-harakat" data-route="harakat">◈ &nbsp; হরকত প্র্যাকটিস</a>
-   <a href="#qa-daily" data-route="daily">◷ &nbsp; প্রতিদিন ৫ শব্দ</a>
-   <a href="#qa-kids" data-route="kids">★ &nbsp; Kids Learning</a>
-   <a href="#qa-salah" data-route="salah">☪ &nbsp; পাঁচ ওয়াক্ত নামাজ</a>
-   <a href="#qa-last-ten" data-route="last-ten">📖 &nbsp; কুরআনের শেষ ১০ সূরা</a>
-   <a href="#qa-quiz" data-route="quiz">◎ &nbsp; কুইজ ও অনুশীলন</a>
-   <a href="#qa-progress" data-route="progress">◷ &nbsp; আমার অগ্রগতি</a>
-   <a href="#qa-about" data-route="about">ⓘ &nbsp; তথ্য ও উৎস</a>
-  </nav>
-  <div class="side-progress"><div class="row-between"><strong>শেখা হয়েছে</strong><strong id="side-completion">০%</strong></div><progress id="side-bar" max="100" value="0"></progress><p id="side-count" class="muted">০টি শব্দ</p></div>
- </aside>
- <main id="main" tabindex="-1"><div id="view" aria-live="polite"></div></main>
-</div>
-<footer>
- <div>PhotoPixc Learning · বাংলা ভাষায় কুরআনিক আরবি ও নামাজ শেখার পাঠশালা</div>
- <div>শব্দার্থ শিক্ষামূলক সংক্ষিপ্ত ব্যাখ্যা; নির্ভুল তিলাওয়াত ও তাজবীদের জন্য যোগ্য শিক্ষকের কাছে শিখুন।</div>
- <div>এই পাঠশালা স্বতন্ত্র উদ্যোগ; কোনো ইসলামি প্রতিষ্ঠান বা কুরআন প্রকাশনার অফিসিয়াল কোর্স নয়।</div>
-</footer>
-<div id="toast" role="status" aria-live="polite"></div>
-<script>
-  if (!window.Capacitor || !window.Capacitor.isNativePlatform()) {
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js').catch(err => {
-          console.warn('SW registration skipped:', err);
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    if (!window.Capacitor || !window.Capacitor.isNativePlatform()) {
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('sw.js').catch(function () {});
         });
-      });
+      }
     }
-  }
-</script>
+  </script>
 </body>
 </html>
