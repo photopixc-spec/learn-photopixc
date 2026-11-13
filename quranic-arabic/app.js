@@ -1832,10 +1832,10 @@
     render();
   }
 
-  if (document.readyState === 'interactive' || document.readyState === 'complete') {
-    setTimeout(boot, 1);
-  } else {
+  if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot);
-    window.addEventListener('load', boot);
+  } else {
+    boot();
   }
+  window.addEventListener('load', boot);
 })();
