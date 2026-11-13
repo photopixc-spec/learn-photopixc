@@ -12,13 +12,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=8">
-  <link rel="stylesheet" href="learning-v4.css?v=8">
-  <script src="data/alphabet.js?v=7" defer></script>
-  <script src="data/words.js?v=7" defer></script>
-  <script src="data/salah.js?v=7" defer></script>
-  <script src="learning-v4.js?v=8" defer></script>
-  <script src="app.js?v=8" defer></script>
+  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="learning-v4.css?v=9">
+  <script>
+    // Immediate Cache & ServiceWorker Purge: Guarantee fresh app code on mobile devices
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(regs) {
+        for (var i = 0; i < regs.length; i++) { regs[i].unregister(); }
+      }).catch(function() {});
+    }
+    if ('caches' in window) {
+      caches.keys().then(function(keys) {
+        for (var i = 0; i < keys.length; i++) { caches.delete(keys[i]); }
+      }).catch(function() {});
+    }
+  </script>
+  <script src="data/alphabet.js?v=9" defer></script>
+  <script src="data/words.js?v=9" defer></script>
+  <script src="data/salah.js?v=9" defer></script>
+  <script src="learning-v4.js?v=9" defer></script>
+  <script src="app.js?v=9" defer></script>
 </head>
 <body>
   <header class="topbar" role="banner">
@@ -144,8 +157,6 @@
       </div>
     </aside>
 
-    <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
-
     <main id="main" tabindex="-1">
       <div id="view" aria-live="polite"></div>
     </main>
@@ -176,15 +187,5 @@
   </nav>
 
   <div id="toast" role="status" aria-live="polite"></div>
-
-  <script>
-    if (!window.Capacitor || !window.Capacitor.isNativePlatform()) {
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function () {
-          navigator.serviceWorker.register('sw.js').catch(function () {});
-        });
-      }
-    }
-  </script>
 </body>
 </html>

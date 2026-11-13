@@ -1697,39 +1697,14 @@
   function initShellEvents() {
     var navToggle = document.getElementById('nav-toggle');
     var sidebar = document.getElementById('sidebar');
-    var backdrop = document.getElementById('sidebar-backdrop');
 
     function openDrawer() {
-      if (sidebar) {
-        sidebar.classList.add('open');
-        sidebar.style.visibility = 'visible';
-        sidebar.style.pointerEvents = 'auto';
-      }
-      if (backdrop) {
-        backdrop.hidden = false;
-        backdrop.classList.add('open');
-        backdrop.style.display = 'block';
-        backdrop.style.visibility = 'visible';
-        backdrop.style.pointerEvents = 'auto';
-        backdrop.style.opacity = '1';
-      }
+      if (sidebar) sidebar.classList.add('open');
       if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
     }
 
     function closeDrawer() {
-      if (sidebar) {
-        sidebar.classList.remove('open');
-        sidebar.style.visibility = '';
-        sidebar.style.pointerEvents = '';
-      }
-      if (backdrop) {
-        backdrop.hidden = true;
-        backdrop.classList.remove('open');
-        backdrop.style.display = 'none';
-        backdrop.style.visibility = 'hidden';
-        backdrop.style.pointerEvents = 'none';
-        backdrop.style.opacity = '0';
-      }
+      if (sidebar) sidebar.classList.remove('open');
       if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
     }
 
@@ -1743,17 +1718,6 @@
         } else {
           openDrawer();
         }
-      });
-    }
-
-    if (backdrop) {
-      backdrop.addEventListener('click', function (e) {
-        e.preventDefault();
-        closeDrawer();
-      });
-      backdrop.addEventListener('touchend', function (e) {
-        e.preventDefault();
-        closeDrawer();
       });
     }
 

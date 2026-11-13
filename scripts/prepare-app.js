@@ -51,6 +51,7 @@ for (const item of ITEMS_TO_COPY) {
         if (basename.endsWith('-INSTRUCTIONS.txt') || 
             basename.endsWith('-INSTRUCTIONS-BN.txt') || 
             (basename.startsWith('README-') && basename.endsWith('.txt')) ||
+            basename === 'sw.js' ||
             (basename === 'fonts' && source.includes('google-ads'))) {
           return false;
         }
