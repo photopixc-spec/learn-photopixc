@@ -368,6 +368,7 @@
   function injectDataTransferButton() {
     // Only show on root portal or when user is in the app
     if (!document.body) return;
+    if (window.location.pathname.includes('/quranic-arabic/')) return;
 
     // Check if migration button already exists
     if (document.getElementById('btn-photopixc-transfer')) return;
