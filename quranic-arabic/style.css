@@ -50,16 +50,13 @@ html, body {
   padding: 0;
   width: 100%;
   max-width: 100vw;
-  overflow-x: hidden;
-  overflow-y: auto;
-  touch-action: pan-y;
-  -webkit-overflow-scrolling: touch;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-bn);
   font-size: 16px;
   line-height: 1.6;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 /* Arabic Script & Harakat Safe Rendering (Zero Clipping) */
@@ -556,7 +553,7 @@ html, body {
     width: 100% !important;
     padding: 14px 12px 92px 12px !important;
     pointer-events: auto !important;
-    touch-action: pan-y !important;
+    touch-action: manipulation !important;
   }
   .mobile-bottom-nav {
     position: fixed;

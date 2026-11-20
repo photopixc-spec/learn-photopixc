@@ -15,16 +15,13 @@
   <link rel="stylesheet" href="style.css?v=9">
   <link rel="stylesheet" href="learning-v4.css?v=9">
   <script>
-    // Immediate Cache & ServiceWorker Purge: Guarantee fresh app code on mobile devices
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then(function(regs) {
-        for (var i = 0; i < regs.length; i++) { regs[i].unregister(); }
-      }).catch(function() {});
-    }
-    if ('caches' in window) {
-      caches.keys().then(function(keys) {
-        for (var i = 0; i < keys.length; i++) { caches.delete(keys[i]); }
-      }).catch(function() {});
+    // Disable and clear Service Workers on Native Platform to prevent stale cache
+    if (window.Capacitor && typeof window.Capacitor.isNativePlatform === 'function' && window.Capacitor.isNativePlatform()) {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(regs) {
+          for (var i = 0; i < regs.length; i++) { regs[i].unregister(); }
+        }).catch(function() {});
+      }
     }
   </script>
   <script src="data/alphabet.js?v=9" defer></script>

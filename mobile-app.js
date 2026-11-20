@@ -111,7 +111,7 @@
   // 3. Render Mobile Header Bar with Streak
   function injectMobileHeader() {
     if (document.getElementById('mobile-top-bar')) return;
-    if (window.location.pathname.includes('/quranic-arabic/')) return;
+    if (window.location.pathname.includes('quranic-arabic')) return;
 
     const streakCount = updateAndGetStreak();
 
@@ -140,7 +140,7 @@
     if (document.getElementById('mobile-continue-widget')) return;
     const isPortal = !window.location.pathname.includes('/google-ads/') && 
                      !window.location.pathname.includes('/meta-ads/') &&
-                     !window.location.pathname.includes('/quranic-arabic/') &&
+                     !window.location.pathname.includes('quranic-arabic') &&
                      !window.location.pathname.includes('/skill-lab-45/');
 
     if (!isPortal) return;
@@ -169,7 +169,7 @@
   // 5. Render Bottom Navigation Bar
   function injectBottomNav() {
     if (document.getElementById('mobile-bottom-bar')) return;
-    if (window.location.pathname.includes('/quranic-arabic/')) return;
+    if (window.location.pathname.includes('quranic-arabic')) return;
 
     const nav = document.createElement('nav');
     nav.id = 'mobile-bottom-bar';

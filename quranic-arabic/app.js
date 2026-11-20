@@ -1728,9 +1728,20 @@
       });
     }
 
+    // Close drawer when tapping outside
+    document.addEventListener('click', function (e) {
+      if (sidebar && sidebar.classList.contains('open')) {
+        if (!sidebar.contains(e.target) && navToggle && !navToggle.contains(e.target)) {
+          closeDrawer();
+        }
+      }
+    });
+
+    // Single source of truth for view route transitions
     window.addEventListener('hashchange', function () {
       closeDrawer();
       render();
+      window.scrollTo({ top: 0, behavior: 'instant' });
     });
 
     // Touch & Click Event Delegation for Instant Route Navigation
@@ -1743,10 +1754,12 @@
         route = href.replace('#qa-', '');
       }
       if (route) {
-        window.location.hash = '#qa-' + route;
+        var targetHash = '#qa-' + route;
         closeDrawer();
-        render();
-        if (target.classList.contains('mob-tab') || target.classList.contains('side-link')) {
+        if (window.location.hash !== targetHash) {
+          window.location.hash = targetHash;
+        } else {
+          render();
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       }
@@ -1755,7 +1768,8 @@
     var kidsBtn = document.getElementById('mode-kids-btn');
     var scholarBtn = document.getElementById('mode-scholar-btn');
     if (kidsBtn && scholarBtn) {
-      kidsBtn.addEventListener('click', function () {
+      kidsBtn.addEventListener('click', function (e) {
+        e.preventDefault();
         state.ageMode = 'kids';
         kidsBtn.classList.add('active');
         scholarBtn.classList.remove('active');
@@ -1763,7 +1777,8 @@
         render();
         toast('🎈 ৫–৯ বছরের কিডস মোড চালু হয়েছে');
       });
-      scholarBtn.addEventListener('click', function () {
+      scholarBtn.addEventListener('click', function (e) {
+        e.preventDefault();
         state.ageMode = 'scholar';
         scholarBtn.classList.add('active');
         kidsBtn.classList.remove('active');
@@ -1775,7 +1790,8 @@
 
     var sndBtn = document.getElementById('btn-sound-toggle');
     if (sndBtn) {
-      sndBtn.addEventListener('click', function () {
+      sndBtn.addEventListener('click', function (e) {
+        e.preventDefault();
         state.muted = !state.muted;
         sndBtn.textContent = state.muted ? '🔇' : '🔊';
         if (state.muted && 'speechSynthesis' in window) {
@@ -1787,7 +1803,8 @@
 
     var tjBtn = document.getElementById('btn-tajweed-toggle');
     if (tjBtn) {
-      tjBtn.addEventListener('click', function () {
+      tjBtn.addEventListener('click', function (e) {
+        e.preventDefault();
         state.tajweedOn = !state.tajweedOn;
         tjBtn.classList.toggle('active', state.tajweedOn);
         tjBtn.setAttribute('aria-pressed', state.tajweedOn ? 'true' : 'false');
@@ -1798,7 +1815,10 @@
     }
   }
 
+  var booted = false;
   function boot() {
+    if (booted) return;
+    booted = true;
     initShellEvents();
     render();
   }
@@ -1808,5 +1828,4 @@
   } else {
     boot();
   }
-  window.addEventListener('load', boot);
 })();
