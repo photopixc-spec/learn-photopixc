@@ -1,0 +1,13 @@
+{
+  "app_name": "আরবি লেখা শিখি",
+  "english_name": "Arabic Writing Trainer",
+  "version": "2.0.0",
+  "release_date": "2026-11-20",
+  "primary_letters": 28,
+  "special_forms": 8,
+  "harakat_marks": 9,
+  "unique_quranic_words": 135,
+  "learning_modes": ["virtual_keyboard", "finger_mouse_stylus_handwriting"],
+  "storage": "browser_localStorage",
+  "automatic_handwriting_recognition": false
+}

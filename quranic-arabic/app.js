@@ -749,6 +749,7 @@
           '<a href="#qa-words" class="btn btn-light">📖 V5 শব্দভাণ্ডার দেখুন</a>' +
           '<a href="#qa-last-ten" class="btn btn-accent">🕌 বাংলা উচ্চারণসহ ১০ সূরা</a>' +
           '<a href="#qa-alphabet" class="btn btn-outline" style="background:rgba(255,255,255,0.14);color:#fff;border-color:rgba(255,255,255,0.4);">🔤 হরফ ও মাখরাজ</a>' +
+          '<a href="writing/" class="btn btn-outline" style="background:rgba(255,255,255,0.14);color:#fff;border-color:rgba(255,255,255,0.4);">✍️ আরবি লেখা শিখি</a>' +
         '</div>' +
       '</div>' +
       renderTajweedLegend() +
@@ -776,6 +777,12 @@
           '<h3>🕌 শেষ ১০টি সূরা (আরবি + বাংলা উচ্চারণ + অর্থ)</h3>' +
           '<p>সূরা ফীল থেকে সূরা নাস পর্যন্ত প্রতিটি সূরার পূর্ণাঙ্গ ও আয়াতভিত্তিক বাংলা উচ্চারণ এবং অনুবাদ।</p>' +
           '<a href="#qa-last-ten" class="btn btn-primary" style="width:100%;">১০টি সূরা পড়ুন →</a>' +
+        '</div>' +
+        '<div class="card" style="border:2px solid #0e7c6b;background:linear-gradient(135deg, rgba(14,124,107,0.06), #fff);">' +
+          '<div class="v4-overline" style="color:#0e7c6b;font-weight:700;">বিশেষ ল্যাব · ক্যানভাসে হাতে লেখা</div>' +
+          '<h3>✍️ আরবি লেখা শিখি (Writing Trainer)</h3>' +
+          '<p>হরফের ৪ রূপ, সংযোগের নিয়ম, হারাকাত ও ১৩৫টি কুরআনিক শব্দ সরাসরি টাচস্ক্রিন বা পেন্সিল দিয়ে লিখে যাচাই করুন।</p>' +
+          '<a href="writing/" class="btn btn-accent" style="width:100%;">হাতে লেখা প্র্যাকটিস শুরু করুন →</a>' +
         '</div>' +
       '</div>'
     );
