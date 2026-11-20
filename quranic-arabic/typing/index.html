@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>কুরআনের শব্দ টাইপ প্র্যাকটিস</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Hind+Siliguri:wght@400;600&display=swap">
+<style>
+:root{--bg:#eef2f1;--panel:#fff;--ink:#16302b;--mute:#5d726d;--line:#cfdad7;--accent:#0f6b5c;--ok:#1b8a4b;--okbg:#dff3e6;--bad:#c0392b;--badbg:#fbe4e1;--key:#f6f9f8;--keyh:#e3eeeb;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a18;--panel:#172623;--ink:#e6f0ee;--mute:#93aaa5;--line:#2b403c;--accent:#4fc2ab;--ok:#5fd68f;--okbg:#17382a;--bad:#ff8577;--badbg:#412220;--key:#1d2f2b;--keyh:#27403a;}}
+:root[data-theme="dark"]{--bg:#0f1a18;--panel:#172623;--ink:#e6f0ee;--mute:#93aaa5;--line:#2b403c;--accent:#4fc2ab;--ok:#5fd68f;--okbg:#17382a;--bad:#ff8577;--badbg:#412220;--key:#1d2f2b;--keyh:#27403a;}
+*{box-sizing:border-box}
+html,body{margin:0}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--ink);font-family:"Hind Siliguri",system-ui,sans-serif;min-height:100vh;display:flex;justify-content:center;padding:14px}
+.app{width:100%;max-width:860px;display:flex;flex-direction:column;gap:12px}
+.top{display:flex;justify-content:space-between;align-items:center;color:var(--mute);font-size:15px}
+.top b{color:var(--ink)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+.word{font-family:"Amiri Quran","Traditional Arabic","Geeza Pro",serif;font-size:clamp(56px,14vw,104px);line-height:2.3;padding:.15em 0 .25em;text-align:center;direction:rtl;margin:0;overflow:visible}
+.bn{text-align:center;font-size:clamp(22px,5vw,30px);font-weight:600;color:var(--accent);margin:10px 0 18px;position:relative;z-index:1}
+.letters{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;direction:rtl}
+.ch{font-family:"Amiri Quran","Traditional Arabic",serif;font-size:42px;line-height:1.7;min-width:56px;text-align:center;border:2px solid var(--line);border-radius:10px;padding:0 8px;color:var(--mute)}
+.ch.done{background:var(--okbg);border-color:var(--ok);color:var(--ink)}
+.ch.cur{border-color:var(--accent);color:var(--ink)}
+.typed{font-family:"Amiri Quran","Traditional Arabic",serif;direction:rtl;font-size:52px;min-height:76px;display:flex;flex-wrap:wrap;gap:4px;align-items:center;justify-content:center;padding:6px 10px}
+.typed .t{padding:0 6px;border-radius:8px;line-height:1.6}
+.typed .t.bad{background:var(--badbg);color:var(--bad)}
+.typed .t.good{color:var(--ok)}
+.typed .ph{font-family:"Hind Siliguri",sans-serif;font-size:17px;color:var(--mute);direction:ltr}
+.msg{min-height:26px;text-align:center;font-weight:600;font-size:18px}
+.msg.ok{color:var(--ok)} .msg.bad{color:var(--bad)}
+.kb{display:flex;flex-direction:column;gap:6px;direction:rtl}
+.row{display:flex;justify-content:center;gap:5px;flex-wrap:nowrap}
+button{font:inherit;color:inherit;cursor:pointer}
+.k{display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1;overflow:hidden;flex:1 1 0;max-width:62px;min-width:0;height:auto;min-height:92px;border:1px solid var(--line);background:var(--key);border-radius:9px;font-family:"Amiri Quran","Traditional Arabic",serif;font-size:28px;padding:0}
+.k:hover{background:var(--keyh)}
+.k small{font-family:"Hind Siliguri",sans-serif;font-size:11px;line-height:1.1;color:var(--mute);margin-top:0;white-space:normal;text-align:center;padding:0 1px}
+.k span{display:block;line-height:1.6;padding-bottom:12px}
+.k:active{transform:translateY(1px)}
+.k.hint{outline:3px solid var(--accent);outline-offset:1px}
+.k.mark{color:var(--accent)}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.btn{border:1px solid var(--line);background:var(--key);border-radius:10px;padding:10px 16px;font-size:17px}
+.btn:hover{background:var(--keyh)}
+.btn.main{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.btn.main:disabled{opacity:.4;cursor:default}
+button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.label{font-size:14px;color:var(--mute);text-align:center;margin:0 0 6px}
+@media (min-width:900px){
+.app{max-width:1500px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto auto auto;column-gap:14px;row-gap:12px}
+.top{grid-column:1/3}
+.app>.card:nth-child(2){grid-column:1;grid-row:2}
+.app>.card:nth-child(3){grid-column:2;grid-row:2;display:flex;flex-direction:column;justify-content:center}
+.app>.card:nth-child(4){grid-column:1/3;grid-row:3}
+.word{font-size:clamp(48px,9vh,84px);line-height:2}
+.k{max-width:90px;min-height:68px}
+}
+@media (max-width:520px){.k{height:auto;min-height:78px;font-size:23px}.k small{font-size:9px;margin-top:2px}.row{gap:3px}.kb{gap:4px}.ch{font-size:34px;min-width:44px}.typed{font-size:42px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div style="grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;padding:10px 14px;background:var(--panel);border:1px solid var(--line);border-radius:12px;">
+    <a href="../" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--accent);font-weight:700;font-size:14px;">
+      <span aria-hidden="true" style="font-size:16px;">←</span> কুরআনিক আরবি মূল পাতায় ফিরুন
+    </a>
+    <div style="display:flex;gap:12px;align-items:center;">
+      <a href="../writing/" style="text-decoration:none;color:var(--accent);font-size:13px;font-weight:600;">
+        ✍️ লেখা শিখি
+      </a>
+      <a href="/" style="text-decoration:none;color:var(--mute);font-size:13px;font-weight:600;">
+        পাঠশালা হোম ↗
+      </a>
+    </div>
+  </div>
+  <div class="top"><span>শব্দ <b id="pos">1</b> / <b id="tot">1</b></span><span>সঠিক: <b id="score">0</b></span></div>
+
+  <div class="card">
+    <p class="word" id="word"></p>
+    <p class="bn" id="bn"></p>
+    <p class="label">অক্ষর আলাদা আলাদা</p>
+    <div class="letters" id="letters"></div>
+  </div>
+
+  <div class="card">
+    <p class="label">তুমি যা টাইপ করেছ</p>
+    <div class="typed" id="typed"></div>
+    <div class="msg" id="msg"></div>
+  </div>
+
+  <div class="card">
+    <div class="kb" id="kb"></div>
+    <div class="ctl" style="margin-top:12px">
+      <button class="btn" id="back">⌫ মুছো</button>
+      <button class="btn" id="clear">সব মুছো</button>
+      <button class="btn" id="hintBtn">ইঙ্গিত</button>
+      <button class="btn" id="skip">বাদ দাও</button>
+      <button class="btn main" id="next" disabled>পরের শব্দ</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// শব্দ বদলাতে বা বাড়াতে শুধু এই তালিকা এডিট করো: [আরবি (হারাকাতসহ), বাংলা উচ্চারণ]
+const WORDS = [
+  ["بِسْمِ","বিসমি"],
+  ["اللَّهِ","আল্লাহি"],
+  ["الرَّحْمَٰنِ","আর-রাহমানি"],
+  ["الرَّحِيمِ","আর-রাহিমি"],
+  ["الْحَمْدُ","আল-হামদু"],
+  ["لِلَّهِ","লিল্লাহি"],
+  ["رَبِّ","রাব্বি"],
+  ["الْعَالَمِينَ","আল-আলামিন"],
+  ["مَالِكِ","মালিকি"],
+  ["يَوْمِ","ইয়াওমি"],
+  ["الدِّينِ","আদ-দিনি"],
+  ["إِيَّاكَ","ইয়্যাকা"],
+  ["نَعْبُدُ","না'বুদু"],
+  ["قُلْ","কুল"],
+  ["هُوَ","হুওয়া"],
+  ["اللَّهُ","আল্লাহু"],
+  ["أَحَدٌ","আহাদুন"],
+  ["الصَّمَدُ","আস-সামাদু"]
+];
+const LETTER_ROWS = [
+  "ضصثقفغعهخحج".split(""),
+  "شسيبلاتنمكط".split(""),
+  "ئءؤرىةوزظدذ".split(""),
+  "أإآ".split("")
+];
+const MARKS = [["َ","জবর"],["ِ","জের"],["ُ","পেশ"],["ّ","তাশদীদ"],["ْ","সাকিন"],["ً","দুই জবর"],["ٍ","দুই জের"],["ٌ","দুই পেশ"],["ٰ","খাড়া জবর"]];
+const BN = {"ا":"আলিফ","ب":"বা","ت":"তা","ث":"সা","ج":"জিম","ح":"বড় হা","خ":"খা","د":"দাল","ذ":"যাল","ر":"রা","ز":"যা","س":"সিন","ش":"শিন","ص":"সোয়াদ","ض":"দোয়াদ","ط":"তোয়া","ظ":"যোয়া","ع":"আইন","غ":"গাইন","ف":"ফা","ق":"ক্বাফ","ك":"কাফ","ل":"লাম","م":"মিম","ن":"নুন","ه":"ছোট হা","و":"ওয়াও","ي":"ইয়া","ء":"হামযা","ة":"তা মারবুতা","ى":"আলিফ মাকসুরা","أ":"হামযা (আলিফে)","إ":"হামযা (নিচে)","آ":"আলিফ মাদ্দ","ؤ":"হামযা (ওয়াওয়ে)","ئ":"হামযা (ইয়ায়)"};
+const isMark = c => /[\u064B-\u0652\u0670]/.test(c);
+const order = c => c === "\u0651" ? 0 : c.charCodeAt(0);
+function clusters(s){
+  const out = [];
+  for (const c of s.replace(/\u0640/g,"")) {
+    if (isMark(c) && out.length) out[out.length-1].m.push(c);
+    else if (!isMark(c)) out.push({b:c,m:[]});
+  }
+  return out.map(x => ({b:x.b, m:x.m.sort((a,b)=>order(a)-order(b)), key:x.b+x.m.sort((a,b)=>order(a)-order(b)).join("")}));
+}
+const $ = id => document.getElementById(id);
+let idx = 0, typed = [], score = 0, solved = false, target = [];
+
+function esc(s){return s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
+function show(c){ return c.b + c.m.join(""); }
+
+function buildKeyboard(){
+  const kb = $("kb"); kb.innerHTML = "";
+  LETTER_ROWS.forEach(r => {
+    const row = document.createElement("div"); row.className = "row";
+    r.forEach(l => row.appendChild(key(l, l, "", "", BN[l])));
+    kb.appendChild(row);
+  });
+  const mr = document.createElement("div"); mr.className = "row";
+  MARKS.forEach(([m,name]) => mr.appendChild(key("\u25CC"+m, m, "mark", name, name)));
+  kb.appendChild(mr);
+}
+function key(label, val, cls, title, sub){
+  const b = document.createElement("button");
+  b.className = "k " + cls; b.dataset.v = val;
+  const big = document.createElement("span"); big.textContent = label; b.appendChild(big);
+  if (sub) { const s = document.createElement("small"); s.textContent = sub; b.appendChild(s); }
+  if (title) b.title = title; 
+  b.addEventListener("click", () => press(val));
+  return b;
+}
+function press(v){
+  if (solved) return;
+  clearHint();
+  if (isMark(v)) {
+    if (!typed.length) return;
+    typed[typed.length-1].m.push(v);
+  } else typed.push({b:v,m:[]});
+  render();
+}
+function norm(){ return typed.map(c => c.b + [...c.m].sort((a,b)=>order(a)-order(b)).join("")); }
+
+function render(){
+  const t = norm();
+  let ok = 0;
+  while (ok < t.length && ok < target.length && t[ok] === target[ok].key) ok++;
+  const wrongAt = ok < t.length ? ok : -1;
+  // letters row
+  const L = $("letters"); L.innerHTML = "";
+  target.forEach((c,i) => {
+    const d = document.createElement("div");
+    d.className = "ch" + (i < ok ? " done" : (i === ok && !solved ? " cur" : ""));
+    d.textContent = show(c); L.appendChild(d);
+  });
+  // typed row
+  const T = $("typed"); T.innerHTML = "";
+  if (!t.length) T.innerHTML = '<span class="ph">নিচের কীবোর্ড থেকে ক্লিক করো…</span>';
+  t.forEach((k,i) => {
+    const s = document.createElement("span");
+    s.className = "t " + (i < ok ? "good" : (i === wrongAt ? "bad" : ""));
+    s.textContent = k; T.appendChild(s);
+  });
+  const m = $("msg");
+  if (ok === target.length && t.length === target.length) {
+    solved = true; score++; $("score").textContent = score;
+    m.className = "msg ok"; m.textContent = "ঠিক হয়েছে ✓";
+    $("next").disabled = false; $("next").focus();
+    L.querySelectorAll(".ch").forEach(e => e.className = "ch done");
+  } else if (wrongAt >= 0) {
+    m.className = "msg bad"; m.textContent = "এই অক্ষর বা হারাকাত মেলেনি। মুছে আবার চেষ্টা করো।";
+  } else { m.className = "msg"; m.textContent = ""; }
+}
+function clearHint(){ document.querySelectorAll(".k.hint").forEach(e => e.classList.remove("hint")); }
+function hint(){
+  if (solved) return;
+  clearHint();
+  const t = norm(); let ok = 0;
+  while (ok < t.length && ok < target.length && t[ok] === target[ok].key) ok++;
+  if (ok < t.length) { $("msg").className = "msg bad"; $("msg").textContent = "আগে ভুল অংশটা মুছো।"; return; }
+  const c = target[ok]; if (!c) return;
+  const have = typed[ok] ? typed[ok].m.slice() : [];
+  let want = null;
+  if (!typed[ok]) want = c.b;
+  else want = c.m.find(x => !have.includes(x)) || null;
+  document.querySelectorAll(".k").forEach(k => { if (k.dataset.v === want) k.classList.add("hint"); });
+}
+function load(i){
+  idx = (i + WORDS.length) % WORDS.length;
+  const [ar, bn] = WORDS[idx];
+  target = clusters(ar); typed = []; solved = false;
+  $("word").textContent = ar; $("bn").textContent = bn;
+  $("pos").textContent = idx + 1; $("tot").textContent = WORDS.length;
+  $("next").disabled = true; clearHint(); render();
+}
+$("back").onclick = () => {
+  if (solved) return; clearHint();
+  if (!typed.length) return;
+  const last = typed[typed.length-1];
+  if (last.m.length) last.m.pop(); else typed.pop();
+  render();
+};
+$("clear").onclick = () => { if (solved) return; typed = []; clearHint(); render(); };
+$("hintBtn").onclick = hint;
+$("skip").onclick = () => load(idx + 1);
+$("next").onclick = () => load(idx + 1);
+buildKeyboard(); load(0);
+</script>
+</body>
+</html>
